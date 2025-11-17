@@ -1,0 +1,1038 @@
+%document class
+\documentclass[10pt,oneisde]{book}
+%%%% Page Info + Commands %%%%%{
+
+%packages
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xcolor, mdframed}
+\usepackage{thmbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{changepage}
+
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{-5mm}
+
+% a good babble textwidth is 5.75in
+\newcommand{\babblewidth}{\setlength\textwidth{5.75in}}
+
+
+% This will stretch out the page
+\newcommand{\bigpage}{  \setlength \oddsidemargin{-.25in}
+            \setlength \textwidth{6.75in}
+            \setlength \topmargin{-1in}
+            \setlength \textheight{9.75in}}
+
+
+%This will shrink the page
+\newcommand{\smallpage}{  \setlength \oddsidemargin{.5in}
+            \setlength \textwidth{5in}
+            \setlength \topmargin{0in}
+            \setlength \textheight{9in}}
+
+\newcommand{\separator}{\vglue .1in\hrule\vglue .1in}
+
+\newcommand{\pause}{\vglue .1in\hrulefill {\tiny Pause here}\hrulefill \vglue .1in}
+
+%%general stuff
+\newcommand{\caret}{\textasciicircum}
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+% Commands for abstract
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\im}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+\newcommand{\autc}[1]{{\rm Aut_c}(#1)}
+\newcommand{\autsub}[2]{{\rm Aut}_{#1}(#2)}
+
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\rmvs}[1]{\,\backslash{#1}}
+\newcommand{\md}[1]{\,\text{mod } #1}
+
+%%%%%%%% command for graphics %%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%}
+
+%%%% Page 1 Setup %%%%%%%{
+\smallpage
+\sloppy
+\pagestyle{fancy}
+\rhead{MATH 252}
+\lhead{\large{\textbf{Proof Portfolio P1}}}
+\rhead{Gordon Novak  \hint{MATH 252}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+%\setcounter{section}{1}
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+\newcommand{\bs}{\;\;\;}
+\newtheorem[S, bodystyle=\normalfont\noindent]{defiS}{Definition}[section]
+%}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Proof 1 %%%%%%{
+\section*{Proof 1}
+%%%% Preliminaries %%%% %{
+\subsection*{PF1 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Set Equality
+\begin{defiS}[Principle of Set Equality]
+    If $A$ and $B$ are sets, then
+    \begin{align*}
+        A=B\bs\text{ if and only if }\bs A\subseteq B\bs \text{ and } \bs B\subseteq A
+    \end{align*}
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Union
+\begin{defiS}[Union]
+    Let $A_1,A_2,\cdots,A_n$ be sets. We define their \textbf{union} $A_1\cup A_2 \cup \cdots \cup A_n$ and their \textbf{intersection} $A_1\cap A_2\cap \cdots \cap A_n$ as follows:
+    \begin{align*}
+        A_1\cup A_2 \cup \cdots \cup A_n=\{x\mid x\in A_i \textit{ for some } i=1,2,\cdots,n\}\\
+        A_1\cap A_2\cap \cdots \cap A_n =\{x\mid x\in A_i \textit{ for every } i=1,2,\cdots,n\}
+    \end{align*}
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Cartesian Product
+\begin{defiS}[Cartesian Product]
+    The \textbf{cartesian product} $A\times B$ of two sets $A$ and $B$ is defined to be the set
+    \begin{align*}
+        A\times B = \{(a,b)\mid a\in A, b\in B\}
+    \end{align*}
+    of all ordered paris with the first component from $A$ and the second component from $B$. 
+\end{defiS}
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Disjoint
+\begin{defiS}[Disjoint]
+    Two sets $X$ and $Y$ are called \textbf{disjoint} if they have no element in common (that is, $X\cap Y = \emptyset$).
+\end{defiS}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 1.1 %%%{
+\subsection*{Proof 1.1:}
+We will prove that $(A\times B)\cup(C\times D)\ne(A\cup C)\times(B\cup D)$.\\
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } Let $A,B,C,D$ be disjoint sets such that:
+\begin{align*}
+    A =\{1\},\;
+    B &=\{2\}\\
+    C =\{3\},\;
+    D &=\{4\}.
+\end{align*}
+Let $K = (A\times B)\cup(C\times D)$ and $L=(A\cup C)\times(B\cup D)$. \\
+We will show by \textit{contradiction} that $L\ne K$ by showing that 
+$$\exists (x,y)\in L \text{ such that }(x,y)\notin K.$$
+Note that $(3,2)\in (\{1\}\cup \{3\})\times (\{2\}\cup\{4\})=L$.\\
+Now consider the set $K$:
+\begin{align*}
+    K=\{(1,2)\}\cup \{(3,4)\}=\{(1,2),(3,4)\}.
+\end{align*}
+Thus, we have $(3,2)\in L$ such that $(3,2) \notin K$. \vp
+Hence,  $(A\times B)\cup(C\times D)\ne(A\cup C)\times(B\cup D)$.\qed
+
+%}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Proof 2 %%%%%%%{
+\subsection*{Proof 1.2: $(A\times B)\cap(C\times D)=(A\cap C)\times(B\cap D)$}
+We will directly prove that $(A\times B)\cap(C\times D)=(A\cap C)\times(B\cap D)$.\\
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } Let $K = (A\times B)\cap(C\times D)$ and $L=(A\cap C)\times(B\cap D)$. \vpp
+We will utilize the \textbf{Principle of Set Equality} to show that $K = L$.
+\subsubsection*{Proof Pt. 1 $K\subseteq L$}
+We want to show that $\forall (x,y)\in K, \;(x,y)\in L$.\vp
+Let $(x,y)\in K$. Therefore, $(x,y)\in (A\times B)$ and $(x,y)\in(C\times D)$. \\
+Then, via the definition of Cartesian product, we have that
+\begin{align*}
+    x\in A, \;x&\in C \text{ and }\\
+    y\in B, \;y&\in D.
+\end{align*}
+Therefore, via the definition of intersection, $x\in A\cap C$ and $y \in B\cap D$.\\
+Hence, $(x,y)\in (A\cap C)\times (B\cap D)$, and $K\subseteq L$.
+\subsubsection*{Proof Pt. 2 $L\subseteq K$}
+We want to show that $\forall (w,z)\in L, \;(w,z)\in K$.\vp
+Let $(w,z)\in L$. Therefore, via the definition of Cartesian product, $w\in A\cap C$ and $z\in B\cap D$. Then, we have that
+\begin{align*}
+    w\in A, \;w&\in C \text{ and }\\
+    z\in B, \;z&\in D.
+\end{align*}
+Therefore $(w,z)\in (A\times B)$ and $(w,z)\in (C\times D)$. \\
+Hence, $ (w,z)\in(A\times B)\cap(C\times D)$, and therefore $L\subseteq K$.\vpp
+Hence, via the \textbf{Principle of Set Equality}, because $K\subseteq L$ and $L\subseteq K$, $K=L$.\qed
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Proof 2%%%%%{
+\newpage
+\rhead{MATH 252}
+\lhead{\large{\textbf{Proof Portfolio P2}}}
+\rhead{Gordon Novak  \hint{MATH 252}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt}
+\section*{Proof 2}
+
+\subsection*{PF2 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Relation
+\setcounter{defiS}{0}
+\begin{defiS}[Relation]
+    If $A$ is a set, a subset $\equiv$ of $A\times A$ is called a \textbf{relation} on A. 
+\end{defiS}
+\begin{defiS}[Equivalence Relation]
+    A relation $\equiv$ on a set $A$ is called an \textbf{equivalence} on A if it satisfies the following conditions, where $a,b,$ and $c$ denote elements of $A$. \vspace{0.2cm}
+    \begin{enumerate}[nolistsep]
+        \item[(a)]$a\equiv a$ for all $a\in A$. (Reflexive)
+        \item[(b)]If $a\equiv b$, then $b\equiv a$. (Symmetric)
+        \item[(c)]If $a\equiv b$, and $b\equiv c$, then $a\equiv c$. (Transitive) 
+    \end{enumerate}
+\end{defiS}
+
+
+
+\subsection*{Proof 2.1: $(a,b)\sim(c,d) \text{ if } a-c=b-d$}
+We will prove via contradiction that $(a,b)\sim(c,d) \text{ if } a+c=b+d$ is not an equivalence relation on $\Z\times \Z$.\\
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } We will show via contradiction that the relation $(a,b)\sim(c,d) \text{ if } a-c=b-d$ fails the reflexive property under $\Z\times\Z$. \vpp
+Let $(a,b)\sim(b,a)$. Then, we have
+\begin{align*}
+    a-b&=b-a\\
+    2a &= 2b
+\end{align*}
+Therefore, $(a,b)\sim(b,a)$ is only an equivalence relation for $a=b$, and is not a general equivalence on $\Z\times \Z$. \qed
+
+\subsection*{Proof 2.2: $(a,b)\sim(c,d) \text{ if } a-c=b-d$}
+We will directly prove via that the relation $(a,b)\sim(c,d) \text{ if } a-c=b-d$ is an equivalence on $\Z\times \Z$.\\
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } We will show that the relation $(a,b)\sim(c,d)$ fulfills all the properties of an equivalence on $\Z\times\Z$.
+\subsubsection*{Reflexive}
+We will show that $(a,b)\sim(c,d)$ fulfills the reflexive property under $\Z\times\Z$. For $(a,b)\sim(a,b)$, we have
+\begin{align*}
+    a-a&=b-b.
+    0&=0
+\end{align*}
+Thus, $(a,b)\sim(c,d)$ is reflexive under $\Z\times \Z$.
+\subsubsection*{Symmetric}
+We will show that $(a,b)\sim(c,d)$ fulfills the symmetric property under $\Z\times\Z$. For $(a,b)\sim(c,d)$, we have
+\begin{align*}
+    a-c&=b-d.
+\end{align*}
+And for $(c,d)\sim(a,b)$, we have
+\begin{align*}
+    c-a&=b-d.\\
+    -(c-a)&=-(b-d)\\
+    a-c &= b-d.
+\end{align*}
+Thus, because $(a,b)\sim(c,d)\implies (c,d)\sim(a,b)$, the relation is symmetric under $\Z\times\Z$.
+\subsubsection*{Transitive}
+We will show that $(a,b)\sim(c,d)$ fulfills the transitive property under $\Z\times\Z$.\\ 
+For $(a,b)\sim(c,d)$ and $(c,d)\sim(e,f)$, we have
+\begin{align*}
+    a-c&=b-d\\
+    c-e&=d-f.
+\end{align*}
+Therefore, we have:
+\begin{align*}
+    c &= d-f+e\\
+    a + d + f - e &= b - d\\
+    a-e &= b-f
+\end{align*}
+Thus, because $(a,b)\sim(e,f)$, our relation is symmetric under $\Z\times\Z$.\vpp
+Hence, our relation is an equivalence on $\Z\times\Z$. \qed
+
+%}
+
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Proof 3 %%%%%%{
+\section*{Proof 3}
+%%%% Preliminaries %%%% %{
+\subsection*{PF3 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Set Equality
+\begin{defiS}[Modulo]
+    Let $n\ge 2$ be an integer.
+    \begin{align*}
+        \textit{Then, integers }a \textit{ and }b \textit{ are said to be }\textbf{congruent modulo } n \textit{ if }n\mid(a-b)\\
+        \textit{In this case, we write }a\equiv b\text{ (mod }n)\textit{ and refer to }n \textit{ as the }\textbf{modulus.}
+    \end{align*}
+\end{defiS}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 3.1 %%%{
+\subsection*{Proof 3.1: $3\mid n^3-n$}
+We will prove that $\forall n\in \N$, $n^3-n$ is a multiple of 3.\\
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } Let $n\in \N$.\vp
+Consider that for $n=1$, we have:
+\begin{align*}
+    n^3-n&=1-1\\
+    &\equiv0\text{ mod }3
+\end{align*}
+Now, consider for $j\in\N$ that $j^3-j=3k$ for some $k\in\Z$. \\
+$n=1$ fulfills this condition, as shown above.\vp
+Therefore, consider that for $j+1$, we have:
+\begin{align*}
+    j^3-j&=3k\\
+    (j+1)^3-(j+1)&=(3k+1)^3-(3k-1)\\
+    &=27k^2+27k^2+9k+1-3k-1\\
+    &=3(9k^3+9k^2+2k)\\
+    &\equiv0\text{ mod }3
+\end{align*}
+Hence, via mathematical induction, $n^3-n$ is divisible by 3 for $n\ge1$.\qed
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 3.2 %%%{
+\subsection*{Proof 3.2: $a\equiv b \text{ (mod }n)$, $a^k\equiv b^k \text{ (mod }n)$ for $k\ge 1$}
+We will prove that if $a\equiv b\text{ (mod }n)$, then $a^k\equiv b^k\text{ (mod }n)$ for some $k\ge 1$. 
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } Let $n\in\R$, $k\in \N$.\vp
+Consider for $k=1$, we have:
+\begin{align*}
+    a^k&\equiv b^k\text{ (mod }n)\\
+    a&\equiv b\text{ (mod }n)
+\end{align*}
+Let $j=k+1$. Thus, we have:
+\begin{align*}
+    a&\equiv b\text{ (mod }n)\\
+    n&\mid (a-b)\\
+    a^{k+1}-b^{k+1}&=aa^k-bb^k
+\end{align*}
+Now, consider for $j\in\N$ that $j^3-j=3k$ for some $k\in\Z$. \\
+$n=1$ fulfills this condition, as shown above.\vp
+Therefore, consider that for $j+1$, we have:
+\begin{align*}
+    j^3-j&=3k\\
+    (j+1)^3-(j+1)&=(3k+1)^3-(3k-1)\\
+    &=27k^2+27k^2+9k+1-3k-1\\
+    &=3(9k^3+9k^2+2k)\\
+    &\equiv0\text{ mod }3
+\end{align*}
+Hence, via mathematical induction, $n^3-n$ is divisible by 3 for $n\ge1$.\qed
+%}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% P3 %%%%%%{
+\newpage
+\rhead{MATH 252}
+\lhead{\large{\textbf{Proof Portfolio P3}}}
+\rhead{Gordon Novak  \hint{MATH 252}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt}
+\section*{Proof 4}
+%%%% Preliminaries %%%% %{
+\subsection*{PF4 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Set Equality
+\begin{defiS}[Group]
+    A set $G$ is called a \textbf{group} if it satisfies the following axioms:
+    \begin{itemize}
+        \item[G1] $G$ is closed under a binary operation
+        \item[G2] The operation is associative
+        \item[G3] There is a unity element in $G$
+        \item[G4] Every element of G has an inverse in $G$
+    \end{itemize}
+\end{defiS}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 4.1 %%%{
+\subsection*{Proof 4.1: $S=\{f:\Z\to\Z\mid f(x)=nx,\;n\in\Z\}$}
+We will prove that the set of functions $S=\{f:\Z\to\Z\mid f(x)=nx,\;n\in\Z\}$ with binary operation ($*$) given by function composition $f*g=f\circ g$ is \underline{not} a group. 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } We will show that $S$ fails the \textbf{G4} property of groups, but fulfills the \textbf{G1, G2, G3} properties. \vp
+%%%% G4
+\textbf{G4.} Let $f(x)=2x$, $f\in S$. \vp
+We want to show via contradiction that if $\exists f\in S$ such that $f(f^{-1}(x))=x$, $f^{-1}\notin S$.\vp
+Let $f^{-1}=mx$ for $m\in \Z$ such that $f(f^{-1}(x))=x$.
+Therefore, we have that:
+\begin{align*}
+    f(f^{-1}(x))=nmx=x\\
+    nm = 1
+\end{align*}
+Consider $n=2$. Therefore, $m=\frac{1}2$. \\
+However, $m\notin \Z$, and therefore, $f^{-1}\notin S$.\vp
+Hence, because not every element in $S$ has an inverse in $S$, $S$ is not a group.\vp
+%%%% G1
+\textbf{G1.} We will show that $S$ is closed under it's binary opration, $\circ$. \vp
+Let $f(x)=n_1x, \;g(x)=n_2x\in S,$ for $n_1,n_2\in \Z$. Thus, we have that for $f*g$ that:
+\begin{align*}
+    f\circ g = n_1n_2x
+\end{align*}
+Consider that $n_1,n_2\in \Z$, so $n_1\cdot n_2 \in \Z$, and thus $f \circ g\in S$. \\
+Hence, $S$ is closed under its operation.\vp
+%%%% G2
+\textbf{G2. } Let $f(x)=nx, \,g(x)=mx,\,k(x)=px \in S$, for $n,m,p\in \Z$. \vp
+We want to show that $(f*g)*k = f*(g*k)$. 
+Consider that:
+\begin{align*}
+    (f*g)*k &= nm(px)\\
+    f*(g*k) &= n(mpx)
+\end{align*}
+Thus, $(f*g)*k=f*(g*k)$, and $\circ$ is an associative operation in $S$. \vp
+%%%% G3
+\textbf{G3. } We want to show that there exists a unity element in $S$ such that $e(x)*f(x) = f(x) = f(x)*e(x)$. \vp
+Let $e(x) = x, \, f(x)=nx$ for $n\in \Z$. Thus, we have that:
+\begin{align*}
+    e(x)*f(x) &= nx = f(x)\\
+    f(x)*e(x) &= nx = f(x)
+\end{align*} 
+Thus, there exists an identity $e(x)\in S$.\vpp
+Hence, because $S$ fulfills the \textbf{G1, G2, G3} properties of groups, $S$ is a \textit{monoid}. \qed
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 4.2 %%%{
+\subsection*{Proof 4.2: $S=\R\rmv{-1}$}
+We will prove that the set $S=\R\rmv{-1}$ under the operation $*$ given by $x * y = x+y+xy$ is a group under each of the group properties (G1-G4).
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. }
+We want to show that $S$ fulfills all the properties of a group (G1-G4).\vp
+\textbf{G1. } We will show that $S$ is closed under its operation, such that $\forall x,y\in S$, $x*y\ne 1$.\vp
+Consider that:
+\begin{align*}
+    x+y+xy&=-1\\
+    x+y(1+x)&=-1\\
+    y&=\frac{-1-x}{1+x}\\
+    y&=-1
+\end{align*}
+Thus, $x*y=-1$ if $y=-1$, but because $-1\notin S$, therefore we cannot get $-1$.\\
+Hence, $S$ is closed under its binary operation.\vp
+\textbf{G2. } We will show that the binary operation of $S$ is associative, that is for $a,b,c\in S$, $(a*b)*c=a*(b*c)$.
+Consider that:
+\begin{align*}
+   (a*b)*c&=(a+b+ab)*c\\
+   &=a+b+ab+c+c(a+b+ab)\\
+   &=a+b+c+ab+bc+ac+abc
+\end{align*}
+Additionally consider that:
+\begin{align*}
+    a*(b*c)&=a*(b+c+bc)\\
+    &=a+b+c+bc+a(b+c+bc)\\
+    &=a+b+c+ab+bc+ac+abc
+\end{align*}
+Thus, we have that $(a*b)*c=a*(b*c)$.\vp
+\textbf{G3. } We want to show that there exists an identity in $S$ such that for $a\in S$, $a*e=a=e*a$.
+Consider for $e=0\in S$, we have:
+\begin{align*}
+    a*e&=a+0+a\cdot0 =a\\
+    e*a&=0+a+0\cdot a =a
+\end{align*}
+Thus, the identity of $S$ is $0$.\vp
+\textbf{G4. } Let $a\in S$. We want to show that $\exists a^{-1}\in S$ such that $aa^{-1}=a^{-1}a=e$.\\
+\begin{align*}
+    a+a^{-1}+aa^{-1}&=0\\
+    a^{-1}=\frac{a}{a+1}.
+\end{align*}
+Now, we want to ensure that $a^{-1}\ne -1$ via contradiction.
+\begin{align*}
+    -\frac{a}{a+1}&=-1\\
+    a&=1+a\\
+    1&=0
+\end{align*}
+However, because $1\ne 0$, the inverse of an element cannot be $-1$. Thus, $a^{-1}\ne -1$, and each element has an inverse. \vp
+Hence, because $S$ fulfills all the properties of a group under operation $(*)$, $S$ is a group.\qed 
+%}
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Proof 5 %%%%%%{
+\section*{Proof 5}
+%%%% Preliminaries %%%% %{
+\subsection*{PF5 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Image
+\begin{defiS}[Image]
+    Let $\alpha:A\to B$ be a function. \vp
+    For $a\in A$, the unique element $b\in B$ such that $b=\alpha(a)$ is called the \textbf{image} of $a$ under $\alpha$. \vp
+    We denote the set of all possible images of $a$ under $\alpha$, $\text{im}(A)$. 
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Kernel
+\begin{defiS}[Kernel]
+    Let $\alpha:A\to B$ be a function. \vp 
+    The \textbf{kernel} of $\alpha$ is defined as:
+    \begin{align*}
+        \ker\alpha=\{k\in G\mid \alpha(k)=1\}.
+    \end{align*}
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Homomorphism
+\begin{defiS}[Homomorphism]
+    Let $G$ and $H$ be groups with a mapping $\alpha: G\to H$. $\alpha$ is called a \textbf{homomorphism} if $\forall a,b\in G$ we have:
+    \begin{align*}
+        \alpha(ab)=\alpha(a)\cdot \alpha(b).
+    \end{align*}
+\end{defiS}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 5.1.i %%%{
+\subsection*{Proof 5.1.i $\alpha :\Z_n\to \Z_m$}
+Will we prove that $\alpha:\Z_n\to \Z_m$ is not well-defined for all $n,m\in \Z$ via an example. 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } We will show that $\alpha$ is not well defined for all $n,m\in \Z$. \vp
+Let $\alpha: \Z_n\to \Z_m$ be a function. \\
+Let $n = 2, \;m = 3$. Consider $\alpha(1) = 2$. We have that $\alpha(a)= 2a$:
+\begin{align*}
+    4 &\equiv 0\md{n}\\
+    \alpha(4) &= 8\equiv 1 \md{n}\\
+    \alpha(0) &= 0
+\end{align*}
+Hence, for $n=2, m=3$, $\alpha$ is not well-defined. \qed
+%}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 5.1.ii %%%{
+\subsection*{Proof 5.1.ii $m\mid n$}
+Will we prove that $\alpha:\Z_n\to \Z_m$ is well-defined if $m\mid n$ for $\alpha$ as $a\mapsto a\cdot k$\\
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } Let a function $\alpha: \Z_n\to\Z_m$ be defined as $\alpha(a)=a\cdot k$.\vp
+We will show that if $m\mid n$, then $\alpha(0 + p)=\alpha(n + p)$ for some $p\in \Z_n$, and thus $\alpha$ is well-defined. \vp
+Consider that because $m\mid n$, then $n = qm$ for some $q\in \Z$. Thus we have
+\begin{align*}
+    \alpha(n+p)&= k\cdot (n + p)\\
+    &= k\cdot qm + kp\equiv kp \md{m}\\
+    \alpha(0+p)&= kp\md{m}
+\end{align*}
+Hence, because $\alpha(n+p)=\alpha(0+p)$ for all $p\in \Z_n$, $\alpha$ is well defined. \qed
+%}
+
+
+
+\newcommand{\img}{\text{im }}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 5.2.i %%%{
+\subsection*{Proof 5.2.i $\phi:\Z_n\times \Z_m\to \Z_n\times \Z_m$}
+Given the function $\phi:\Z_n\times \Z_m\to \Z_n\times \Z_m$ given by $(a,b)\mapsto (ak+bl,at+bs)$ for $k,l,t,s\in \Z$, we will provide an example of a map $\phi$ that is not an isomorphism. 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+%%%%%%%%%% start proof
+\textit{Proof. } Let $k=l=n$, and $t=s = m$. \vp
+We will show that $\phi$ is not surjective by showing that $|\img\phi| < |\Z_n\times \Z_m|$, thus proving that $\phi$ is not an isomorphism.\vp
+Consider that for any $a \in \Z_n,\,b\in \Z_m$:
+\begin{align*}
+    \phi(a,b)&=(an+bn,am+bm)\\
+    &=(n(a+b),m(a+b))\equiv (0 \md{n}, 0\md{m})
+\end{align*}
+\\
+Thus, we have that:
+\begin{align*}
+    \img \phi &= \{(0,0)\}\\
+    \ker \phi &= \Z_n\times \Z_m
+\end{align*}
+Consider that $|\img \phi| = 1$, but $|\Z_n\times \Z_m|=n\cdot m$. Thus, $\phi$ is not surjective, so $\phi$ cannot be an isomorphism.\qed
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 5.2.ii %%%{
+\subsection*{Proof 5.2.ii $\phi$ is an Isomorphism}
+Given the function $\phi:\Z_n\times \Z_m\to \Z_n\times \Z_m$ given by $(a,b)\mapsto (ak+bl,at+bs)$ for $k,l,t,s\in \Z$, we will provide an example of a map $\phi$ that is an isomorphism. 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+%%%%%%%%%% start proof
+\textit{Proof. } Let $k=1, l=n$, and $t=m, s=1$. \vp
+We will show that $\phi$ is the identity map, and thus an isomorphism. \vp
+Consider that for any $a \in \Z_n,\,b\in \Z_m$, we have: 
+\begin{align*}
+    \phi(a,b)=([ak+bl]\md{n},[at+bs]\md{m})=(a,b)
+\end{align*}
+Hence, $\phi$ is the identity map, and is an isomorphism. \qed
+%}
+
+
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% P4 %%%%%%{
+\newpage
+\rhead{MATH 252}
+\lhead{\large{\textbf{Proof Portfolio P4}}}
+\rhead{Gordon Novak  \hint{MATH 252}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt}
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Proof 6 %%%%%%{
+\section*{Proof 6}
+%%%% Preliminaries %%%% %{
+\subsection*{PF6 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Cyclic group
+\begin{defiS}[Cyclic Group]
+    A group $G$ is called a \textbf{cyclic group} if every element in the group can be written as a power of one particular element. 
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Order
+\begin{defiS}[Order]
+    Let $G$ be a finite group. We denote the number of element in $G$, $|G|$ and call it the \textbf{order} of $G$.  
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Theorem 5
+\begin{defiS}[Theorem 5, §2.4]
+    Let $o(g) = n$ for $g$ in some group $G$. If $d\mid n$, $d\ge 1$, then $o(g)=\frac{n}d$. 
+\end{defiS}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 6.1 %%%{
+\subsection*{Proof 6.1 $|G|=p^k$}
+We will prove that for a prime $p$ and group $G$ with $|G|=p^k$, there is an $a\in G$ for which $o(a)=p$.\\ 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. }Let $g\in G\,\backslash\{e\}$. Therefore, via Lagrange's theorem, $o(g)\mid p^k$ such that $o(g)\ne 0$. \\
+Therefore, because $o(g)\mid p^k$, $o(g)=p^m$ for some $1\le m\le k$. \vp
+Now consider the element $g^{p^{m-1}}\in G$. \\
+Via Theorem 5, $\S$2.4, we have that:
+\begin{align*}
+    o( g^{p^{m-1}})=\frac{p^m}{p^{m-1}}=p.
+\end{align*}
+Thus, there exists an element in $g$ that has order $p$. \qed
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 6.2 %%%{
+\subsection*{Proof 6.2 $H$ is only non-trivial proper subgroup.}
+We will prove that if $H$ is the only non-trivial proper subgroup of $G$, then $H,G$ and $G/H$ are all cyclic.\\ 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. } Let $H$ be the only non-trivial subgroup of $G$. We want to show that $H, G$ and $H/G$ are cyclic. \vp
+\underline{$H$}$\quad$ Consider that if $H$ is the only nontrivial subgroup of $G$, via. Lagrange's Theorem, only 1, 
+$|H|$, and $|G|$ divide $|G|$. Additionally, $|H|$ must be prime, because there are no other subgroups that divide $|G|$, and thus $|H|$ is cyclic.\vp
+\underline{$G$}$\quad$Now, consider that $|G|$ is equal to the square of a prime. If $G$ is not cyclic, then all elements are of order $p$ (a prime), and the respective subgroups they generate have $p-1$ non-identity elements. Because $|G|=p^2$, that gives us a total of $p^2-1$ non-identity elements, so we can algebraically solve for the number of subgroups, $n$:
+\begin{align}
+    n(p-1) &= p^2-1\\
+    n&=\frac{p^2-1}{p-1}\\
+    n&= p+1
+\end{align}
+However, we know that we only have \textbf{one} nontrivial subgroup, so we cannot have $p+1$ nontrivial subgroups, a contradiction. Thus, $G$ must have an element of order $p^2$.\vp
+\underline{$G/H$}$\quad$
+Consider that there is an element in $G$ that generates the whole group, because $G$ is cyclic. Thus, we have that $\langle gH\rangle$ will go through all possible $g\in G$, and thus will generate the entirety of $G/H$. Thus $G/H$ is cyclic.\vp
+Hence, $H$, $G$, and $\frac{G}{H}$ are cyclic.\qed
+%}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Proof 7 %%%%%%{
+\section*{Proof 7}
+%%%% Preliminaries %%%% %{
+\subsection*{PF7 Preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Cyclic group
+\begin{defiS}[Ring]
+    A set $R$ is called a \textbf{ring} if it has two binary operations, written as addition and multiplication, satisfying the following axioms for all $a,b,$ and $c$ in $R$:
+    \begin{align*}
+        &\text{R1 }\;a+b=b+a.\\
+        &\text{R2 }\;a+(b+c)=(a+b)+c.\\
+        &\text{R3 }\;\textit{An element }0\textit{ in }R \textit{ exists such that } 0+a=a \textit{ for all }a.\\
+        &\text{R4 }\;\textit{For each }a\textit{ in }R\textit{ an element } -a \textit{ in }R \textit{ exists such that } a+ (-a)=0.\\
+        &\text{R5 }\;a(bc)=(ab)c\\
+        &\text{R6 }\;\textit{An element }1 \textit{ in }R\textit{ exists such that }1\cdot a=a=a\cdot 1 \textit{ for all }a.\\
+        &\text{R7 }\; a(b+c)=ab+ac \textit{ and } (b+c)a=ba+ca.
+    \end{align*}
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Order
+\begin{defiS}[Order of Group]
+    Let $G$ be a finite group. We denote the number of elements in $G$, $|G|$ and call it the \textbf{order} of $G$.  
+\end{defiS}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Order of element
+\begin{defiS}[Order of Element]
+    Let $G$ be a group. For an element $a\in G$ such that for some minimum $k\in \Z$, $a^k = e$, we denote $o(a)=k$, and say that the order of $a$ is $k$.  
+\end{defiS}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 7.1.i %%%{
+{
+\newcommand{\addit}{(a,b)\oplus(c,d)}
+\newcommand{\additi}{(c,d)\oplus(a,b)}
+\newcommand{\multit}{(a,b)\otimes(c,d)}
+\newcommand{\multiti}{(c,d)\oplus(a,b)}
+\subsection*{Proof 7.1.i $A=\Q\times\Q$}
+Consider the ring given by the set $A=\Q\times\Q$ with an addition $\oplus$ and multiplication $\otimes$ given by:
+\begin{align*}
+    (a,b)\oplus(c,d)=(a+c,b+d)\quad\text{and}\quad(a,b)\otimes(c,d)=(ac+2bd,ad+bc).
+\end{align*}
+We will first prove that this structure is a ring by showing that it satisfies all axioms of a ring.\\
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. Direct.} We want to show that $A$ satisfies all the axioms of a ring. (\textbf{Def'n 0.0.10}).\vpp
+%%%%% R1
+\textbf{R1. } Let $(a,b),(c,d)\in A$. We have that:
+\begin{align*}
+    \addit&=(a+c,b+d)=(c+a,d+b)\\
+    \additi&=(c+a,d+b).
+\end{align*}
+Thus, $A$ satisfies \textbf{Axiom R1}.\vpp
+%%%%% R2
+\textbf{R2. }Let $(a,b),(c,d),(x,y)\in A$. We want to show that $(a\oplus b)\oplus c=a\oplus (b\oplus c)$. Consider that:
+\begin{align*}
+    (\addit)\oplus (x,y) &= (a+c+x, b+d+y)\\
+    (a,b)\oplus((c,d)\oplus(x,y))&=(a+c+x, b+d+y)
+\end{align*}
+Thus, $A$ satisfies \textbf{Axiom R2}.\vspace{1.4cm}\vp
+%%%% R3
+\textbf{R3. } Let $(a,b)\in R$. We want to show that $\exists 0_A \in A$ such that $0_A \oplus (a,b)= (a,b)$. \vp
+Suppose that $0_A=(0,0)$. Thus, we have that:
+\begin{align*}  
+    0_A \oplus (a,b) = (0+a, 0+b) = (a,b)
+\end{align*}
+Thus, $A$ satisfies \textbf{Axiom R3}.\vpp
+\textbf{R4. } Let $(a,b)\in R$. We want to show that there exists a $-(a,b) \in A$ such that $(a,b) + (-(a,b))= 0_A$. \vp
+Suppose that $-(a,b)=(-a,-b)$. Thus, we have that:
+\begin{align*}
+    (a,b)+-(a,b) = (a-a, b-b) = (0,0)=0_A
+\end{align*}
+Thus, $A$ satisfies \textbf{Axiom R4}.\vpp
+\textbf{R5. } Let $(a,b),(c,d),(x,y)\in A$. We want to show that:
+$$(a,b)\otimes((c,d)\otimes(x,y))=((a,b)\otimes(c,d))\otimes(x,y)$$
+Consider that:
+\begin{align*}
+    (a,b)\otimes((c,d)\otimes(x,y)) &= (a,b)\otimes (cx+2dy,cy+dx)\\
+    &=(2b(dx+cy)+a(cx+2dy),a(dx+cy)+b(cx+2dy))\\
+    ((a,b)\otimes(c,d))\otimes(x,y)&= (ac+2bd,ad+bc)\otimes(x,y)\\
+    &=(acx+2bdx+2ady+2bcy,\;acy+2bdy+adx+bcx)\\
+    &=(2b(dx+cy)+a(cx+2dy),a(dx+cy)+b(cx+2dy))
+\end{align*}
+Thus, $A$ satisfies \textbf{Axiom R5}\vpp
+\textbf{R6. } Let $(a,b)\in A$. We want to show that there exists a $1_A$ such that $1_A\otimes (a,b) = (a,b)= (a,b)\otimes 1_A$.\vp
+Suppose that $1_A = (1,0)$. Then, we have that:
+\begin{align*}
+    (a,b)\otimes 1_A &= (a+0b,0a+b)=(a,b)\\
+    1_A\otimes (a,b) &= (a+0b,b+0a)=(a,b)
+\end{align*}
+Thus, $A$ satisfies \textbf{Axiom R6}\vpp
+\textbf{R7. } Let $(a,b),(c,d),(x,y)\in A$. We want to show that:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $(a,b)\otimes((c,d)\oplus(x,y))=((a,b)\otimes(c,d))\oplus((a,b)\otimes (x,y))$, and that
+    \item $((c,d)\oplus(x,y))\otimes(a,b)=((c,d)\otimes(a,b))\oplus((x,y)\otimes (a,b))$
+\end{enumerate}
+We will first evaluate item 1. Consider that:
+\begin{align*}
+    (a,b)\otimes((c,d)\oplus(x,y)) &= (a(c+x)+2b(d+y),\;b(c+x)+a(d+y))\\
+    ((a,b)\otimes(c,d))\oplus((a,b)\otimes (x,y)) &= (ac+2bd+ax+2by,\;bc+ad+bx+ay)\\
+    &=(a(c+x)+2b(d+y),\;b(c+x)+a(d+y))
+\end{align*}
+Thus, item 1 holds. We will now evaluate item 2:
+\begin{align*}
+    ((c,d)\oplus(x,y))\otimes(a,b)&=((c+x)a+2(d+y)b,\;(c+x)b+(d+y)a)\\
+    ((c,d)\otimes(a,b))\oplus((x,y)\otimes (a,b)) &= (ac+2bd+ax+2by,\;bc+ad+bx+ay)\\
+    &=((c+x)a+2(d+y)b,\;(c+x)b+(d+y)a)
+\end{align*}
+Thus, item 2 also holds, and thus $A$ fulfills \textbf{Axiom 7}.\vpp
+Hence, because $A$ fulfills all 7 axioms of a ring, $A$ is a ring. \qed
+\newpage
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 7.1.ii %%%{
+\subsection*{Proof 7.1.ii $A$ is a field.}
+We will prove that the ring $A$ from 7.1 is a field by showing that each nonzero element has an inverse.\\ 
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. Direct.} Let $(a,b)\in A\rmv{(0,0)}$ We want to show that there exists $(a,b)^{-1}\in A$ such that $(a,b)\otimes (a,b)^{-1}=(1,0)$.\vp
+Suppose that $(a,b)^{-1}=(\frac{a}{a^2-2b^2},-\frac{b}{a^2-2b^2})$. \vp
+Furthermore, consider that $b\ne \frac{1}{\sqrt 2}a$, because $\frac{1}{\sqrt 2}a\notin \Q$. Thus, $(a,b)^{-1}\in \Q$. \vp
+Now, consider that:
+\begin{align*}
+    (a,b)\otimes (a,b)^{-1}&=\left(\frac{a^2-2b^2}{a^2-2b^2},\frac{ab-ab}{a^2-2b^2}\right)\\
+    &=(1,0)
+\end{align*}
+Hence, $A$ is a field. \qed
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 7.2 %%%{
+\subsection*{Proof 7.2 $R$ is a commutative ring.}
+Let $R$ be a commutative ring and $I$ any ideal in $R$. Define:
+$$J=r(I)=\{r\in R\mid r^n\in I,\exists n>0\}$$
+We will prove that $J$ is an ideal of $R$. \\
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. Direct.} We want to show that $J$:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item Is closed under addition,
+    \item Is absorptive under multiplication.
+\end{enumerate}
+We proceed first with closure under addition.\vp
+\textbf{Closure. }Let $a,b\in J$. We want to show that $a+b\in J$, by demonstrating that for some $n\in \N$, $(a+b)^n\in I$. \vp
+Consider that via the binomial theorem, we have that:
+\begin{align*}
+    (a + b)^n = \sum_{k=0}^{n} \left(\frac{n!}{k!(n - k)!} \right)a^{n-k} b^k
+\end{align*}
+Because $a,b\in J$, we know that $a^x,b^y\in I$ for some $x,y\in \N$. \\
+Let $n = x+y$. Then we have that:
+\begin{align*}
+    (a + b)^n = \sum_{k=0}^{n} \left(\frac{(x+y)!}{k!((x+y) - k)!} \right)a^{(x+y)-k} b^k
+\end{align*}
+Note that either $n-k > x$, or $k > y$. Because $I$ is absorptive under multiplcation, and is closed under addition, then any summation of $\left(\frac{n!}{k!(n - k)!} \right)a^{n-k} b^k$ is in $I$, and thus $(a + b)^n\in J$. \vp
+Hence, $J$ is \textbf{closed} under addition. \vpp
+\textbf{Is absorptive under multiplication. } Let $a\in J$ and $r\in R$. We want to show that $r\cdot a$ and $a\cdot r$ are both in $J$. \vp
+Consider that $a^n\in I$. Then, we must have that $r^na^n\in I$, because $I$ is absorptive under multiplication. \\
+Thus $(ra)^n\in I$, and therefore $ra \in J$. The same logic applies to the right multiplication direction.\vp
+Hence, because $J$ fulfills both properties, $J$ is an ideal. \qed
+%}
+}
+
+
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Proof 8 %%%%%%{
+\section*{Proof 8}
+%%%% Preliminaries %%%% %{
+\subsection*{PF8 Preliminaries}
+%%%%%%%%%%% Ring homomorphism
+\begin{defiS}[Ring Homomorphism]
+    Let $G$ and $H$ be rings with a mapping $\alpha: G\to H$. $\alpha$ is called a \textbf{ring homomorphism} if $\forall a,b\in G$ we have:
+    \begin{align*}
+        \alpha(a+b)&=\alpha(a) + \alpha(b),\text{ and, }\\
+        \alpha(a\cdot b)&= \alpha(a)\cdot \alpha(b)
+    \end{align*}
+\end{defiS}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 8.1 %%%{
+\subsection*{Proof 8.1 $R=\Z_2[x]$}
+Consider the ring $R=\Z_2[x]$ and the ideal $I=(f(x))=(x^3)$. We will for $R/I$:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item Compute a Caley table for addition and one for multiplication.
+    \item Find all units
+    \item Find all zero-divisors
+    \item Find any idempotents
+    \item Find any nilpotents
+    \item Determine whether $R/I$ is a field or not.
+\end{enumerate}
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\underline{Part 1: Caley Tables}\\
+\newcommand{\x}{$x$}
+\newcommand{\xt}{$x^2$}
+\newcommand{\xo}{$x+1$}
+\newcommand{\xto}{$x^2+1$}
+\newcommand{\xtx}{$x^2+x$}
+\newcommand{\xtxo}{$x^2+x+1$}
+\begin{center}
+    
+
+    \begin{adjustwidth}{-1.25cm}{0cm}
+        \begin{tabular}{c | c c c c c c c c}
+            $+$  & 0   & 1   & \x   &\xo  &\xt  &\xto &\xtx & \xtxo \\
+            \cline{1-9}
+            0    & 0   & 1    & \x   &\xo  &\xt  &\xto &\xtx & \xtxo\\
+            1    & 1   & 0    & \xo  &\x   &\xto &\xt  &\xtxo& \xtx \\
+            \x   & \x  & \xo  & 0    &1    &\xtx &\xtxo&\xto & \xt \\
+            \xo  & \xo & \x   & 1    &0    &\xtxo&\xtx &\xto &\xt \\
+            \xt  & \xt &\xto  &\xtx  &\xtxo&0    &1    &\x   &\xo \\
+            \xto & \xto &\xt  &\xtx  &\xtx &1    &0    &\xo  & \x \\
+            \xtx & \xtx &\xtxo&\xt   &\xto &\x   &\xo  &0    &1   \\
+            \xtxo&\xtxo&\xtx  &\xto  &\xt  &\xo  &\x   &1    & 0  
+        \end{tabular}
+    \end{adjustwidth}
+    \begin{adjustwidth}{0cm}{0cm}
+        \begin{tabular}{c | c c c c c c c c}
+        $\cdot$  & 0   & 1    & \x   &\xo  &\xt  &\xto &\xtx & \xtxo \\
+            \cline{1-9}
+            0    & 0   & 0    & 0    &0    & 0   &0    &0    &0\\
+            1    & 0   & 1    & \x   &\xo  &\xt  &\xto &\xtx &\xtxo \\
+            \x   & 0   & \x   & \xt  &\xtx &0    &\x   &\xt  &\xtx \\
+            \xo  & 0   & \xo  & \xtx &\xto &\xt  &\xtxo&\x   &1 \\
+            \xt  & 0   &\xt   & 0    &\xt  &0    &\xt  &0    &\xt \\
+            \xto & 0   &\xto  &\x    &\xtxo&\xt  &1    &\xtx & \xo \\
+            \xtx & 0   &\xtx  & \xt  &\x   &0    &\xtx &\xt  &\x   \\
+            \xtxo& 0   &\xtxo  &\xtx &1    &\xt  &\xo  &\x    & \xto  
+        \end{tabular}
+    \end{adjustwidth}
+\end{center}
+\underline{Part 2: Find All Units}\vp
+According to our Caley Table for multiplication, we have that our units are:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $1\cdot 1$
+    \item $(x^2+x+1)\cdot (x+1)$
+    \item $(x^2+1)\cdot (x^2+1$)
+\end{enumerate}
+\pagebreak
+.\underline{Part 3: Find Zero-Divisors}\vp
+According to our Caley Table for multiplication, we have that our zero-divisors are:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $(x^2)\cdot (x)$
+    \item $(x^2)\cdot (x^2)$
+    \item $(x^2)\cdot (x^2+x)$
+\end{enumerate}
+\underline{Part 4: Idempotents}\vp
+According to our Caley Table for multiplication, we have that our idempotents are:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $0 \cdot 0 = 0$
+    \item $1 \cdot 1 = 1$
+\end{enumerate}
+\underline{Part 5: Nilpotents}\vp
+According to our Caley Table for multiplication, we have that our nilpotents are:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $0^1 = 0$
+    \item $x\rightarrow x^3= 0$
+    \item $x^2\rightarrow (x^2)^2=0$
+    \item $x^2+x\rightarrow (x^2+x)^3 = 0$
+\end{enumerate}
+\underline{Part 6: Field}\vp
+This is not a field, because we have zero-divisors, and no field has zero divisors.\qed
+%}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 8.2 %%%{
+\subsection*{Proof 8.2 $I = (x^3+x^2+1)$}
+Consider the ring $R=\Z_2[x]$ and the ideal $J=(f(x))=(x^3+x^2+1)$. We will for $R/I$:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item Compute a Caley table for addition and one for multiplication.
+    \item Find all units
+    \item Find all zero-divisors
+    \item Find any idempotents
+    \item Find any nilpotents
+    \item Determine whether $R/I$ is a field or not.
+\end{enumerate}
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\underline{Part 1: Caley Tables}\\
+\begin{center}
+    \textbf{Refer to the Cayley Table above for addition, as they are identical visually.}\vp
+    \begin{adjustwidth}{-1.5cm}{0cm}
+        \begin{tabular}{c | c c c c c c c c}
+        $\cdot$  & 0   & 1    & \x   &\xo  &\xt  &\xto &\xtx & \xtxo \\
+            \cline{1-9}
+            0    & 0   & 0    & 0    &0    & 0   &0    &0    &0\\
+            1    & 0   & 1    & \x   &\xo  &\xt  &\xto &\xtx &\xtxo \\
+            \x   & 0   & \x   & \xt  &\xtx &\xto       &\xtxo   &1  &\xo \\
+            \xo  & 0   & \xo  & \xtx &\xto &1    &\x   &\xtxo&\xt \\
+            \xt  & 0   &\xt   & \xto    &1  &\xtxo    &\xo  &\x    &\xtx \\
+            \xto & 0   &\xto  &\xtxo    &\x&\xo  &\xtx    &\xt & 1 \\
+            \xtx & 0   &\xtx  & 1  &\xtxo   &\x    &\xt &\xo  &\xto   \\
+            \xtxo& 0   &\xtxo  &\xo &\xt    &\xtx  &1  &\xto    & \x  
+        \end{tabular}
+    \end{adjustwidth}
+\end{center}
+\pagebreak
+\underline{Part 2: Find All Units}\vp
+According to our Caley Table for multiplication, every element has a unit:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $1\cdot 1 = 1$
+    \item $(x)\cdot(x^2+x)=1$
+    \item $(x+1)\cdot(x^2)=1$
+    \item $(x^2+x+1)\cdot(x^2+1)=1$
+\end{enumerate}
+\underline{Part 3: Find Zero-Divisors}\vp
+According to our Caley Table for multiplication, we have \textbf{no zero divisors}.
+\underline{Part 4: Idempotents}\vp
+According to our Caley Table for multiplication, we have that our idempotents are:
+\begin{enumerate}[itemsep=0pt, parsep=0pt]
+    \item $0 \cdot 0 = 0$
+    \item $1 \cdot 1 = 1$
+\end{enumerate}
+\underline{Part 5: Nilpotents}\vp
+According to our Caley Table for multiplication, we have no nonzero nilpotents, because we have no zero-divisors.\vpp
+\underline{Part 6: Field}\vp
+Because every nonzero element has an inverse and there are no zero-divisors, this factor group is a field.\qed
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Proof 8.3 %%%{
+\subsection*{Proof 8.3 $R/I \;\&\; R/J$ \textbf{Not Isomorphic}}
+We will prove that the factor rings above, $R/I$ and $R/J$, are not isomoprhic.
+%%%%%%%%%%% midline
+\noindent\rule[4pt]{\linewidth}{0.1pt}
+\textit{Proof. Contradiction.} Suppose for the sake of contradiction that there exists an isomorphism $\phi$ from $R/I \to R/J$. We will show that such an isomorphism cannot exist.\vp
+Consider that:
+\begin{align*}
+    \phi(0_{R/I})=0_{R/J}.
+\end{align*}
+Consider that $x, x^2\in R/I$. We know that because $\phi$ is an isomorphism that:
+\begin{align*}
+    \phi(x)&\ne 0_{R/J}\\
+    \phi(x^2)&\ne 0_{R/J}
+\end{align*}
+However, we also have that:
+\begin{align*}
+    \phi(x\cdot x^2) &= \phi(0_{R/I}) \\
+    &=0_{R/J}
+\end{align*}
+That means that $\phi(x)$ and $\phi(x^2)$ are zero-divisors in $R/J$. However, because $R/J$ is a field, it has no zero-divisors, a contradiction.\vp
+Hence, there exists no ring isomorphism from $R/I$ to $R/J$, and therefore $R/I\not\cong R/J$. \qed 
+
+\end{document}

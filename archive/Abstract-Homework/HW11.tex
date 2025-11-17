@@ -1,0 +1,274 @@
+%document class
+\documentclass[10pt,twoside]{article}
+
+%{
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\usepackage{enumitem}
+\pgfplotsset{
+    humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+    humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+    human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+% my commands
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\twom}[4]{\begin{bmatrix}#1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\casi}[4]{\begin{cases}#1 & \text{ if }#2\\ #3 & \text{ if }#4\end{cases}}
+\usepackage{changepage}
+\usepackage{array}
+
+%if you want to change some counters you can use the command below
+%\setcounter{section}{1}
+
+\begin{document}
+
+\section*{Homework 11}
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+\chead{\large{\textbf{Homework 11}}}
+\rhead{Book section: 4.1, 4.2}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+%\setcounter{section}{1}
+
+
+\subsection*{From the textbook, Section 4.1}
+\begin{enumerate}
+    %%%%%%%%%%%%%%%%%%%
+    %%%%%%%% Exercise 3
+    \item \underline{Do Exercise 3. Make sure it is clear how you deduced your answers!}
+    \begin{enumerate}
+        %%%% Part a
+        \item How many polynomials of degree 3 are there in $\Z_5[x]?$.\vp
+        Consider the possibilities of each term in the polynomial:
+        \begin{align*}
+            x^3&: x^3, \;2x^3, \;3x^3, \;4x^3\\
+            x^2&: 0, \;x^2,\;2x^2,\;3x^2,\;4x^2\\
+            x&: 0,\;x,\;2x,\;3x,\;4x\\
+            1&: 0,\; 1,\; 2,\; 3,\; 4
+        \end{align*}
+        This gives a total number of combinations of $4\cdot 5\cdot 5\cdot 5 = 500$. 
+        
+        %%%% Par b
+        \item How many monic polynomials of degree 3 are there in $\Z_3[x]$?\vp
+        Consider the possibilities again:
+        \begin{align*}
+            x^3&: x^3\\
+            x^2&: 0, \;x^2,\;2x^2\\
+            x&: 0,\;x,\;2x\\
+            1&: 0,\; 1,\; 2
+        \end{align*}
+        This gives us a total number of combinatinos of $1\cdot 3\cdot 3\cdot 3 = 27$.
+
+    \end{enumerate}
+    %%%%%%%%%%%%%%%%%%%
+    %%%%%%%% Exercise 16
+    \item \underline{Do Exercise 16 (a). Hint: The Factor/Remainder Theorem might help!}\vp
+    For which primes $p$ is $x-1$ a factor of $f = 3x^4+5x^3+2x^2+x+4$ in $\Z_p$?
+    \begin{proof}
+        We want to show that for $p = 3,5$, $(x-1)$ is a factor of $f = 3x^4+5x^3+2x^2+x+4$ in $\Z_p[x]$?.\vp
+        We will not consider cases for $p>6$, because then the polynomial doesn't change.\vp
+        Consider the special case where $f(1)=0$ in $\Z_p$.\\
+        Listing out the polynomials with their results at $1$ shows this clearly:
+        \begin{align*}
+            \Z_5 : \;&f = 3x^4 + 2x^2 + x + 4\\
+            &f(1) = 15\equiv 0 \text{mod } 5\\
+            \Z_3 : \;&f = 3x^{4}+1x^{3}+2x^{2}+x\\
+            &f(1)=3\equiv 0 \text{mod } 3\\
+            \Z_2 :\; &f = 2x^{3}+2x^{2}+x+1\\
+            &f(1)= 3 \equiv 1 \text{mod }2
+        \end{align*}
+        Hence, $(x-1)$ is a factor of $f$ in $\Z_3[x]$ and $\Z_5[x]$. 
+    \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%
+    %%%%%%%% Exercise 17
+    \item \underline{Do Exercise 17 (b). Hint: The Factor/Remainder Theorem might help!}\vp
+    In each case factor $f$ into linear factors in $F[x]$. 
+    \begin{enumerate}
+        \item[(b)]$f = x^3 + 1, \;F = \Z_7$. \vp
+        All I'm going to do is search for $x^3 \equiv 6 \text{mod }7$ because then I can add the $1$ to get to a root. For $g=x^3\text{mod }7$:
+        \begin{align*}
+            g(0)&=0\\
+            g(1)&=1\\
+            g(2)&=8=2\\
+            g(3)&=27=6 \text{ (this one)}\\
+            g(4)&=64=1\\
+            g(5)&=125=6\text{ (this one)}\\
+            g(6)&=216=6\text{ (this one)}
+        \end{align*}
+        So we factor as:
+        \begin{align*}
+            f &= (x-3)(x-5)(x-6)\\
+            &=(x+4)(x+2)(x+1)
+        \end{align*}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\subsection*{From the textbook, Section 4.2}
+\begin{enumerate}
+% problems 10, 19, 21a, 22b, Hints: Use the Modular Irreducibility Test and Eisenstein's Criterion.
+\setcounter{enumi}{3}
+    \item \underline{Do Exercise 10.}\vp
+    We are going to find all irreducible cubic, primarily by finding if they have a root or not. 
+    \begin{align*}
+        f_1(x)&=x^3+x^2+x+1\\
+        f_2(x)&=x^3+x^2+1\\
+        f_3(x)&=x^3+x^2+x\\
+        f_4(x)&=x^3+x^2\\
+        f_5(x)&=x^3+x+1\\
+        f_6(x)&=x^3+1\\
+        f_7(x)&=x^3+x\\
+        f_8(x)&=x^3
+    \end{align*}
+    We immediately know $f_3, f_4, f_8$ are reducible because they all have $x$ terms. We also rule out $f_6$ and $f_1$ because $f_6(1)=0, f_1(1)=0$. \vp
+    Then, consider that $f_2(0)=1, f_2(1)=1$. Thus, $f_2$ is irreducible. The same applies to $f_5$. 
+    
+    \item \underline{Do Exercise 19. You will need an irreducible cubic from Exercise 10!}\vp
+    Factor $x^5+x^4+1$ as a product of irreducible polynomials in $\Z_2$. \vp
+    If we factor out $f_5(x)$ from from the previous problem, we get from the divison algorithm that:
+    \begin{align*}
+        f(x)\div f_5(x)= x^2+x
+    \end{align*}
+    With no remainder! So we can factor our function as:
+    \begin{align*}
+        f(x) = (x^2+x)(x^3+x+1)
+    \end{align*}
+    \item \underline{Do Exercise 21 (a). Hint: Use the Modular Irreducibility Test or Eisenstein's Criterion}\vp
+    Show that each polynomial is irreducible in $\Q[x]$. 
+    \begin{enumerate}
+        \item $3x^3+5x^2+x+2$\vp
+        We will use the Modular Irreducibility Test. Let $p=5$. In $\Z_5$ we have:
+        \begin{align*}
+            f(x) = 3x^3+x+2
+        \end{align*}
+        Consider that for even $x$, $3x^3+x$ is a nonzero even. For odd $x$, $3x^3+x$ is also a nonzero even. Thus, because $f(x)$ is always even and nonzero in $\Z_5$, it will never equal a multiple of 5, so it is irreducible. \vp
+        Thus, via the Modular Irreducibility Test $3x^3+5x^2+x+2$ is irreducible in $\Q[x]$. 
+
+    \end{enumerate}
+    \item \underline{Do Exercise 22 (b).  Hint: Use the Modular Irreducibility Test or Eisenstein's Criterion}\vp
+    Show that each polynomial is irreducible in $\Q[x]$. 
+    \begin{enumerate}
+        \item [(b)] $4x^5+28x^4+7x^3-28x^2+14$\vp
+        We will use Eisenstein's Criterion. Consider $p=7$. \\
+        $p$ divides everything except the leading coefficient because they are all multiples of 7\vp
+        Additionally, $p^2=49$ does not divide $a_0=14$. \vp
+        Thus, via Eisenstein's Criterion, $4x^5+28x^4+7x^3-28x^2+14$ is irreducible in $\Q[x]$. 
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}

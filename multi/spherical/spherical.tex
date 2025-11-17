@@ -1,0 +1,288 @@
+%document class
+\documentclass[10pt,oneisde]{book}
+%%%% Page Info + Commands %%%%%{
+
+%packages
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xcolor, mdframed}
+\usepackage{thmbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{changepage}
+
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{-5mm}
+
+% a good babble textwidth is 5.75in
+\newcommand{\babblewidth}{\setlength\textwidth{5.75in}}
+
+
+% This will stretch out the page
+\newcommand{\bigpage}{  \setlength \oddsidemargin{-.25in}
+            \setlength \textwidth{6.75in}
+            \setlength \topmargin{-1in}
+            \setlength \textheight{9.75in}}
+
+
+%This will shrink the page
+\newcommand{\smallpage}{  \setlength \oddsidemargin{.5in}
+            \setlength \textwidth{5in}
+            \setlength \topmargin{0in}
+            \setlength \textheight{9in}}
+
+\newcommand{\separator}{\vglue .1in\hrule\vglue .1in}
+
+\newcommand{\pause}{\vglue .1in\hrulefill {\tiny Pause here}\hrulefill \vglue .1in}
+
+%%general stuff
+\newcommand{\caret}{\textasciicircum}
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+% Commands for abstract
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\im}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+\newcommand{\autc}[1]{{\rm Aut_c}(#1)}
+\newcommand{\autsub}[2]{{\rm Aut}_{#1}(#2)}
+
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\rmvs}[1]{\,\backslash{#1}}
+\newcommand{\md}[1]{\,\text{mod } #1}
+
+%%%%%%%% command for graphics %%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%}
+
+%%%% Page 1 Setup %%%%%%%{
+\smallpage
+\sloppy
+\pagestyle{fancy}
+\lhead{\large{\textbf{Fun thing}}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+%\setcounter{section}{1}
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+\newcommand{\bs}{\;\;\;}
+\newtheorem[S, bodystyle=\normalfont\noindent]{defiS}{Definition}[section]
+%}
+
+\begin{document}
+So here's my attempt to analyze this problem, where we have a shape that looks like this:
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=0.35\textwidth]{image.png}  
+    \caption{Here, the arrows represent the boundary of the cylinder.}
+    \label{fig:sample}
+\end{figure}\\
+For generalized purposes, we will use:
+\begin{itemize}[parsep=0pt]
+    \item $h$, for $h>0$ to represent the height from the base of the shape ($z=0$) to the base of the cap.
+    \item $\alpha$, for $0<\alpha\le h$ to represent the radius of the shape.
+\end{itemize}
+I really thought this problem would be easiest to initially analyze using cylindrical coordinates, so that's what I will start off with, and we will branch to spherical coordinates thereafter. 
+\subsection{cylindrical Coordinates}
+These shapes are initially rather straightforward to analyze in cylindrical coordinates ($z,\;r, \; \theta$) because we can mostly ignore the sides of the cylinder while forming our boundary equations. Consider each of our representative equations:
+\begin{center}
+    \begin{tabular}{rl}
+        \textbf{Cone:}      & $z = \alpha - r$ \\
+        \textbf{cylinder:}  & $r = \alpha$ \\
+        \textbf{Cap:}       & $z = \sqrt{\alpha^2 - r^2} + h$
+    \end{tabular}
+\end{center}
+Note that I am making the assumption that the cone is a right-circular cone for the purposes of simplifying our restrictions on $\alpha$ and $h$, and for our evaluation of the constants.\vp
+We can form the triple integral from there and solve (I used mathematica because I'm lazy):
+$$\int_0^{2\pi}\int_0^\alpha\int_{\alpha-r}^{\sqrt{\alpha^2-r^2}+h}1\cdot r \; dz\,dr\,d\theta = \frac{1}3\pi\alpha^2(3h+\alpha)$$
+Thus, we should hope to find a similar result in our analysis in Spherical Coordinates.
+\newpage
+\subsection{Spherical Coordinates}
+Let's now revisit our defining boundaries for the cylindrical system. 
+\begin{center}
+    \begin{tabular}{rl}
+        \textbf{Cone:}      & $z = \alpha - r$ \\
+        \textbf{cylinder:}  & $r = \alpha$ \\
+        \textbf{Cap:}       & $z = \sqrt{\alpha^2 - r^2} + h$
+    \end{tabular}
+\end{center}
+We can rewrite this in terms of spherical coordinates with the transformations $z= \rho\cos\phi$, $r = \rho\sin\phi$, and $\theta = \theta$..
+\begin{center}
+    \begin{tabular}{rl}
+        \textbf{Cone:}      & $\rho\cos\phi = \alpha - \rho\sin\phi$ \\
+        & $\rho(\sin\phi + \cos\phi)= \alpha$\\
+        \textbf{cylinder:}  & $\rho\sin\phi = \alpha$ \\
+        \textbf{Cap:}       & $\rho\cos\phi = \sqrt{\alpha^2 - (\rho\sin\phi)^2} + h$
+    \end{tabular}
+\end{center}
+So now we can begin solving for intersection to establish what our $\phi, \theta, $and $\rho$ may look like. 
+\subsubsection{Solving for $\phi$}
+First, recall the shape of our boundary in Figure 1. We know that $\phi$ will extend from 0 in order to cover the top of the cap. Now, we solve for how low $\phi$ will go using the equations for our Cone and cylinder. 
+\begin{align*}
+    \rho(\sin\phi+\cos\phi)&=\alpha=\rho\sin\phi\\
+    \rho(\sin\phi+\cos\phi)&=\rho\sin\phi\\
+    \rho\cos\phi &= 0
+\end{align*}
+So we get two solutions: $\rho = 0$, or $\phi=\pm\frac{\pi}2$. However, given the conditions of our problem, we know the solution $\rho = 0$ doesn't make sense, because then $p\sin\theta = \alpha \implies 0 = \alpha$. Furthermore, because $\phi$ has a defined range $\{0,\pi\}$, we discard our solution $-\frac{\pi}2$.\vp
+Thus, we establish the bounds $\phi: \{0, \frac{\pi}2\}$. 
+\subsubsection{Solving for $\theta$}
+Let's keep it short. Our system is symmetrical about the height-axis, so $\theta: \{0, 2\pi\}$.
+\subsubsection{Solving for $\rho$}
+Here is where things get tricky. We can visualize our $\rho$ incrementing along it's $d\rho$ with the following figure:
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=0.2\textwidth]{image2.png}  
+    \caption{Here, the arrows represent $d\rho$ moving along.}
+    \label{fig:sample2}
+\end{figure}\\
+Note that when we reach the red arrow in the figure above, the equation that defines our $\rho$ changes. This transition always occurs at the point $(\alpha, h)$, or in spherical, $\phi = \tan^{-1}\left(\frac{h}\alpha\right)$ and $\rho = \sqrt{\alpha^2+h^2}$.
+\newpage
+Although not an elegant system, we can split our integration along $d\rho$ into two separate integrals, defined by the the cylinder and by the cap. I'll put our original equations for the boundaries here for reference:
+\begin{center}
+    \begin{tabular}{rl}
+        \textbf{Cone:}      & $\rho(\sin\phi + \cos\phi)= \alpha$\\
+        \textbf{cylinder:}  & $\rho\sin\phi = \alpha$ \\
+        \textbf{Cap:}       & $\rho\cos\phi = \sqrt{\alpha^2 - (\rho\sin\phi)^2} + h$
+    \end{tabular}
+\end{center}
+Getting the cap equation in terms of $\rho$ is a bit of a disaster, but we can do it. 
+\begin{align*}
+    \rho\cos\phi &= \sqrt{\alpha^2 - (\rho\sin\phi)^2} + h\\
+    (\rho\cos\phi -h)^2&=\left(\sqrt{\alpha^2-\rho^2\sin^2\phi}\right)^2\\
+    \rho^2\cos^2\phi-2h\rho\cos\phi+h^2&=\alpha^2-\rho^2\sin^2\phi\\
+    \rho^2(\cos^2\phi+\sin^2\phi)-2h\rho\cos\phi+h^2&=\alpha^2\\
+    \rho^2-2h\rho\cos\phi+(h^2-\alpha^2)&=0
+\end{align*}
+Now we apply the quadratic formula to solve.
+\begin{align*}
+    \rho&=\frac{2h\cos\phi\pm\sqrt{4h^2\cos^2\phi-4(h^2-\alpha^2)}}{2}\\
+    &=h\cos\phi\pm\sqrt{h^2(\cos^2\phi-1)+\alpha^2}\\
+    &=h\cos\phi\pm\sqrt{a^2-h^2\sin^2\phi}
+\end{align*}
+This equation is kind of awful. I don't like it so I'm going to try and find a nicer looking one. So let's try re-imagining our $\rho$ in a different light.
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=0.2\textwidth]{image3.png}  
+    \caption{Here, the two red vectors, $(0,\alpha\sin\phi+h,0)$ and $(\alpha\cos\phi,0,0)$ sum to form our target vector $\vec\rho$}
+    \label{fig:sample3}
+\end{figure}\\
+With the composision in Figure 3, we see that the magnitude of $\rho$ can be written as: 
+$$\left|{\vec p}\right|=\sqrt{(\alpha\sin\phi+h)^2+\alpha^2\cos^2\phi}= \sqrt{\alpha^2+2\alpha h\sin\phi+h^2}$$
+I like this a bit more, but it's still yucky. I will continue to use this representation for $\rho$ for demonstration purposes until we discuss a (hopefully) more tasteful method. 
+\begin{center}
+    \begin{tabular}{rl}
+        \textbf{Cone to Cap:}      & $\rho : \{\frac{\alpha}{\sin \phi+\cos\phi}, \sqrt{\alpha^2+\alpha h\sin\phi+h^2}\}$ \\
+        \textbf{Cone to cylinder:}  & $\rho:\{\frac{\alpha}{\sin\phi+\cos\phi},\frac{\alpha}{\sin\phi}\}$
+    \end{tabular}
+\end{center}
+Thus that leaves us with the truly disgusting integral:
+$$\boxed{\int_0^{2\pi}
+\left[
+\int_0^{\tan^{-1}(\frac{h}\alpha)}
+    \int_{\frac{\alpha}{\sin \phi+\cos\phi}}^{\sqrt{\alpha^2+\alpha h\sin\phi+h^2}}
+        \rho^2\sin\phi\;
+    d\rho\;
+d\phi
++
+\int_{\tan^{-1}(\frac{h}\alpha)}^{\frac{\pi}2}
+    \int_\frac{\alpha}{\sin \phi+\cos\phi}^\frac{\alpha}{\sin\phi}  \rho^2\sin\phi\;
+    d\rho\;
+d\phi
+\right]d\theta}$$
+Let this be a lesson to both the reader and writer not to brute-force solutions.
+\newpage
+\subsection{A More Tasteful Solution}
+Recall that in our solution with cylindrical coordinates, we were largely able to ignore worrying ourselves over the bounds of our cylinder because they fit the shape of our coordinate system. We have a similar situation here. Take our original 2D projection of our problem:
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=0.2\textwidth]{image4.png}  
+    \caption{Original Problem}
+    \label{fig:sample4}
+\end{figure}\\
+And then take note of our problem translated down by $\alpha$ (which will not change the volume of our solid). 
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=0.3\textwidth]{image5.png}  
+    \caption{Original Problem translated down by $\alpha$}
+    \label{fig:sample5}
+\end{figure}\\
+Now, instead of finding complicated equations to determine $\rho$, we have a much more elegant solution: limit $\phi$.
+\subsubsection{Finding bounds for $\phi$}
+Below is my imagination for where $d\phi$ is going while the integration is happening:
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=0.3\textwidth]{image6.png}  
+    \caption{$d\phi$ doing it's thing (denoted by the red arrows)}
+    \label{fig:sample6}
+\end{figure}\\
+All of a sudden, we just need to stop $d\phi$ at the right time, and we no longer need to consider the bottom cone anymore. So when is that right time?\vpp
+From the figure, we know that $\phi$ must first travel from 0 to $\frac{\pi}2$, but then it needs to travel an additional distance, and that angle is given by $\tan^{-1}\left({\frac{\alpha}{\alpha}}\right)=\frac{\pi}4$. Thus, we establish our bounds for $\phi$ as:
+$$\phi:\left\{0,\frac{3\pi}4\right\}$$
+Note that these bounds change if you are not using a right-circular cone.
+\newpage
+Now, we must set up for evaluating the integrals for $\rho$ to the \textbf{cap} and the \textbf{cylinder}. Like before, we can find the intersection of the cap and cone to be at the cartesian points $(\alpha, h-\alpha)$. That $-\alpha$ comes from our translation. \vp
+Thus, converting that to spherical to find the angle gives $\tan^{-1}(\frac{h-\alpha}\alpha)$. Let's define this constant angle as $\psi\equiv \tan^{-1}(\frac{h-\alpha}\alpha)$ for convenience.
+\subsubsection{Getting our integral}
+We'll mostly reuse our equations for $\rho$ from earlier, with small modifications due to the translation.\vp
+For the \textbf{cap}, we will find the magnitude of $\rho$ by using the pythagorian theorem on the two basis vectors that compose $\vec \rho$. We have the two vectors that add to define $\vec \rho$ as $(0,\alpha\sin\phi + \ell)$ and $(\alpha\cos\phi, 0,0)$, where $\ell\equiv h- \alpha$.  
+\begin{align*}|\vec\rho\,|&=\sqrt{\alpha^2\sin^2\phi+2\alpha\ell\sin\phi+\ell^2+\alpha^2\cos^2\phi}\\
+    &=\sqrt{\alpha^2+2\alpha\ell\sin\phi+\ell^2}
+\end{align*}
+For the \textbf{cylinder}, we just get to use the same equation as our cylinder is invariant under vertical translation:
+$$\rho=\frac{\alpha}{\sin\phi}$$
+Thus, with $\theta:\{0,2\pi\}$ we get our integral, and with our Jacobain $\mathrm J \equiv \rho^2\sin\phi$:
+$$\boxed{
+    \int_0^{2\pi}\left[
+        \int_0^{\psi}
+            \int_0^{\sqrt{\alpha+2\alpha\ell\sin\phi+\ell^2}}
+                \mathrm J\;
+            d\rho\,
+        d\phi
+        + \int_{\psi}^\frac{3\pi}4
+            \int_0^{\alpha\csc\phi}\mathrm J\;
+            d\rho\,
+        d\phi
+    \right]
+    d\theta
+}$$
+Wow that was not easy. If only there was a simpler way to do it. 
+\subsubsection{The Simple Way}
+The volume of our half-sphere is given by:
+$$V_s=\frac{1}2\left(\frac{4}3\pi\alpha^3\right)$$
+The volume of our cone is given by:
+$$V_{cone}=\frac{1}3\pi \alpha^2 h$$
+The volume of our cylinder is given by:
+$$V_{cyl}=\pi\alpha^2h$$
+Now, because $\alpha = h$ for a right-circular cone, our total volume is given by:
+$$V=V_s+V_{cyl}-V_{cone}=\frac{1}3\pi\alpha^3+\pi\alpha^2h$$
+This matches the value given in the cylindrical coordinate solution. 
+
+
+\end{document}

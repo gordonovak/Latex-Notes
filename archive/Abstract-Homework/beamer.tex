@@ -1,0 +1,621 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Beamer setup stuff
+%{
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{xcolor} % Lets us set colors
+
+\usepackage{mathdesign}
+\usefonttheme{professionalfonts}
+
+
+\definecolor{orange}{RGB}{235, 133, 0}
+\setbeamercolor{structure}{fg=orange}
+
+%}
+
+%% Commands to make writing math easy:
+%{
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+% my commands
+\newcommand{\n}{\vspace{0.15cm}\\}
+\newcommand{\en}{\vspace{0.25cm}\\}
+\newcommand{\spaceit}{\vspace{0.3cm}}
+\newcommand{\shortit}{\vspace{-0.5cm}}
+\newcommand{\twom}[4]{\begin{bmatrix}#1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\casi}[4]{\begin{cases}#1 & \text{ if }#2\\ #3 & \text{ if }#4\end{cases}}
+\newcommand{\ang}[1]{\langle #1 \rangle}
+
+%}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Short title]{Order in Integral Domains} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Ben Hang, Adam Rickman, Max Pringle, Gordie Novak} % Your name
+\institute[STO] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+St. Olaf College \\ % Your institution for the title page
+\medskip
+\textit{hang5@stolaf.edu}\\
+\textit{rickma1@stolaf.edu}\\
+\textit{pringl2@stolaf.edu}\\ % Your email address
+\textit{novak9@stolaf.edu} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+%-------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%--------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%--------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------
+\section{1. (Well)-Ordered Sets} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\begin{frame}
+\Huge{\centerline{1. Ordered \& Well-Ordered}}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{The Integers, $\Z$}\shortit
+Consider any two distinct integers, $a,b\in \Z$.\\
+Between $a$ and $b$, we must have:
+\begin{align*}
+    a > b \;\textit { or }\; b > a
+\end{align*}
+Thus, every \textbf{set} of integers has a \textit{least} element. \en
+Because of this, we say that the integers are \textbf{well-ordered}.
+\end{frame}
+
+% beep beep boop boop
+\begin{frame}
+\frametitle{Ordered}\shortit
+Before well-ordered, let's discuss the property of being \textbf{ordered}.\\
+Consider distinct $x,y\in \R$. We still have that:
+\begin{align*}
+    x > y \;\textit { or }\; y > x
+\end{align*}
+Yet how do we axiomatize this propery?\n
+Let $R$ be an integral domain, and let $R^+\subseteq R$ be a set of the \textbf{positive elements} of $R$. For $R$ to be ordered, the following conditions must hold:
+\begin{align*}
+    &\text{P1 }\textit{If } a \textit{ and } b\textit{ are in }R^+, \textit{ then }a+b\textit{ and }ab\textit{ are in }R^+.\\
+    &\text{P2 }\textit{For all }a\in R,\textit{ exactly one of }a\in R^+,a=0,\textit{ or }{-}a\in R^+ \textit{ holds.}
+\end{align*}
+\end{frame}
+
+% beep beep boop boop
+{
+\newcommand{\ti}[1]{\textit{#1}}
+\begin{frame}
+\frametitle{Ordered cont.}\shortit
+Being ordered gives us some really nice properties that may seem obvious, but are essential in many proofs:
+
+\begin{enumerate}
+    \item [(1)] $R^+=\{r\in R\mid r>0 \}$
+    \item [(2)] \ti{If} $a\in R$, \ti{exactly one of }$a<0,a=0,a>0$\ti{ holds}.
+    \item [(3)] \ti{If} $a<b$ \ti{and} $b<c$ in $R$, then $a<c$
+    \item [(4)] \ti{If} $a<b$ and $c>0$ in $R$, then $ac< bc$. 
+    \item [(5)] $a^2>0$ \ti{for all} $a\ne 0$ in $R$. \ti{In particular,} $1>0$. 
+\end{enumerate}
+A very clear consequence is that $\C$ (complex numbers) cannot be ordered, as $i^2 = -1 < 0$, violating property (5). 
+\end{frame}
+}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Well-Ordered}\shortit
+Thus, we have that $\Z$, $\Q$ and $\R$ are all ordered sets, and have corresponding subsets $\Z^+, \Q^+,$ and $\R^+$. \n
+However, take the set $A=(0,1)\subseteq\R$. \\
+What is the \textit{least} element of $A$?\en
+Consider:
+\begin{align*}
+    \text{If }a\in A, \;\frac{a}2\in A \longrightarrow \frac{a}2 < a.
+\end{align*}
+We have that $A$ has no least element. So there exists subsets of $\R$ such that we cannot guarantee a \textit{least} element, so $\R$ is not \textbf{well-ordered}.\n 
+However, this is not the case for $\Z$.\n
+\footnotesize\textit{For interesting properties of}\textbf{ well-ordered} \textit{integral domains, see Th'm 1, §3.5}
+\end{frame}
+
+%------------------------------------------------
+\section{2. Partial Order} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\begin{frame}
+\Huge{\centerline{2. Partial Order}}
+\end{frame}
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Partial Ordering Intro.}\shortit
+Consider our original axioms that classify an ordered domain:
+\begin{align*}
+    &\text{P1 }\textit{If } a \textit{ and } b\textit{ are in }R^+, \textit{ then }a+b\textit{ and }ab\textit{ are in }R^+.\\
+    &\text{P2 }\textit{For all }a\in R,\textit{ exactly one of }a\in R^+,a=0,\textit{ or }{-}a\in R^+ \textit{ holds.}
+\end{align*}
+We know that $\Z$, $\R$, and $\Q$ are ordered, but what about $\Z[x]$? \\
+Consider the subset $\Z^+[x]$, which contains all polynomials with \textbf{positive} coefficients.\n
+We have $-x + 1\in \Z[x]$. However, note P2.  
+\begin{enumerate}
+    \item [i.] $-x + 1 \notin \Z^+[x]$
+    \item [ii.]$-x + 1\ne 0$
+    \item [iii.]$x - 1 \notin \Z^+[x]$
+\end{enumerate}
+So $\Z[x]$ does not fulfill the P2 requirement of an ordered set. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Partial Ordering Intro. Cont.}\shortit
+Yet clearly $\Z[x]$ has some sort of ordering to it.\n
+For any $f(x),g(x)\in \Z[x]$, let us define $(\le)$ such that:
+\begin{enumerate}
+    \item [i.]$f(x) < g(x)$, or
+    \item [ii.]$f(x) = g(x)$. 
+\end{enumerate}
+Thus, we have that:
+\begin{align*}
+    f(x) < f(x)+1.
+\end{align*}
+So we can establish inequalities between the functions in $\Z[x]$, but cannot met the requirements of order. \n
+Where does this leave us?
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Defining Partially Ordered Sets}\shortit
+We define \textbf{partial order} on a nonempty set $P$ $P$ is a relation $\le$ on $P$ that satisfied the following conditins for $x,y,z\in P$:
+\begin{enumerate}
+    \item [P1] $x\le x$ for all $x\in P$ (\textit{reflexivity})
+    \item [P2] If $x \le y$ and $y \le z$, then $x \le z$ (\textit{transitivity})
+    \item [P3] If $x\le y$ and $y\le x$, then $x=y$ (\textit{antisymmetry})
+\end{enumerate}
+If each condition is met, we call $P$ a \textbf{poset} (partially ordered set). \n
+With $\Z[x]$, we clearly have a partially ordered set, as each condition above is met. 
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Honing in on the Partial Order}\shortit
+However, let's pay special attention to our $\le$ inequality defined by $ a< b$ or $a=b$. This definition doesn't necessarily neet to apply to our typical definition of $\le$ in $\R$.  \en
+Consider the set $A$, a set of sets, where $\le$ is defined as $\subseteq$. We have for $B, C, D \in A$ that:
+\begin{enumerate}
+    \item [P1] $B\subseteq B$ for all $B\in P$ (\textit{reflexivity})
+    \item [P2] If $C \subseteq B$ and $D \subseteq C$, then $D \subseteq B$ (\textit{transitivity})
+    \item [P3] If $B\subseteq C$ and $C\subseteq B$, then $B=C$ (\textit{Princp. of Set Equality!})
+\end{enumerate}
+Thus, $\subseteq$ is a partial order of $A$. 
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Honing in on the Partial Order}\shortit
+However, let's pay special attention to our $\le$ inequality defined by $ a< b$ or $a=b$. This definition doesn't necessarily neet to apply to our typical definition of $\le$ in $\R$.  \en
+Consider the set $A$, a set of sets, where $\le$ is defined as $\subseteq$. We have for $B, C, D \in A$ that:
+\begin{enumerate}
+    \item [P1] $B\subseteq B$ for all $B\in P$ (\textit{reflexivity})
+    \item [P2] If $C \subseteq B$ and $D \subseteq C$, then $D \subseteq B$ (\textit{transitivity})
+    \item [P3] If $B\subseteq C$ and $C\subseteq B$, then $B=C$ (\textit{Princp. of Set Equality!})
+\end{enumerate}
+Thus, $\subseteq$ is a partial order of $A$. 
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Maximal Elements}\shortit
+We can keep pushing our definiton of $\le$ even further. \n
+If $\le$ is a partial order on a set $P$, for $x,y\in P$, we write $<$ to mean $x \le y $ and $x \ne y$.\n
+An element $m\in P$ is called \textbf{maximal} in $P$ if there is no element $x$ of $P$ such that $m < x$. Thus we have:
+\begin{align*}
+    \textit{If } m\le x,\textit{ where }x\in P, \textit{ then } m = x.
+\end{align*}
+For example, $1$ is maximal in $[0,1]$. 
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Upper Bounds}\shortit
+Thus, we can define for a subset of a poset $X\subseteq (P,\le)$ is bounded above if $\forall x\in X$, $x\le u$. \n
+We call the element $u$ an \textbf{upper bound} for $X$ if $u \in P$. \n
+For example, let $X = (0,1)\subseteq \R$ and $Y = [0,1]\subseteq \R$, and let $u = 1$.
+\begin{enumerate}
+    \item [i.]$u$ is an upper bound of $X$, but not maximal.
+    \item [ii.]$u$ is both an upper bound and a maximal of $Y$.
+\end{enumerate}
+It follows that if an element is \textbf{maximal} in a poset, it is also an \textbf{upper bound}.
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Chains}\shortit
+If we look for a maximal in a poset $P$, we will continuously compare elements until we find an $x\in P$ such that all other elements are $\le x$. \n 
+If all elements in $P$ are comparable, $P$ must be a \textbf{chain}, such that \textit{any two elements} are \textbf{comparable} such that either $x\le y$ or $y\le x$.\n
+A partially ordered set $P$ is said to be \textbf{inductive} if every chain in $P$ has an upper bound with $P$. \n
+For example, for any $a,b\in \R$, $(a,b)\subseteq \R$ are \textbf{chains}, and $(a,b)$ is inductive. 
+\end{frame}
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Zorn's Lemma}\shortit
+\begin{center}
+    \textit{"Every inductive partially ordered set has a maximal element."} 
+\end{center}
+For example, consider the power set:
+$$\mathcal{P}(\{1,2,...,100\}) = \{ A \mid A \subseteq \{1,2,...,100\}\}.$$
+$\mathcal P$ is partially ordered, as we can use $\subseteq$ as our $\le$, and it is inductive, as every element has an upper bound. \n
+Thus, we must have a maximal element, which is $\{1,2,...,100\}$ itself. \n
+Now, we will abruptly switch to the next section.
+
+\end{frame}
+
+% beep beep boop boop
+
+%------------------------------------------------
+\section{3. Ordered Subsets} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\begin{frame}
+\Huge{\centerline{3. Ordered Subsets + Applications}}
+\end{frame}
+%------------------------------------------------
+
+
+% beep beep boop boop
+
+\begin{frame}
+\frametitle{Ordered Subsets}
+Let $R$ be an integral domain, and let $S \subseteq R$.
+\begin{itemize}
+\item $S$ is a \textbf{partially ordered} subset if there exists a relation $\leq$ that is reflexive, transitive, and antisymmetric.
+\item $S$ is a \textbf{totally ordered} subset if $S$ is partially ordered, and for every pair of elements $a,b \in S$, $a \leq b$ or $a \geq b$.
+\item $S$ is a \textbf{well-ordered} subset if $S$ is totally ordered and every non-empty subset $S' \subseteq S$ has a least element.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Example: Partially Ordered}
+$N = \{n\Z \mid n \in \Z^+\}$, let $I,J,K \subseteq N$.
+\begin{itemize}
+\item Ordering: If $I \subseteq J$, $I \leq J$.
+\item Reflexive: $I \subseteq I \rightarrow I \leq I$
+\item Transitive: $I \subseteq J$ and $J \subseteq K \implies I \subseteq K \rightarrow I \leq K$
+\item Antisymmetric: $I \subseteq J$ and $J \subseteq I \implies I = J$
+\end{itemize}
+So we have that $N$ is a partially ordered subset - but is it totally ordered?
+\begin{itemize}
+    \item For all pairs of elements $I, J \in N$, we must have that \textbf{either} $I \subseteq J$ or $J \subseteq I$. However, consider $2\Z, 3\Z \in N$. Since $2\Z \not \subseteq 3\Z$ and $3\Z \not \subseteq 2\Z$, $N$ is not totally ordered.
+\end{itemize}
+So $N$ is a partially ordered subset of $\Z$.
+\end{frame}
+
+\begin{frame}{Example: Totally Ordered}
+    $-\N = \{n \in \Z \mid n \leq -1\} \subseteq \Z$
+    \begin{itemize}
+        \item Ordering: Standard definition of $\leq$.
+        \item We know that $-\N$ is partially ordered as it is a subset of $\Z$, so we want to see if it is totally ordered.
+        \item For all pairs of elements $a,b \in -\N$, we indeed have that either $a \leq b$ or $b \leq a$, so $-\N$ is totally ordered.
+        \item However, since there is no least element of $-\N$, there exist non-empty subsets of $-\N$ with no least element, so it is not well-ordered.
+        \item Therefore, $-\N$ is a totally ordered subset of $\Z$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Example: Well-Ordered}
+    $\N = \{n \in \Z \mid n \geq 1\} \subseteq \Z$
+    \begin{itemize}
+        \item Ordering: Standard definition of $\leq$.
+        \item From the previous example, can use the same steps to determine that $\N$ is a totally ordered subset of $\Z$.
+        \item However, since $\N$ has a least element $1$, all subsets of $\N$ will have a least element.
+        \item Hence, $\N$ is a well-ordered subset of $\Z$.
+    \end{itemize}
+    
+\end{frame}
+\begin{frame}{Application: Computation}
+\begin{block} {Data Analysis}
+    \begin{itemize}
+        \item Exploratory: Posets are used to quantify and estimate noise by comparing objects of a poset to deal with missing data. 
+        \item Descriptive: Posets are used with lattice theory to help quantify and visualize data.
+    \end{itemize}
+\end{block}
+
+\begin{block} {Machine Learning}
+    \begin{itemize}
+        \item Algorithms for machine learning use posets in order to more efficiently process, predict, and learn.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Application: OSEM}
+    EM Algorithm:
+    \begin{itemize}
+        \item Used for image reconstruction.
+        \item Expectation: Computes expected values based on the current estimates.
+        \item Maximization: Maximizes expected probabilities to update estimates.
+        \item All data is cycled through the EM process each iteration.
+        \item It is costly and inefficient for each iteration to process all data.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Application: OSEM}
+    OSEM Algorithm:
+    \begin{block}{Sort data into subsets}
+        Since subsets are well-distributed, the OSEM algorithm first sorts the data into ordered subsets.
+    \end{block}
+    \begin{block}{Perform partial EM algorithms}
+        Next, the OSEM algorithm performs a partial EM algorithm to gather results from each individual subset of data, which is possible due to the subsets being ordered.
+    \end{block}
+    \begin{block}{Efficiency}
+        The OSEM algorithm is much much more efficient than the EM algorithm, as not all data is processed for every iteration.
+    \end{block}
+\end{frame}
+
+% Ben Time!
+% Feel free to move my section as needed, it calls on some of the previous sections, but there's some room for rearranging
+\section{4. Ordered Integral Domains}
+%-------------------------------------------------------
+\begin{frame}
+\Huge{\centerline{4. Ordered Integral Domains}}
+\end{frame}
+%-------------------------------------------------------
+\begin{frame}{What is an Ordered Integral Domain?}
+    An Ordered Integral Domain is defined as a set of mathematical objects such that:
+    \begin{itemize}
+        \item They are an ordered set of objects (See Section 1 slides again)
+        \item They make up an Integral Domain
+    \end{itemize}
+
+    \color{orange} \centering Yes, but What is an Integral Domain?
+
+    \color{black} \raggedright An Integral Domain is a non-zero commutative ring such that no two elements multiply to make zero.
+
+    \color{orange} \centering Yes, but What is an Rin-?
+    
+\end{frame}
+%-------------------------------------------------------
+\begin{frame}{Let's Review}
+    A Ring is a set of mathematical objects such that they fill three prongs:
+    \begin{itemize}
+        \item The operation of addition is abelian
+        \item The operation of multiplication is closed (but not explicitly abelian)
+        \item The identities for both are in the set
+    \end{itemize}
+    A non-zero ring fills the above prongs but does NOT contain zero. Note how zero is usually the addition operator's identity, so withing most spaces, this makes the set not a true ring most times.    
+\end{frame}
+%---------------------------------------------
+\begin{frame}{Back to Integral Domains}
+    An important property of Integral Domains, is they their elements must not multiply to zero as well. 
+    
+    \raggedright For example: $\Z_4/0$ has two non-zero elements that multiply to $\bar{0}$
+    \smallskip
+    
+    \centering $\bar2 * \bar2 = \bar4 = \bar0$
+    
+    \medskip
+    
+    \raggedright Therefore, $\Z_4/0$ cannot be an Ordered Integral Domain, but $\Z_3/0$ can be. In fact, we know any $\Z_k/0$ where $k$ is a composite number because there will exist elements $m$ and $n$ in $\Z_k/0$ less than $k$ such that $mn=k$ which would be $\bar0$
+\end{frame}
+%------------------------------------------------
+\begin{frame}{What's so cool about these Domains?}
+    \begin{block}{Domains are Fields}
+        Let us assume we have a finite integral domain $R$, we have $r\in R, r\neq 0$ All powers of $r$ should exist withing the domain, however there are some powers of $r$ such that $r^m = r^n$ because we have a finite field. There must exist a $k$ where $k \in \Z, k\geq 1$ such that $r^{n+k} = r^m$ We can then write $r^nr^k=r^n$ This means that $r^k=1$ and this domain is invertible.
+    \end{block}
+    \begin{block}{Domains are cancelable}
+        Assume $R$ is a ring and $a,b,r\in R$, and $r\neq0$ and $ra=rb$. Then we must have that $0=ra-rb=r(a-b)$
+    \end{block}
+\end{frame}
+%----------------------------------------------------
+\begin{frame}{Characteristics}
+    \begin{block}{Finding the Characteristic}
+        Assume we have a ring $R$ with a characteristic $c$ and that $r$ is the multiplicative identity. If $r$ has infinite order, then $c=0$, otherwise, if $r$ has a finite order $p$, which must be prime, then $c=p$
+    \end{block}
+    \begin{block}{Using the Characteristic}
+        Let's take a ring $R$ with characteristic $p$. We can have a function $R\rightarrow\Z:f(r)=r*1$ By definition this is a homomorphism, but the kernel of this function is $\langle p \rangle$ and is therefore an image. This group is then isomorphic to $\Z/p\Z$ Every field from $p$ is then a \textbf{Prime Subfield}
+    \end{block}
+\end{frame}
+%----------------------------------------------------
+\section{5. The Big Question}
+\begin{frame}
+\Huge{\centerline{5. The Big Question}}
+\smallskip
+\centering \large Is every well-ordered integral domain isomorphic to $\Z$?
+\end{frame}
+
+\begin{frame}
+\frametitle{THM: Every well-ordered integral domain is isomorphic to $\ZZ$.}
+    \begin{block}{Setup:}
+        Let $M$ be a well-ordered integral domain.
+    \end{block}
+    \begin{block}{Find the least (positive) element:}
+        Consider the subset $M^{+} = \{m \in M \text{ }|\text{ }m > 0\} \neq \emptyset$.\\
+        Because $M^{+}$ is nonempty, we know it has a least element. \\
+        We call this element $1_M$, the multiplicative identity in $M$.
+    \end{block}
+    \begin{block}{Why is $1_M$ the identity?}
+        Because it is the least positive element, we know that every other element is a multiple of $1_M$; that means $1_M \cdot 1_M$ must be $1_M$. Thus, $m_1 = m_2 \cdot 1_M \implies 1_M\cdot m_1 = m_2\cdot 1_M = m_1$.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{THM: Every well-ordered integral domain is isomorphic to $\ZZ$.}
+    \begin{block}{Define a homorphism:}
+        Consider the function $\phi(z): \Z \to M$ such that $\phi(z) = z \cdot 1_M$.\\
+        Note that $\phi(z)$ is not literally the integer $z$. It is the corresponding element in $M$ found by adding $1_M$ to itself $z$ times.
+    \end{block}
+    \begin{block}{Preserves addition?}
+        $\phi(y+z) = (y+z)\cdot 1_M = y\cdot 1_M + z \cdot 1_M = \phi(y)+\phi(z)$. Yes!
+    \end{block}
+    \begin{block}{Preserves multiplication?}
+        $\phi(yz) = (yz)\cdot 1_M = (y\cdot 1_M) \cdot (z \cdot 1_M) = \phi(y)\cdot \phi(z)$. Yes!
+    \end{block}
+    \begin{block}{Preserves identity?}
+        $\phi(1) = 1\cdot 1_M = 1_M.$ Yes!
+    \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{THM: Every well-ordered integral domain is isomorphic to $\ZZ$.}
+    \begin{block}{Is $\phi$ injective?:}
+        Assume that $\phi(a) = \phi(b)$. Then, $a \cdot 1_M = b \cdot 1_M$.\\
+        Because $M$ is an integral domain and $1_M \neq 0$, we know that $a=b$. \\
+        Yes, $\phi$ is one-to-one.
+    \end{block}
+    \begin{block}{Is $\phi$ surjective?}
+        We know that $M$ is generated additively by $1_M$. This means that
+        every element $m \in M$ is found by some multiple of $1_M$. \\
+        Yes, $\phi$ is onto by definition.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{THM: Every well-ordered integral domain is isomorphic to $\ZZ$.}
+    \begin{block}{Conclusion:}
+        We found that $\phi$ is a bijective ring homomorphism. \\
+        In other words, it is a ring isomorphism. $M \cong \Z$.
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bibliography}
+\begin{itemize}
+    \item Introduction to Abstract Algebra - Nicholson
+    \item https://arxiv.org/html/2404.03082v2\#S3
+    \item https://pmc.ncbi.nlm.nih.gov/articles/PMC6248260/
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------- ------------------------------------------
+
+\end{document}

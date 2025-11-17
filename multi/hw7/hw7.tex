@@ -1,0 +1,175 @@
+%document class
+\documentclass[10pt,oneside]{book}
+%%%% Page Info + Commands %%%%%{
+
+%packages
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{changepage}
+
+%This will shrink the page
+\newcommand{\smallpage}{  \setlength \oddsidemargin{.5in}
+            \setlength \textwidth{5in}
+            \setlength \topmargin{0in}
+            \setlength \textheight{9in}}
+
+
+% Commands for sets of numbers
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\im}{{\rm Im}\,}
+
+\newcommand{\n}{\vspace{0.15cm}\\}
+\newcommand{\en}{\vspace{0.25cm}\\}
+
+\newcommand{\gimage}[3]{
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=#2\textwidth]{#1}  
+    \caption{#3}
+    \label{fig:#1}
+\end{figure}\\
+}
+
+\newcommand{\centerit}[1]{{\begin{center} #1 \end{center}}}
+\newcommand{\ul}[1]{\underline{#1}}
+
+%%%%%%%% command for graphics %%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%}
+
+%%%% Page Setup %%%%%%%
+\smallpage\sloppy
+\pagestyle{fancy}
+\lhead{\large{\textbf{HW8 - Gordon Novak}}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{10pt}
+%\setcounter{section}{1}
+
+\begin{document}
+
+1. Consider the triple integral:
+\[\int_{-4}^4\int_0^{\sqrt{16-x^2}}\int_{-\sqrt{x^2+y^2}}^0\sqrt{x^2+y^2+z^2}\,dz\,dy\,dx\]
+Convert the integral from rectangular corodinates to cylindrical coordinates and spherical coordinates. 
+\centerit{\ul{Cylindrical Coordinates}}
+To convert to cylindrical coordinates, we just follow the cylindrical coordinate transformations:
+\begin{align*}
+    r^2 &= x^2 + y^2\\
+    z &= z\\
+    x &= r\cos\theta\\
+    y &= r\sin\theta
+\end{align*}
+Now, we can start looking at these equations and simplifying. The integrand is rather straightforward:
+\[\sqrt{x^2+y^2+z^2}=\sqrt{r^2+z^2}\]
+When looking at the bounds, we can also do some more convenient conversions:
+\[z=-\sqrt{x^2+y^2}\implies z=-\sqrt{r^2}=\pm r\]
+Then, we can also look at the other bound:
+\[y=\sqrt{16-x^2}\implies y^2+x^2=16\implies r = \pm 4\]
+Additionally, we get that $y$ must start at 0, which is quite helpful, as this means that:
+\[r\sin\theta = 0\]
+And when combined with the $x$-bounds that say:
+\[r\cos\theta = \pm r\]
+We then know that with a max $r$ of $\pm 4$, that $cos\theta: \{-1, 1\}$ so $\theta: \{0, \pi\}$. (We don't go all the way to 2$\pi$, we'd need the $-\sqrt{16-x^2}$ for that.)
+This then gives us a rather convenient integral:
+\[\boxed{\int_0^{\pi}\int_0^4\int_{-r}^0r\sqrt{r^2+z^2}\;dz\,dr\,d\theta}\]
+Note that the $r$ in the integral is our determinant of the jacobian for cylindrical coordinates.
+\centerit{\ul{Spherical Coordinates}}
+Essentially, we perform a very similar process here, just with spherical coordinates
+\begin{align*}
+    \rho^2&=x^2+y^2+z^2\\
+    x&=\rho\sin\phi\cos\theta\\
+    y&=\rho\sin\phi\sin\theta\\
+    z&=\rho\cos\phi
+\end{align*}
+The integrand comes easily:
+\[\sqrt{x^2+y^2+z^2}=\rho\]
+Now, consider the $z$ bound in the original integral:
+\[z=-\sqrt{x^2+y^2}\]
+Solving gives us that
+\[z=-\sqrt{\rho^2\sin^2\phi\cos^2\theta + \rho^2\sin^2\phi \cos^2\theta}=-\sqrt{\rho^2\sin^2\phi}=-\rho\sin\phi\]
+Thus, because $z=\rho\cos\phi$, we get that:
+\[\rho\cos\phi = -\rho\sin\phi\implies \phi = \tan^{-1}\left(-1\right)\]
+We get bounds for $\phi:\{\frac{\pi}2, \frac{3\pi}4\}$ (Cause we also have that $\rho\cos\phi = 0$)\n
+Hooray. Now we can start solving for $\rho$. We are given in the $y$-bounds for the original integral that:
+\[y=\sqrt{16-x^2}\]
+Which turns into:
+\begin{align*}
+    \rho\sin\phi\sin\theta &= \sqrt{16-\rho^2\sin^2\phi\cos^2\theta}\\
+    \rho^2\sin^2\phi\sin^2\theta &= 16-\rho^2\sin^2\phi\cos^2\theta\\
+    \rho^2\sin^2\phi(\cos^2\theta+\sin^2\theta)&=16\\
+    \rho\sin\phi &= \pm 4
+\end{align*}
+And if we recall our bounds for $\phi$ earlier, we know that the max for $\phi$ will be $\sin\frac{\pi}2$. Thus, we get our bounds for $\rho$ as $\rho:\{0, \frac{4}{\sin\phi} \}$\n
+Ok cool. Now time for theta. We are given that $x:\{-4, 4\}$. Thus, $\rho\sin\phi\cos\theta : \{-4, 4\}$.\n
+This makes things easy as our max for $\rho$ was 4 and our horizontal for $\phi$ was $\frac{\pi}2$, So dividing out gives us that $\cos\theta: \{-1, 1\}$, so $\theta:\{0, \pi\}$.\n
+Finally, after all that work we get the integral:
+\[\boxed{\int_0^\pi\int_{\frac{\pi}2}^{\frac{3\pi}4}\int_0^\frac{4}{\sin\phi}\rho^3\sin\phi\;d\rho \,d\phi\,d\theta}\]
+Note that I did put our jacobian in there.\\
+\hrule \vspace{0.3cm}
+2. Find the volume of the solid that lies inside $x^2+y^2+z^2=6$, outside $z=-\sqrt{x^2+y^2}$ and below the $xy$-plane. \n
+Ok. We're going to use spherical coordinates to solve this problem because I see right out of the gate that:
+\[x^2+y^2+z^2=6\implies \rho^2 = 6\]
+Furthermore, "below the $xy$-plane" tells me that $\phi:\{\frac{\pi}2, \pi\}$. \n
+Now here comes the tricky part. The equation $z=-\sqrt{x^2+y^2}$. If I do a quick conversion to cylindrical, I see that $z = -\sqrt{r^2}$, which simplifies to $z = -r$. Now converting to spherical, I get that:
+\[\rho\cos\phi = -\rho\sin\phi\]
+Now this is interesting, because instead of getting a new bound for $\rho$, I find that $\phi$ cannot go past $\tan^{-1}(-1)=\frac{\pi}4$. This means that our initially assumed bounds for $\phi$ must be limited to $\frac{3\pi}4$. (This is because an angle of $-\frac{\pi}4$ underneath the $z$-plane corresponds to $\phi = \frac{3\pi}4)$. \n
+Now, we can evaluate our new-found integral for the volume:
+{
+\newcommand{\ia}{\int_0^{2\pi}}
+\newcommand{\ib}{\int_{\frac{\pi}2}^{\frac{3\pi}4}}
+\newcommand{\brk}[1]{\;\left[#1\right]\,}
+\begin{align*}
+   \ia\ib\int_0^{\sqrt{6}}1\cdot \rho^2\sin\phi\;\; d\rho \, d\phi\, d\theta&=\ia\ib \brk{\frac{1}3\rho^3\sin\phi\Big|_0^{\sqrt{6}}}\;\;d\phi d\theta\\
+   &=\ia\ib 2\sqrt 6\sin\phi\;d\;\phi \,d\theta\\
+   &=\ia\brk{-2\sqrt 6\cos\phi\Big|_{\frac{\pi}2}^{\frac{3\pi}4}}d\theta\\
+   &=\ia 2\sqrt{3} \,d\theta = \boxed{4\pi\sqrt 3}
+\end{align*}
+Hooray done with that.\n
+}
+\hrule\vspace{0.3cm}
+3. Set up an integral in spherical coordinates that calculates the mass of the solid above the cone $\phi=\frac{\pi}3$ and below the sphere $\rho=8\cos\phi$. The density of the solid is given by $f(x,y,z)=y^2$. \en
+This question is rather straightforward. Our cone equation $\phi=\frac{\pi}3$ gives the bounds for $\phi$ as:
+\[\phi:\{0,\frac{\pi}3\}\]
+Next, we know our $\rho$ will extend from 0 to the sphere, which is simply given as $\rho=8\cos\theta$. Thus, our bounds for $\rho$ are:
+\[\rho:\{0,8\cos\phi\}\]
+Finally, we know that because all our bounds are symmetrical about the $z$-axis,
+\[\theta:\{0,2\pi\}\]
+Finally, for our equation $y^2$, converting to spherical coordinates gives:
+\[f(x,y,z)=y^2\implies f(\rho,\theta,\phi)=\rho^2\sin^2\phi\sin^2\theta\]
+Thus, adding the jacobian in to the integrand and pluggin in our bounds gives:
+\[\boxed{\int_0^{2\pi}\int_0^{\frac{\pi}3}\int_0^{8\cos\phi}\rho^4\sin^3\phi\sin^2\theta\;\;d\rho\,d\phi\,d\theta}\]
+\hrule\vspace{0.3cm}
+4. Suppose you have an avocado in the shape of a sphere of radius 5. Suppose the pit of the avocado is a sphee of radius 2. Set-up a triple integral in spherical coordinates that calculates the volume of 3/4 of the avocado with the pit removed. \en
+This question is also surprisingly straightforward relative to question one. First, we know via the question that:
+\[\rho:\{2, 5\}\]
+Furthermore, if we want only 3/4 of the avocado, we either restrict $\rho$ or $\theta$. I choose to restrict $\theta$ to only cover 3/4 of the avocado ($\theta:\{0,\frac{3\pi}2$). That gives the integral:
+\[\boxed{\int_0^\frac{3\pi}4\int_0^\pi\int_2^51\cdot\rho^2\sin\phi\;\;d\rho\,d\phi\,d\theta}\]\newpage
+\hrule\vspace{0.3cm}
+5. Sketch the following vector fields. Be sure to sketch at least 8 vectors that show a good flow of the field. 
+\begin{enumerate}[parsep=0pt]
+    \item [(a)] $\mathbf F = -y^2\mathbf i + x\mathbf j$
+    \item [(b)] $\mathbf F = (4y,x+2)$
+    \item [(c)] $\mathrm F = \mathrm i + xy\mathrm j$
+\end{enumerate}
+For question \textbf{a}, all we have to do is consider that the x-coord is always negative, and increases in strength with y, and the y-coord is just dependent on x.\\
+\gimage{image.png}{0.25}{Question a's vector plot}
+Now for question 2, y can be negative and positive, and x's positivity and negativity will be offset by 2:
+\gimage{image2.png}{0.25}{Question b's vector plot}
+For question 3 it gets a little weird because $\mathrm i$ is just going to be 1, while $j$ will depend on both x and y, and will be positive in Q1 and Q3 and negative in Q2 and Q4 (because neg * neg = pos). 
+\gimage{image3.png}{0.25}{Question c's vector plot}
+Hooray!,
+
+
+\end{document}

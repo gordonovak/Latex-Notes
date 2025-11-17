@@ -1,0 +1,351 @@
+%document class
+\documentclass[10pt,twoside]{article}
+
+%{
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\usepackage{enumitem}
+\pgfplotsset{
+    humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+    humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+    human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\br}[1]{\{ #1 \}}
+\newcommand{\brs}[2]{\{ #1 \;|\; #2 \}}
+
+%if you want to change some counters you can use the command below
+%\setcounter{section}{1}
+
+\begin{document}
+
+\section*{Homework 07}
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+\chead{\large{\textbf{Homework 07} }}
+\rhead{Book section: 2.6, 2.8, 2.9}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+This homework will be due on Wednesday \textit{after the break}, but you should \textbf{start it before the break} or you will not be able to finish it before it is due.
+
+
+
+\subsection*{From the textbook, Section 2.6}
+
+\begin{enumerate}
+    \item   Do Exercise 5.\vp
+            If $H$ is a subgroup of $G$, and $a,b\in G$, define $a\equiv b$ if $b^{-1}a\in H$. 
+            \begin{enumerate}
+                \item Show that $\equiv$ is an equivalence relation on $G$. \vp
+                    \textbf{Reflexivity}\\
+                    If $a\equiv a$, we want to show that  $a^{-1}a\in H$.\\
+                    Because the identity is in every subgroup, $a^{-1}a=e$ is in $H$.\\
+                    Hence, this relation is \textit{reflextive}.\vp
+                    \textbf{Symmetry}\\
+                    We want to show that if $a\equiv b$, $b\equiv a$.\\
+                    Because $a\equiv b$, then $b^{-1}a\in H$. \\
+                    Thus, because inverses must be in $H$ due to subgroup properties,
+                    $$(b^{-1}a)^{-1}=a^{-1}b\in H.$$
+                    Hence, because $a^{-1}b\in H$, $b\equiv a$, and \textit{Symmetry is upheld}.\vp
+                    \textbf{Transitivity}\\
+                    We want to show that if $a\equiv b$, and $b\equiv c$, then $a\equiv c$.\\
+                    In other words, we want to show that $c^{-1}a\in H$. \\
+                    We know that:
+                    \begin{align*}
+                        (b^{-1}a) &\in H \text{, and}\\
+                        (c^{-1}b) &\in H.
+                    \end{align*}
+                    Because $H$ must be closed under its operation, 
+                    $$(c^{-1}b)\cdot(b^{-1}a)=c^{-1}a\in H.$$
+                    Hence, the \textit{Transitive} property is upheld.\vpp
+                    Hence, $a\equiv b$ is an equivalence relation on $G$. \vspace{0.2cm}
+                \item Show that the equivalence class of $a\in G$ is the left coset $aH$. 
+                    \begin{proof}
+                        We want to show that $aH = [a]$.\\
+                        This means that for all $h\in H$, $ah\in aH$. \vp
+                        First, we will show that $\forall b\in [a],\; b\in aH$.
+                        \begin{align*}
+                            b^{-1}a &\in H.\\
+                            \text{via inverses, } (a^{-1}b) &\in H.\\
+                            \text{Thus, }b=a(a^{-1}b) &\in aH.\\
+                        \end{align*}
+                        Next, we will show that $\forall x\in aH, x\in [a]$. \\
+                        Let $x=ah$, for $h\in H$. \\
+                        Therefore, $a^{-1}x = h \in H$. \\
+                        Additionally, the inverse $x^{-1}a \in H$.\\
+                        Therefore, by definition, $x \in [a]$.\vp
+                        Hence, because $[a]\subseteq aH$, and $aH\subseteq [a]$, $[a]=aH$.  
+                    \end{proof}
+                    
+            \end{enumerate}
+    \item Do Exercise 21.  \vp
+        Show that $|\Z : n\Z| = n$ for every $n\ge 1$.
+        \begin{proof}
+            Consider that $n + n\Z = n\Z$. \\
+            Let $x\in \Z\,\backslash \{n\}$.\\
+            It follows that  $x+ n\Z \ne n\Z$. \\
+            Additionally, if some $(x_1\;\text{mod}\;n) = (x_2\;\text{mod}\;n)$, for some $q\in \Z$, because $qn + n\Z = n\Z$, 
+            \begin{align*}
+                x_1 + n\Z &= x_1 + qn + n\Z\\
+                &=x_2 + n\Z.
+            \end{align*}
+            Therefore, the number of \textit{distinct} left cosets $n\Z$ are equal to the number of distinct outputs of $$x\;\text{mod}\; n,$$
+            which is just equal to $n$.\vp
+            Hence, $|\Z:n\Z|=n$. 
+        \end{proof}
+
+    \item Do Exercise 23.  
+        If $G$ is a group of order $p^k$, where $p$ is a prime and $k\ge 1$, show that $G$ must have an element of order $p$.
+        \begin{proof}
+            Let $g\in G\,\backslash\{e\}$. Therefore, via Lagrange's theorem, $o(g)\mid p^k$ such that $o(g)\ne 0$. \\
+            Therefore, because $o(g)\mid p^k$, $o(g)=p^m$ for some $1\le m\le k$. \vp
+            Now consider the element $g^{p^{m-1}}\in G$. \\
+            Via theorem 5, $\S$2.4 of the textbook, we have that:
+            \begin{align*}
+                o( g^{p^{m-1}})=p.
+            \end{align*}
+            Thus, there exists an element in $g$ that has order $p$. 
+        \end{proof}
+\end{enumerate}
+
+\noindent Other nice problems:  20, 22, and 24.
+
+
+
+
+\subsection*{From the textbook, Section 2.8}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+    \item Do Exercise 6.  \hint{Hint: one approach is to use the fact that there is only one coset containing $a$...}\vp
+        Let $H$ be a subgroup of group $G$. If for each $a\in G$ there exists $b\in G$ such that $aH=Hb$, show that $H\triangleleft G$. 
+        \begin{proof}
+            Note that $e\in H$. \\
+            Therefore $a = a\cdot e \in aH$. \\
+            Because $aH=Hb$, then $a\in Hb$. \vp
+            Additionally consider that $a\in Ha$, because $e \cdot a = a$.\\
+            However, because there can only be \textit{one} right coset containing any element,
+            \begin{align*}
+                Hb &= Ha, \text{ so therefore, }\\
+                aH &= Ha.
+            \end{align*}
+            Hence, $H$ passes the normality test, so $H \triangleleft G$. 
+        \end{proof}
+    \item Do Exercise 9. \hint{Hint: use some condition that holds only in abelian groups...}\vp
+    Given a group $G$, let $D = \{(g,g)\mid g\in G\}$. Show that $D$ is a normal subgroup of $G\times G$ if an only if $G$ is abelian.
+    \begin{proof}
+        We want to show that:
+        \begin{enumerate}
+            \item[1.] $G$ is abelian if $D\triangleleft G$.
+            \item[2.] $D\;\triangleleft$ if $G$ is abelian. 
+        \end{enumerate}
+        \underline{G is abelian if $D\triangleleft G$}\vpn
+        If $D\triangleleft G$, then $\forall (a,b) \in G\times G$, $(a,b)D = D(a,b)$.\\
+        Consider that, because $D\triangleleft G$:
+        \begin{align*}
+            (g,g)&=(a,b)(a,b)^{-1}(g,g)\\&= (a,b)(g,g)(a,b)^{-1}
+        \end{align*} 
+        Therefore, we have that:
+        \begin{align*}
+            (aga^{-1},bgb^{-1})= (g,g)
+        \end{align*}
+        Hence, because $aga^{-1}=g$, $G$ is abelian.\vp
+        \underline{$D\triangleleft G$ if $G$ is abelian}\vpn
+        Let $a,b\in G$. Consider that:
+        \begin{align*}
+            (a,b)D &= \{(ag,bg)\mid g\in G\}\\
+            D(a,b) &= \{(ga,gb)\mid g\in G\}
+        \end{align*}
+        Because $G$ is abelian, $ag = ga$ and $bg = gb$. Therefore,
+        \begin{align*}
+            (a,b)D&=\{(ag,bg)\mid g\in G\}\\
+            &=\{(ga,bg)\mid g\in G\}\\
+            &=D(a,b)
+        \end{align*}
+        Hence, because $(a,b)D = D(a,b)$, $D\triangleleft G$. \vpp
+        Hence, $G$ is abelian if and only if $D$ is normal in $G$. 
+    \end{proof}
+    \item Do Exercise 11.  \hint{Hint: first you want to think about what a group of order $p$ is isomorphic too...}\vp
+    Let $p$ and $q$ be distinct primes. If $G$ is a group of order $pq$ that has a unique subgroup of order $p$ and unique subgroup of order $q$, show that $G$ is cyclic. [\textit{Hint:} Corollary 2 of Theorem 6 and Exercise 25 \S2.3].
+    \begin{proof}
+        Consider that $H_p$ and $H_q$ are cyclic because they are of prime order. \vp
+        Additionally, consider that $H_p \cap H_q = \{e\}$ because cyclic groups of prime order cannot generate any of the same elements except the identiy.\vp
+        Further consider that via corollary 1 to Theorem 6, $|G|=pq = |H_p||H_q|=|H_pH_q|,$ , and via. \textbf{Theorem 6} that $H_pH_q\cong H_p\times H_q$.
+        Therefore, because $\text{lcm}(p,q) = pq,$ the order of $H_p\times H_q$ is $pq$, and is cyclic because $H_p$ and $H_q$ is cyclic.\vp
+        Finally, via corollary 2, $G\cong H\times K$, and therefore because $G$ is isomorphic to a cyclic group, $G$ is cyclic itself.
+    \end{proof}
+
+\end{enumerate}
+\pagebreak
+\subsection*{From the textbook, Section 2.9}
+
+\newcommand{\ep}{\varepsilon}
+\begin{enumerate}
+\setcounter{enumi}{6}
+    \item Do Exercise 1(d).
+        In each case, find the cosets in $G/K$, writ edown the Cayley table of $G/K$, and describe the group $G/K$.
+        \begin{enumerate}
+            \item[(d)] $G=\langle a \rangle \times \langle b \rangle$, where $o(a)=8$ and $o(b) = 2$, and $K=\langle (a^2, b) \rangle$. \vp
+                First, we know that $o(a^2)=4$, because we reach $a^8$ is half the terms.\\
+                Additionally, we know that $o(b)=2$, so $|\langle a^2,b\rangle|=\text{lcm}(a^2,b)=4$.\\
+                And because we have an size of 4, because $a$ has order $8$, we have 8 cosets:
+                \begin{align*}
+                    K&=\{(\ep, \ep),(a^2,b),(a^4,\ep),(a^6,b)\}\\
+                    (a,b)K&=\{(a, b),(a^3,\ep),(a^5,b),(a^7,\ep)\}\\
+                    (a,b)^2K&=\{(a^2, \ep),(a^4,b),(a^6,\ep),(\ep,b)\}\\
+                    (a,b)^3K&=\{(a^3, b),(a^5,\ep),(a^7,b),(a,\ep)\}\\
+                    (a,b)^4K&=K
+                \end{align*}
+                Now, we'll construct a Cayley table given these cosets:
+                \[
+                    \noindent\begin{tabular}{c | c c c c }
+                                    & $K$       & $(a,b)K$  & $(a,b)^2K$    & $(a,b)^3K$\\
+                       \cline{1-5}
+                       $K$          & $K$       & $(a,b)K$  & $(a,b)^2K$    & $(a,b)^3K$  \\
+                       $(a,b)K$     & $(a,b)K$  & $(a,b)^2K$& $(a,b)^3K$    & $K$ \\
+                       $(a,b)^2K$   & $(a,b)^2K$& $(a,b)^3K$& $K$           & $(a,b)K$ \\
+                       $(a,b)^3K$   & $(a,b)^3K$& $K$       & $(a,b)K$      & $(a,b)^2K$ \\
+                   \end{tabular}
+                \]
+                The group $G/K$ abides by the above Cayley table, and can be generated by $\langle (a,b)K \rangle$. Here, $(a,b)^4 = \ep$, so any element multiplied by itself 4 times will result in $K$. 
+            
+        \end{enumerate}
+    \item Do Exercise 9.
+        If $K\triangleleft G$ and $o(g) = n, g\in G$, show that the order of $Kg$ in $G/K$ divides $n$. 
+        \begin{proof}
+            Let the order of $(Kg)$ be $m$.\\
+            Therefore, $(Kg)^m = K$.\\
+            Note that because $o(g) = n$, $Kg^n = (Kg)^n = K$.\\
+            Consider that $m\le n$, because $m$ must be minimal $(Kg)^m = K$. \vp
+            Thus, we have that $\exists x \in \Z$ such that $(Kg)^{mx} = (Kg)^n$.
+            We now have that $mx = k$, and hence, by definition, $m\mid n$. 
+        \end{proof}
+    \item Do Exercise 10.  
+        If $K\triangleleft G$ has index $m$, show that $g^m\in K$ for all $g\in G$.
+        \begin{proof}
+            Because $K\triangleleft G$ has index $m$, we know that $m$ is the order of the group for $\frac{G}K$. \\
+            Thus, we have for $g\in G$ that:
+            \begin{align*}
+                (K)\rightarrow (Kg) \rightarrow (Kg)^2 \rightarrow \cdots \rightarrow (Kg)^m = K
+            \end{align*}
+            However, consider that $(Kg)^m = Kg^m = K$. \vp
+            In order for this to hold true, $g^m\in K$. 
+            Hence $g^m \in K$. 
+        \end{proof}
+\end{enumerate}
+
+
+
+
+
+\end{document}

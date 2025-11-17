@@ -1,0 +1,330 @@
+%document class
+\documentclass{article}
+%{
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\usepackage{enumitem}
+\pgfplotsset{
+    humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+    humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+    human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\szo}{S_{z_1}}
+\newcommand{\szt}{S_{z_2}}
+
+% my commands
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\twom}[4]{\begin{bmatrix}#1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\casi}[4]{\begin{cases}#1 & \text{ if }#2\\ #3 & \text{ if }#4\end{cases}}
+\usepackage{changepage}
+\usepackage{array}
+
+\newcommand{\chip}{\chi_+}
+\newcommand{\chim}{\chi_-}
+\newcommand{\p}[1]{\left( #1 \right)}
+
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%% 7.1
+\section*{Townsend 7.1}
+Verify that the states:
+\begin{gather*}
+    \chip(1)\chip(2)\\
+    \frac{1}{\sqrt 2}(\chip(1)\chim(2)+\chim(1)\chip(2))\\
+    \chim(1)\chim(2)
+\end{gather*}
+are eigenstates of the $z$ component of total spin $S_z=S_{1_z}+S_{2_z}$ with eigenvalues $\hbar, 0, $ and $-\hbar$, respectively. 
+%%%%%%%%%%%%midline
+\rule{\linewidth}{0.4pt}
+%%%%%%%%% part 1
+First, we begin my conisdering that our operators $S_Z$ and $S^2$ act on our spin wavefunction $\chi$ to produce:\newcommand{\chism}{\chi_{s,m_s}}
+\begin{align*}
+    S_z\chi_{s,m_s}&=m_s\hbar\chi_{s,m_s}\\
+    S^2\chism &= s(s+1)\hbar^2\chism
+\end{align*}
+So we will apply the $S_z$ operator to our first function"
+\begin{align*}
+    S_z[\chip(1)\chip(2)]&=(S_{1z}S_{2z})\chip(1)\chip(2)\\
+    &=\frac{\hbar}2\chip(1)\chip(2)+\chip(1)\frac{\hbar}2\chip(2)\\
+    &=\hbar\cdot \chip(1)\chip(2)
+\end{align*}
+Hence, the first function is a wavefunction with eigenvalue $\hbar$.\vp
+%%%%%%%%% part 2
+Now, let's try the second function:
+\begin{align*}
+    S_z[\frac{1}{\sqrt 2}(\chip(1)\chim(2)+\chim(1)\chip(2))]&= \frac{1}{\sqrt 2}[\szo\chip(1)\chim(2)+ \chip(1)\szt\chip(2) + \szo\chim(1)\chip(2)+\chim(1)\szt\chip(2)]\\
+    &=\frac{1}{\sqrt 2}\left[{\p{\frac{\hbar}2-\frac{\hbar}2}\chip(1)\chim(2)}+\p{\frac{\hbar}2-\frac{\hbar}2}\chim(1)\chip(2)\right]\\
+    &=\frac{1}{\sqrt 2}[0 + 0]\\
+    &=0
+\end{align*}
+Hence, this one is also an eigenfunction with eigenvalue $0$. \vp
+%%%%%%%%% part 2
+Finally, let's do the third:
+\begin{align*}
+    S_Z[\chim(1)\chim(2)]&=\szo\chim(1)\chim(2)+\chim(1)\szt\chim(2)\\
+    &=\frac{-\hbar}2\chim(1)\chim(2) + \chim(1)\frac{-\hbar}2\chim(2)\\
+    &=-\hbar\chim(1)\chim(2)
+\end{align*}
+Hence, the third equation has eigenvalue $-\hbar$.\vpp
+Hence, all spins states are eigenstates of the $z$ component of spin, with eigenvalues of $\hbar, 0, -\hbar$. 
+
+
+
+
+
+%%%%%%% problem 7.3
+\newcommand{\srt}{\frac{1}{\sqrt 2}}
+\section*{Townsend 7.3}
+The spatial wave functions for two identical particles in the one-dimensional box (see Section 7.1) are given by 
+\newcommand{\eqo}{\srt[\psi_1(x_1)\psi_2(x_2)+\psi_2(x_1)\psi_1(x_2)]}
+\newcommand{\eqt}{\srt[\psi_1(x_1)\psi_2(x_2)-\psi_2(x_1)\psi_1(x_2)]}
+$$\Psi_S(x_1, x_2) = \eqo$$
+and
+$$\Psi_A(x_1, x_2) = \eqt$$
+where one of the particles is in the ground state and one is in the first excited state. Calculate the probability that a measurement of the positions of the two particles finds them both in the left-hand side of the box, that is, the measurement yields \( 0 < x_1 < \frac{L}{2} \) and \( 0 < x_2 < \frac{L}{2} \). Notice how the probability is significantly larger for the symmetric state \( \psi_S \) than for the antisymmetric state \( \psi_A \). Thus, the particles behave as if they attract each other in the symmetric state and repel each other in the antisymmetric state, even though the Hamiltonian for the two particles does not include any interaction term. Heisenberg called these fictitious forces of attraction and repulsion \textit{exchange forces}.\\
+%%%%%%%midline
+\rule{\linewidth}{0.4pt}
+In order to find the probability both particles exist simultaneously in the left-hand side of the box \( 0 < x_1 < \frac{L}{2} \), and \( 0 < x_2 < \frac{L}{2} \), we just need to integrate the magnitude squared of both wavefunctions twice, by $x_1$ and $x_2$. \vp
+Let's start with $\Psi_S$. 
+\begin{align*}
+    \int_0^{\frac{L}2}\int_0^{\frac{L}2}|\Psi_S|^2 \;dx_2\;dx_1 &= \int_0^{\frac{L}2}\int_0^{\frac{L}2}\left|\eqo\right|^2\;dx_2\;dx_1\\
+    &=\int_0^{\frac{L}2}\int_0^{\frac{L}2}\frac{1}2\left[\psi_1(x_1)^2\psi_2(x_2)^2 + \psi_2(x_1)^2\psi_1(x_2)^2 + 2\psi_1(x_1)\psi_2(x_2)\psi_2(x_1)\psi_1(x_2) \right]\;dx_2\;dx_1\\
+\end{align*}
+However, we can't evaluate from here, so we will need the general forms of the wavefunctions:
+\begin{align*}
+    \psi_1&=\sqrt\frac{2}L\sin\p{\frac{\pi x_1}L}\\
+    \psi_2&=\sqrt\frac{2}L\sin\p{\frac{2\pi x_2}L}
+\end{align*}
+Squaring them gives us:
+\begin{align*}
+    \psi_1^2&=\frac{2}L\sin^2\p{\frac{\pi x}L}\\
+    \psi_2^2&=\frac{2}L\sin^2\p{\frac{2\pi x}L}
+\end{align*}
+Now comes the fun (awful) part. We need to evaluate each term. with their respective integrals. We can only evaluate $\psi_1$ with respect to $x_1$ and $\psi_2$ with respect to $x_2$ because they are just constants in each integral they don't have a term for. \vpp
+%%%%% part 1
+\newcommand{\fdx}{\;dx_1\;dx_2}\newcommand{\inti}{\int_0^{\frac{L}2}}
+\underline{Part 1: $\psi_1(x_1)^2\psi_2(x_2)^2$}\vp
+Consider that:
+\begin{align*}
+    \int_0^{\frac{L}2}\int_0^{\frac{L}2}\psi_1(x_1)^2\psi_2(x_2)^2\fdx&=\inti[\psi_1(x_1)^2\;dx_1]\cdot \inti[\psi_2(x_2)^2\;dx_2]\\
+    &=\left( \frac{2}{L} \int_0^{L/2} \sin^2\left(\frac{\pi x}{L} \right) dx \right)\cdot
+        \left( \frac{2}{L} \int_0^{L/2} \sin^2\left(\frac{2\pi x}{L} \right) dx \right)
+\end{align*}
+However, we have that because we're integrating a $\sin^2$ over it's period (or half of it's period in the case of $\psi_1$), they actually become $\frac{L}4$ (because of some math reason). Thus, 
+\begin{align*}
+    \left( \frac{2}{L} \int_0^{L/2} \sin^2\left(\frac{\pi x}{L} \right) dx \right)
+\cdot
+\left( \frac{2}{L} \int_0^{L/2} \sin^2\left(\frac{2\pi x}{L} \right) dx \right)&= 2\cdot \frac{2}L\p{\frac{L}4}=\frac{1}4
+\end{align*}
+%%%%%% part 2
+\underline{Part 2: $\psi_2(x_1)^2\psi_1(x_2)^2$}\vp
+This is the same thing as the last part, so it's just gonna be $\frac{1}4$ again.\vspace{3cm}\vpp
+%%%%%% part 3
+\underline{Part 3: $2\psi_1(x_1)\psi_2(x_2)\psi_2(x_1)\psi_1(x_2)$}\vp
+This is going to be awful. So we're going to have to evaluate:
+\begin{align*}
+    \inti\inti2\psi_1(x_1)\psi_2(x_2)\psi_2(x_1)\psi_1(x_2)\fdx
+\end{align*}
+Luckily, because these terms will integrate the same way twice, we can rewrite as:
+\begin{align*}
+    2 \p{\int_0^{\frac{L}2} \psi_1(x_1)\psi_2(x_1) dx_1 }^2
+\end{align*}
+Then, we evaluate the integral as follows;
+\begin{align*}
+    \int_0^{L/2} \sqrt{\frac{2}{L}} \sin\left(\frac{\pi x}{L}\right) \cdot \sqrt{\frac{2}{L}} \sin\left(\frac{2\pi x}{L}\right) dx = \frac{2}{L} \int_0^{L/2} \sin\left(\frac{\pi x}{L}\right) \sin\left(\frac{2\pi x}{L}\right) dx
+\end{align*}
+I have no idea how to do this, so I plugged this code into mathematica:
+\begin{lstlisting}[language=Python]
+Integrate[\[Sqrt](2/L) Sin[(\[Pi]*x)/L]*\[Sqrt](2/L) Sin[(2*\[Pi]*x)/
+   L], {x, 0, L/2}]
+\end{lstlisting}
+It ended up evaulating to $\frac{4}{3\pi}$. However, we need to square that and then multiply it by two, because of the way we simplied our integral above:
+\begin{align*}
+    \p{2\cdot\frac{4}{3\pi}}^2 = \frac{64}{81\pi^2}
+\end{align*}
+If we add all our terms together, we get:
+\begin{align*}
+    P_S = \frac{1}4 + \frac{64}{81\pi}
+\end{align*}
+For the $\Psi_A$ case, that second term just becomes negative, such that:
+\begin{align*}
+    P_A = \frac{1}4 - \frac{64}{81\pi}
+\end{align*}
+And to find the probability of finding them both in the left half, we just multiply the probabilities together:
+\begin{align*}
+    P= \p{\frac{1}4 + \frac{64}{81\pi}}\p{\frac{1}4 - \frac{64}{81\pi}}
+\end{align*}
+
+\section*{Townsend 7.8}
+(a) Solve the Schrödinger equation for an electron confined to a two-dimensional square box where the potential energy is given by
+    \[
+    V(x, y) =
+    \begin{cases}
+    0 & \text{for } 0 < x < L,\ 0 < y < L \\
+    \infty & \text{elsewhere}
+    \end{cases}
+    \]
+Determine the normalized energy eigenfunctions and eigenvalues.(b) Show that the Fermi energy for nonrelativistic electrons (treated as if they do not interact with each other) confined in the two-dimensional square box is given by
+$$E_F = \frac{\pi \hbar^2 N}{m L^2}$$
+where \( N \) is the number of electrons, \( L \) is the length of the side of the square, and \( m \) is the mass of an electron. Such confinement to a plane happens, for example, for electrons in the layered materials that are used to make high-temperature superconductors.\vp
+%%%%%%%midline
+\rule{\linewidth}{0.4pt}\vp
+Ok, so we're going to need to solve the schrodinger equation, with the 2d version, not the 3d with the laplacian like so:
+\begin{align*}
+    \frac{\hbar^2}{2m} \left( \frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial y^2} \right) = E \psi(x, y)
+\end{align*}
+So we're going to the separation of variables technique in chapter 7 of the textbook (that we also used in chapter 6 for the hydrogen atom):
+\begin{align*}
+    \psi(x, y) &= XY\\
+    \frac{\hbar^2}{2m} \left( Y \frac{\partial ^2X}{\partial x^2} + X \frac{\partial ^2Y}{\partial y^2} \right) &= E \cdot XY\\
+    \frac{\hbar^2}{2m} \left( \frac{1}{X} \frac{\partial ^2X}{\partial x^2} + \frac{1}{Y} \frac{\partial ^2Y}{\partial y^2} \right) &= E
+\end{align*}
+Now let's establish our boundary conditions:
+\begin{align*}
+    X(0) = X(L) = 0\\
+    Y(0) = Y(L) = 0
+\end{align*}
+And we set up our generalized equations too:
+\begin{align*}
+    X = \sqrt{\frac{2}{L}} \sin\left( \frac{n\pi x}{L} \right)\\
+    Y = \sqrt{\frac{2}{L}} \sin\left( \frac{m\pi y}{L} \right)
+\end{align*}
+Now, if we go look at \textbf{Section 7.1} of the textbook, we get that with these wavefunctions, that our energy levels are:
+\begin{align*}
+    E_{n,m} = \frac{\hbar^2 \pi^2 n^2}{2m_eL^2}+\frac{\hbar^2 \pi^2 m^2}{2m_eL^2}
+\end{align*}
+Note that the mass $m_e$ is different from the $m^2$ on top, because $m$ represents the quantum state of the electron in the $y$ direction, while $m_e$ represents the effective mass of the electron. \vpp
+%%%%% fermi eneergy
+Now, for the \textbf{fermi energy} part. We need to find a maximum cutoff of energy $n_F$ such that $n^2+m^2\le n_F$.\vp
+We know that our fermi energy equation follows:
+\begin{align*}
+    E=\frac{\hbar^2}{2m_e}\p{\frac{3\pi^2 N}V}^{2/3}
+\end{align*}
+Vecause we are confined in a 2D space, we need to find our $V$. In this case, we know $L^2$ will be in the denominator because that is the bounds of our well, but we need to find how our states will be bounded. Consider that in the first quarter-circle of the $n$-$m$ plane, we have that we have about:
+\begin{align*}
+    N_+= \frac{1}4\pi n_F^2
+\end{align*} 
+However, each can hold a spin up and down state, so we ge that:
+\begin{align*}
+    N= \frac{2}4\pi n_F^2
+\end{align*}
+Which gives us an $n_F$ of:
+\begin{align*}
+    n_F=\sqrt\frac{2N}\pi
+\end{align*}
+Thus, plugging that into our energy function we just get that
+\begin{align*}
+    E_F = \frac{\pi \hbar^2}{m L^2}n_F^2=\frac{\pi \hbar^2 N}{m L^2}.
+\end{align*}
+\end{document}

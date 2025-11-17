@@ -1,0 +1,135 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\square$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\newtheorem{definition}{Definition}
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 252}
+\chead{Ordered Integral Domains}
+\rhead{\today}
+ 
+% \maketitle
+
+\newcommand{\n}{\vspace{0.15cm}\\}
+\section{Preliminaries}
+\begin{definition}$[R^+]$\\
+    Let $R$ be an integral domain. A subset $R^+\subseteq R$ denotes the set of \textbf{positive} elements of $R$ such that for all $r\in R^+$, $r > 0_R$. 
+\end{definition}
+
+\begin{definition} $[\text{Ordered Integral Domain}]$\\
+    Let $R$ be an integral domain. $R$ is said to be ordered if:
+    \begin{enumerate}[itemsep=0pt, parsep=0pt]
+        \item [P1] If $a$ and $b$ are in $R^+$, then $a+b$ and $ab$ are in $R^+$.
+        \item [P2] For all $a\in R$, exactly one of $a\in R^+$, $a=0$, or ${-}a\in R^+$ holds. 
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}{1}
+    1 is the least element of $R^+$.\vspace{0.1cm}
+    \begin{proof}
+        Let $c$ be the least element of $R^+$.\n
+        Then, we have that:
+        \begin{align*}
+            c = 1, c> 1, \text{ or } c < 1 \text{ must hold.}
+        \end{align*}
+        Consider that if $c$ is the least element, $c$ cannot be greater than 1, because $1\in R^+$. \n
+        Then, consider that if $0<c<1$, that $0<c^2<c<1$ must also hold. \vspace{-0.1cm}\\
+        However, $c^2\in R^+$, and that contradicts that $c$ is the least element in $R^+$.\n
+        Thus, 1 is the least element in $R^+$. 
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}{2}
+    $R^+ = \{k1\mid k\in \Z^+\}$.\vspace{0.1cm}
+    \begin{proof}
+        We will show via induction that $k1\in R^+$ for all $k\in \Z^+$. \n
+        \textbf{Base Case: }It is true that if $k=1$, $k1 = 1\in R^+$. \n
+        \textbf{Inductive Step: }Suppose that $k1\in R^+$. We have that $(k+1)=k\cdot 1 + 1$ Because $k1$ and $1$ are both in $R^+$, $k1+ 1\in R^+$.  \n
+        Therefore, $\{k1\mid k\in \Z^+\}\subseteq R^+$. \n
+        Now we will show that $R^+\subseteq \{k1\mid k\in \Z^+\}$. \\
+        Let $d$ be the least member of $\{r\in R^+\mid r\ne k1\text{ for all }k\in \Z^+\}$. Because $d\in R^+$, then $d\ge 1$ via \textbf{Proposition 1}.\n
+        However, if $d> 1$, then $d-1\in R^+$, and $d$ is the least element, a contradiciton.\\
+        Additionally, $d$ cannot equal 1, because $1\in \{k1 \mid k\in \Z^+\}$, a contradiction.\n
+        Thus, $\{r\in R^+\mid r\ne k1\text{ for all }k\in \Z^+\}$ does not have a least element, so it has no elements. Therefore, for every $r\in R^+$, there exists an equivalent $k1$, and therefore, $R^+\subseteq \{k1\mid k\in \Z^+\}$.\n
+        Hence, $R^+ = \{k1\mid k\in \Z^+\}$.
+
+    \end{proof}
+\end{proposition}
+\pagebreak
+\section*{Theorem}
+\begin{theorem}{1}
+Let $R\ne 0$ be a well-ordered integral domain. Then an isomorphism $\sigma:\Z\to R$ exists such that if $k<m$ in $\Z$, then $\sigma(k) < \sigma(m) $ are $ R$. 
+\end{theorem} 
+\begin{proof}
+    Define $\sigma:\Z\to R$ by $\sigma(k) = k1$. \\
+    We want to show that $\sigma$ is a bijective homomorphism.\n
+    We have by algebra that:
+    \begin{gather*}
+        \sigma(k+m)=\sigma(k)+\sigma(m) \text{ and, }\\
+        \sigma(km)=\sigma(k)\cdot\sigma(m) \text { for all }k,m\in \Z.
+    \end{gather*}
+    Furthermore, we have that $k<m$ implies that $\sigma(k) < \sigma(m)$, because via \textbf{Prop. 2}:
+    \begin{align*}
+        \sigma(m)-\sigma(k)=(m-k)1\in R^+.
+    \end{align*}
+    To prove that $\sigma$ is one-to-one, let $\sigma(k) = \sigma(m)$. \\
+    Then $(k-m)1 = 0\notin R^+$, so $k\le m$ by \textbf{Prop. 2}. \\
+    However, we also have that $(m-k)1=-(k-m)1=0$, so $k\ge m$.\\
+    Hence, because $k\le m$ and $k\ge m$, $k=m$, and $\sigma$ is one-to one.\n
+    To prove that $\sigma$ is onto, consider an $r\in R$. There are three cases: (i) $r=0,$ (ii) $r>0,$ and (iii) $r<0$.
+    \begin{enumerate}[itemsep=0pt, parsep=0pt]
+        \item [(i)]If $r=0$, then $r= \sigma(0)$.
+        \item [(ii)]If $r>0$, then $r = \sigma(k)$ for some $k\in \Z^+$ (by Prop. 2)
+        \item [(iii)]If $r<0$, then $-r>0$, so $r=\sigma(-k)$ for $k\in \Z^+$.
+    \end{enumerate} 
+    Thus, $\sigma$ is onto as required. \n
+    Hence, $\sigma$ is an isomorphism from $\Z \to R$, such that if $k<m$, then $\sigma(k)<\sigma(m)$. 
+\end{proof}
+ 
+ 
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}

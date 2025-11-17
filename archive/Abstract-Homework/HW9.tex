@@ -1,0 +1,400 @@
+%document class
+\documentclass[10pt,twoside]{article}
+
+%{
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\usepackage{enumitem}
+\pgfplotsset{
+    humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+    humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+    human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+% my commands
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\twom}[4]{\begin{bmatrix}#1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\casi}[4]{\begin{cases}#1 & \text{ if }#2\\ #3 & \text{ if }#4\end{cases}}
+\usepackage{changepage}
+\usepackage{array}
+
+%if you want to change some counters you can use the command below
+%\setcounter{section}{1}
+
+\begin{document}
+
+\section*{Homework 09}
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+\chead{\large{\textbf{Homework 09} }}
+\rhead{Book section: 3.2, 3.3}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+
+
+\subsection*{From the textbook, Section 3.2}
+\begin{enumerate}
+    \newcommand{\g}{R\times S}
+    \item Do Exercise 4. \vp
+    Is $R\times S$ ever a domain?
+    \begin{adjustwidth}{0.5cm}{0.5cm}
+        $R\times S$ is only ever a domain if $R={0}$ or $S=\{0\}$.\\
+        Let $r\in R\rmv{0}$ and $s\in S\rmv{0}$. Thus we have:
+        \begin{align*}
+            (r,0)&\in \g\\
+            (0,s)&\in \g
+        \end{align*}
+        Now, we have:
+        \begin{align*}
+            (r,0)\cdot (0,s)=(0,0)
+        \end{align*}
+        Thus, we'll have zero divisors.\\
+        Hence, $\g$ is only an integral domain if $R\ne \{0\}\ne S$. 
+    \end{adjustwidth}
+    \hint{Hint: If $S\neq 0 \neq R$, then there are always two non-trivial zero divisors... find them!}
+    \item Do Exercise 10.\vp
+    If $F=\{0,1,a,b\}$ is a field, fill in the addition and multiplication tables for F.
+    \begin{center}\begin{tabular}{c c}
+        \noindent\begin{tabular}{c | c c c c }
+            + & 0   & 1     & a     & b  \\
+            \cline{1-5}
+            0 & 0   & 1     & $a$   & $b$ \\
+            1 & 1   & $a$   & $b$   & $0$ \\
+            a & $a$ & $b$   & 0     & $1$\\
+            b & $b$ & $0$   & 1     & $a$
+        \end{tabular}
+        &
+        \noindent\begin{tabular}{c | c c c c }
+            $\cdot$ & 0   & 1     & a     & b  \\
+            \cline{1-5}
+            0 & 0   & 0     & 0     & 0 \\
+            1 & 0   & 1     & $a$   & $b$ \\
+            a & 0   & $a$   & $b$   & $1$\\
+            b & 0   & $b$   & 1     & $a$
+        \end{tabular}
+    \end{tabular}\end{center}
+    \item Do Exercise 11. \vp
+    If $F$ is a field and $|F|=q$, show that $a^q=a$ for all $a\in F$.
+    \begin{adjustwidth}{0.5cm}{0.5cm}
+        Consider $F\rmv{0}$. $|F\rmv{0}|=q-1$. \vp
+        Because $F$ is a field, $F\rmv{0}$ is abelian under multiplication.\\
+        Let $a\in F\rmv{0}$, so $o(a)=n$. Thus we have $a^n=e$.\vp
+        Via the \textbf{Lagrange Theorem}, the order of any element must divide the size of the group.\\
+        So, we have that $n\mid q-1$, and $\exists z \in \Z$ such that $nz = q$. Now, we have:
+        \begin{align*}
+            a^{q}&=a^{q-1}a\\
+            &=a^{zn}a\\
+            &=(a^n)^za\\
+            &=(e)^za=e\cdot a = a
+        \end{align*}
+        Hence, $a^q=a$. 
+    \end{adjustwidth}
+\end{enumerate}
+\pagebreak
+
+\subsection*{From the textbook, Section 3.3}
+\begin{enumerate}
+\setcounter{enumi}{3}
+    \item Do Exercise 4.
+    \begin{enumerate}
+        \item If $m$ is an integer, show that $mR=\{mr\mid r\in R\}$ and $A_m=\{r\in R\mid mr = 0\}$ are ideals of $R$. \vspace{0.3cm}\\
+        \textbf{Part 1: $mR$}
+        \begin{adjustwidth}{0.5cm}{0.5cm}
+            \begin{proof}\textit{Direct.}\\
+                We want to show that $mr+ms,mr\cdot ms \in mR$.  \vp
+                Consider that $r,s\in R$. Thus, $r+s\in R$. Then we have
+                \begin{align*}
+                    mr +ms = m(r+s)=\in mR
+                \end{align*}
+                Hence, $mR$ is closed under addition.\vp
+                Now, consider for $r,s\in R$, $ms\cdot mr$.\\
+                We know that $r,s\in R$, so we have:
+                \begin{align*}
+                    mrs \in mR
+                \end{align*}
+                Because we know $mR$ is closed under addition, we can add $mrs$ to itself $m$ times:
+                \begin{align*}
+                    \sum_{i=1}^m mrs &= m\cdot mrs\\
+                    &=mrms \text{ (Distributability of Constants)}
+                \end{align*}
+                Hence, $mR$ is closed under multiplication and addition.\vp
+                $mR$ also contains $0$ because $m\cdot 0 =0$.\\
+                Furthermore, $mR$ has additive inverses because $-r\in R$, so $-mr \in mR$.\vp
+                Thus, $mR$ is an ideal of $R$. 
+            \end{proof}
+        \end{adjustwidth}
+        \textbf{Part 2: $A_m$}
+        \begin{adjustwidth}{0.5cm}{0.5cm}
+            \begin{proof}
+                We want to show that $A_m=\{r\in R\mid mr = 0\}$ has all ideal properties.\vp
+                \textbf{Closure (+). } Consider $r,s\in A_m$. Therefore,
+                \begin{align*}
+                    mr = 0\\
+                    ms = 0
+                \end{align*}
+                Now consider $r+s\in R$. Therefore, we have that:
+                \begin{align*}
+                    m(r+s)&=mr+ms\\
+                    &=0+0=0
+                \end{align*}
+                Hence, $r+s\in A_m$. \vp
+                \textbf{Closure ($\cdot$) } Consider $r,s\in A_m$. Then we have:
+                \begin{align*}
+                    mr = 0\\
+                    ms = 0
+                \end{align*}
+                Therefore, \textit{without loss of generality}, for $rs$, we have:
+                \begin{align*}
+                    mrs &= (mr)s \\
+                    &=0\cdot s\\
+                    &= 0
+                \end{align*}
+                Hence, $mrs \in A_m$. \vp
+                We also have $0\in A_m$ because $m\cdot 0 = 0$, and we have additive inverses, because $m(-r) = (-mr) = 0$. \vp
+                Hence, $A_m$ fulfills all the properties of ideals and is an ideal of $R$. 
+            \end{proof}
+        \end{adjustwidth}
+        \item If $R=\Z_n$, show that every ideal of $R$ has the form $mR$ for some $m\in \Z$.
+        \begin{adjustwidth}{0.5cm}{0.5cm}
+            In order for $R=\Z_n$ to have an additive subgroup, it must have the form $|H|=q$, for some $q\in \Z$.\vp 
+            Furthermore, via the \textbf{Lagrange Theorem}, the size of any subgroup must divide $|\Z_n|$. \vp
+            Thus, $q\mid n$. In order to get $H$ though, you must select out the elements $z\in \Z_n$ such that $z\mid q$. For example, with $n=10, q=5$:
+            \begin{align*}
+                \Z_n&=\{0,1,2,3,4,5,6,7,8,9\}\\
+                H&=\{0,2,4,6,8\}
+            \end{align*}
+            However, an easy way to generate such an $H$ is to get an $m= n\div q$.\\
+            Then, we have that $m\Z_n = H$:\newcommand{\ovr}[1]{\overline{#1}}
+            \begin{align*}
+                \Z_n&=\{0,1,2,3,4,5,6,7,8,9\}\\
+                m\Z_n&=\{0,2,4,6,8,\ovr{10}=0,\ovr{12}=2,\ovr{14}=4,\ovr{16}=6, \ovr{18}=8\}\\
+                &=\{0,2,4,6,8\}\\
+                H&=\{0,2,4,6,8\}
+            \end{align*}
+            Thus, any subgroup of $\Z_n$ can be represented in the form $m\Z_n$. 
+        \end{adjustwidth}
+    \end{enumerate}
+    
+    \hint{Hint for part (b): An ideal has to be an additive subgroup (plus other conditions)... What are the possible subgroups of $\ZZ_n$?}
+    
+    \item Do Exercise 5.
+    \begin{enumerate}
+        %% PART A
+        \item If $A$ is an ideal of $R$ and $B$ is an ideal of $S$, show that $A\times B$ is an ideal of $R\times S$.
+        \begin{adjustwidth}{0.5cm}{0.5cm}
+            Because $A$ and $B$ follow ideal properties, we know that for:
+            $a,a_0\in A, r\in R$, $b,b+0\in B, s\in S$, that:
+            \begin{align*}
+                ar &\in A, a+a_0\in A\\
+                bs &\in B, b+b_0 \in B.
+            \end{align*}
+            \textbf{Closure ($+$) } Therefore, for $A\times B$, we have that:
+            \begin{align*}
+                (a,b)+(a_0,b_0) = (a+a_0, b+b_0)\\
+                a+a_0\in A, b+b_0\in B\\
+                (a+a_0, b+b_0)\in A\times B
+            \end{align*}
+            \textbf{Closure ($\cdot$) } Furthermore, for $A\times B$, we have that:
+            \begin{align*}
+                (a,b)\cdot (r,s) = (as, br)\\
+                as\in A, br\in B\\
+                (as,br)\in A\times B
+            \end{align*}
+            \textbf{Other Properties.} Because $A$ and $B$ are ideals, $0\in A,B$, so $(0,0) \in A\times B$. \vp
+            And we'll also have additive inverses because $-a\in A$, $-b\in B$, so $(-a,-b)\in A\times B$. \vp
+            Hence, $A\times B$ is an ideal of $R\times S$. 
+        \end{adjustwidth}
+        %% Part B
+        \item Show that every ideal \newcommand{\A}{\mathcal A}$\A$ of $R\times S$ has the form $\A=A\times B$ as in $(a)$. 
+        \begin{adjustwidth}{0.5cm}{0.5cm}
+            Let $\A$ be an ideal of $R\times S$. \vp 
+            Because every ideal must contain the additive identity, we know that $(0,0)\in \A$, so we that for $A=\{\alpha\mid(\alpha, 0)\in \A\}$, that $A$ is created with the following properties (inhering from $\A$):
+            \begin{itemize}
+                \item $A$ is closed under addition.
+                \item $A$ is closed under multiplication from $R$ in $R\times S$.
+                \item $A$ contains the additive identity, 0.
+                \item $A$ contains $-\alpha$. 
+            \end{itemize}
+            Thus, $A$ is an ideal of $R$. Follow the same pattern for $B=\{\alpha\mid(0, \beta)\in \A\}$, and you end up with that $B$ is an ideal of $R$.\vp
+            Hence, every ideal $\A$ of $R\times S$ must follow the pattern $A\times B$, with $A$ and $B$ as ideals of $R$ and $S$, respectively. 
+        \end{adjustwidth}
+        \item Show that the maximal ideals of $R\times S$ are either of the form $A\times S$, where $A$ is maximal in $R$, or of the form $R\times B$, $B$ is maximal in $S$.
+        \begin{adjustwidth}{0.5cm}{0.5cm}
+            We want to find the largest ideal such that $\A \subset R\times S$. \vp
+            Via the previous problem, represent $\A$ as $A\times B$, where $A$ and $B$ are ideals in $R$ and $S$, respectively.\vp
+            We want to find the largest $A$ and $B$ such that:
+            \begin{align*}
+                |A\times B| < |S\times R|\\
+                |A|\cdot|B| < |S|\cdot |R|.
+            \end{align*}
+            Because $A$ and $B$ must be ideals of $S$ and $R$, the largest combination that would get the highest $|A|\cdot |B|=\max{|A|}\times \max|B|$, and that would occur when $A = R$ and $B= S$.\vp
+            However, because $A\times B$ must be a nonequal subset of $S\times R$, either $A\ne R$ or $B\ne S$. \vp
+            Let the cardinality of the maximal ideal of $R$ and $S$ be $\mathcal R$ and $\mathcal T$ respectively. Thus, the maximal ideal of $R\times S$, $\A$ is:
+            \begin{align*}
+                \A=\casi{\mathcal R \times S}{|\mathcal R| \ge |\mathcal T|}{R\times \mathcal T}{|\mathcal R| < |\mathcal T|}
+            \end{align*}
+        \end{adjustwidth}
+    \end{enumerate}
+    \hint{Hint for part (b): You want to take any ideal $I$ in $R \times S$ and show that $I \cap (R \times \{ 0 \})$ gives an ideal in $R$... the same also holds for $I \cap (\{ 0 \} \times S)$.}
+    \item Do Exercise 16.\vp
+    If $A$ is an ideal of $R$, show that $A\cap S$ is an ideal of $S$ for all subrings $S$ of $R$.
+    \begin{adjustwidth}{0.5cm}{0.5cm}\newcommand{\g}{A\cap S}
+        We want to show that $\forall a \in A, \forall s\in S$, if $a,s\in A\cap S$, that $a+s \in \g$ and $as \in \g$. \vp
+        \textbf{Closure ($\cdot$) } Consider that because $S$ is a subring of $R$, $\forall m\in A\cap S$, we have:
+        \begin{align*}
+            ms \in S
+        \end{align*}
+        And because $A$ is an ideal, and $m\in A$, 
+        \begin{align*}
+            ms \in A
+        \end{align*}
+        Thus, $am \in A \cap S$. \vp
+        \textbf{Closure ($+$)} Consider now that because $S$ is a subring, $\forall m,n\in A\cap S$, we have:
+        \begin{align*}
+            m+n\in S
+        \end{align*}
+        And because $A$ is an ideal, $m+n\in A$. Thus, $m+n\in A\cap S$. \vp
+        \textbf{Additional Conditions: }
+        \begin{itemize}
+            \item Ideals and subrings both have 0
+            \item Ideals and subrings both have all additive inverses.
+        \end{itemize}
+        Thus, $A\cap S$ is an ideal of $S$ because it fulfills all the conditions of an ideal. 
+    \end{adjustwidth}
+    \pagebreak
+    \item Do Exercise 19.\vp
+    If $A$ is an ideal of $R$, show that $R/A$ has no nonzero nilpotents if and only if $r^2\in A$ implies $r\in A$. \vp
+    \textbf{$R/A$ with no nonzero nilpotents implies that $r^2\in A$ implies that $r\in A$. }
+    \begin{adjustwidth}{0.5cm}{0.5cm}
+        Let $r^2\in A$. \vp
+        Consider the quotient group $r^2+A = A$, because $A$ is closed under addition. \\
+        However, because $R/A$ has no nonzero nilpotents, we have that $r^2+A = 0$. \vp
+        Consider that $(r+A)(r+A)=r^2+A = 0$.\\
+        Thus, $(r+A)$ also equals 0, meaning that $r \in A$. 
+    \end{adjustwidth}
+    \textbf{ $r^2\in A$ implies that $r\in A$ implies that $R/A$ has no nonzero nilpotents}
+    \begin{adjustwidth}{0.5cm}{0.5cm}
+        Let $c^n\in A$ such that $(c+A)^n= A=0$, but that $(c+A)\ne 0$\vp
+        Therefore, we have that for even $c$, that $c^n=c^2c^2\cdots$.\\
+        Thus, $(c+A)^2 = c^2+A = A=0$, but because $c^2\in A$ implies $c\in A$, $(c+A)(c+A)=0,$, but that contradicts that $(c+A)\ne 0$. \vp
+        Consider for odd $c$, that $c^n = c^2c^2\cdots c$. Therefore, we have that:
+        \begin{align*}
+            (c+A)^2(c+A)^2\cdots(c+A)=0
+        \end{align*}
+        And thus, $(c+A)=0$, a contradiction.\\
+        Thus, $R/A$ has no nilpotents. 
+    \end{adjustwidth}
+    Thus, if and only if $R/A$ has no nonzero nilpotents, $r^2\in A$ implies $r\in A$. 
+\end{enumerate}
+
+\end{document}

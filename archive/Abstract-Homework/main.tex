@@ -1,0 +1,206 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+% Packages to make things pretty
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[mathscr]{euscript}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{multicol}
+\usepackage{mathrsfs} %for right font for power set P
+\everymath{\displaystyle} %makes all math display style (bigger and easier to read)
+\usepackage[normalem]{ulem}
+\usepackage{remreset}
+\usepackage{titlesec}
+
+\makeatletter
+  \@removefromreset{subsection}{section}
+\makeatother
+%\renewcommand{\thesection}{}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{}{0pt}{}
+\renewcommand{\thesubsection}{Problem \arabic{subsection}}
+%\newcommand{\HW}[1]{\section*{#1}}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{}{0pt}{}
+
+% Theorem Environments
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}[section]{Conjecture}
+\newtheorem*{definition}{Definition}
+\newtheorem*{claim}{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newcounter{tmp}
+\newtheorem{question}[theorem]{Question}
+\newtheorem*{answer}{Answer}
+\newtheorem{challenge}[section]{Challenge}
+\newtheorem*{postulate}{Postulate}
+
+% These are a bunch of my own personal macros, i.e. command shortcuts I've come up with for common things I use frequently. Feel free to use or ignore them!
+\newcommand{\lcu}{\left\lbrace}
+\newcommand{\rcu}{\right\rbrace}
+\newcommand{\lbr}{\left[}
+\newcommand{\rbr}{\right]}
+\newcommand{\lpa}{\left(}
+\newcommand{\rpa}{\right)}
+\newcommand{\lan}{\left\langle}
+\newcommand{\ran}{\right\rangle}
+\newcommand{\bfi}{\mathbf{i}}
+\newcommand{\bfj}{\mathbf{j}}
+\newcommand{\bfk}{\mathbf{k}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Epsilon}{\mathcal{E}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\FGR}{{\bf First attempt grade: R}}
+\newcommand{\SGR}{{\bf Second attempt grade: R}}
+\newcommand{\TGR}{{\bf Third attempt grade: R}}
+\newcommand{\BGR}{{\bf Bonus attempt grade: R}}
+\newcommand{\FR}{{\bf Final grade:R}}
+\newcommand{\FGM}{{\bf Final grade: M}}
+
+
+
+
+
+
+\title{\textbf{Math 244 HW Novak}}
+\author{Gordon Novak}
+\date{\today}
+
+%%*****NTS: Make the problems subsections for easier scrolling.
+%%*****NTS: Carry forward the section/subsection pattern.
+
+
+
+% Actual start of the document
+\begin{document}
+
+\maketitle
+
+\section*{HW1: First attempt due \textbf{Wednesday 2/12}}
+{\it Note: For this first homework assignment, I am not yet holding you to any rigorous proof-writing standards. These will come later.}
+\subsection*{Problem 1} A subset $A$ of $\R$ is called a {\bf $G_\delta$-set} ({\it pronounced ``G-delta-set"}) if $A$ can be written as a countable intersection of open intervals. In other words, $A$ is a $G_\delta$-set if there exist countably-many open intervals $U_n$ such that
+	\[A = \bigcap_{n=1}^\infty U_n. \]
+Notice that this includes intersections of finitely many open intervals.
+	\begin{enumerate}[label=(\alph*)]
+	\item Show that $(3,10)$ is a $G_\delta$-set.\\
+    
+    		$Proof:$ Let $A = (3,10)$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n. $\\
+            \begin{gather*}
+                \text{Let } U_n = (4-n, \; 9+n) \\
+                \text{Let }k\in \N, \text{ s.t. } k>n. \\
+                \text{Now we will evaluate the right \& left bounds for } U_n\;\&\;U_k:\\
+                \text{Right bound: }4-n>4-k\Leftrightarrow n<k\\ 
+                \text{Left bound: }9+n < 9+k\Leftrightarrow n < k\\
+                \text{Because the right bound }  U_n \text{ is always greater than the } k \text{ variant}\\
+                \text{and the respective left bound is less than the } k \text{ variant, for any } n \text{  and } k,\\
+                U_n \subset U_k. \\
+                \text{And because the intersection of any set and its subset is equal to the subset, }\\
+                U_n\cap U_k = U_n\\
+                \text{It follows that for the minimum } n \text{ in } U_n,\; U_{n_\text{min}}\subseteq U_n\\ \text{because for any } n \in \N \text{ less than another integer, } U_n \text{ is a subset of said integer's set.} \\
+                \text{So }\bigcap_{n=1}^\infty U_n = U_{n_\text{min}}. \text{ Because the minimum of } n \text{ is } 1,\\
+                \text{we can write }A=\bigcap_{n=1}^\infty U_n=U_{n_\text{min}}=(3,10).\\
+                \text{Therefore } A \text{ is a } G_\delta \text{-set}.\;\qed
+            \end{gather*}
+		
+
+        \pagebreak
+		
+		
+	\item Show that $[3,10]$ is a $G_\delta$-set.\\
+                $Proof:$ Let $A = (3,10)$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n$
+		\begin{gather*}
+		    \text{Let } U_n = (3-\frac{1}n, \; 10+\frac{1}n) \\
+                \text{Let }k\in \N, \text{ s.t. } k<n. \\
+                \text{Now we will evaluate the right \& left bounds for } U_n\;\&\;U_k:\\
+                \text{Right bound: }3-\frac{1}n>3-\frac{1}k\Leftrightarrow n<k\\ 
+                \text{Left bound: }10+\frac{1}n > 10+\frac{1}k\Leftrightarrow n< k\\
+                \text{Because the right bound }  U_n \text{ is always greater than the } k \text{ variant}\\
+                \text{and the respective left bound is less than the } k \text{ variant, for any } n \text{  and } k,\\
+                U_n \subset U_k. \\
+                \text{And because the intersection of any set and its subset is equal to the subset, }\\
+                U_n\cap U_k = U_n\\
+                \text{It follows that for all } n \text{ in } U_n,\; \lim_{n\rightarrow \infty} U_n \subseteq U_n,\\
+                \text{So } U_\infty \cap U_n = U_\infty, \text{which follows that } \bigcap_{n=1}^\infty U_n = \lim_{n\rightarrow \infty} U_n.\\
+                \text{So we can write }A=\bigcap_{n=1}^\infty U_n=\lim_{n\rightarrow \infty} U_n=[3,10].\\
+                \text{Therefore } A = [3,10] \text{ is a } G_\delta \text{-set}.\;\qed
+		\end{gather*}
+		
+		
+		\item Show that $\{1\}$ is a $G_\delta$-set.\\
+		$Proof:$ Let $A = {1}$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n$ 
+
+        
+            \begin{gather*}
+                \text{Let } U_n = (1-\frac{1}n, \; 1+\frac{1}n) \\
+                \text{Let }k\in \N, \text{ s.t. } k<n. \\
+                \text{Now we will evaluate the right \& left bounds for } U_n\;\&\;U_k:\\
+                \text{Because the right bound }  U_n \text{ is always greater than the } k \text{ variant}\\
+                \text{and the respective left bound is less than the } k \text{ variant, for any } n \text{  and } k,\\
+                U_n \subset U_k. \\
+                \text{And because the intersection of any set and its subset is equal to the subset, }\\
+                U_n\cap U_k = U_n\\
+                \text{It follows that for all } n \text{ in } U_n,\; \lim_{n\rightarrow \infty} U_n \subseteq U_n,\\
+                \text{So } U_\infty \cap U_n = U_\infty, \text{which follows that } \bigcap_{n=1}^\infty U_n = \lim_{n\rightarrow \infty} U_n.\\
+                \text{So we can write }A=\bigcap_{n=1}^\infty U_n=\lim_{n\rightarrow \infty} U_n=[1,1] = \{1\}.\\
+                \text{Therefore } A = \{1\} \text{ is a } G_\delta \text{-set}.\;\qed
+		\end{gather*}
+	\pagebreak
+		
+	\item Is $\emptyset$ a $G_\delta$-set? Why or why not?\\
+		$Proof:$ Let $A = \emptyset$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n$
+
+        \begin{gather*}
+            \text{First, we need to establish that }\emptyset\in \R.\\
+            \text{Let } U_n=(n,n).\\
+            \text{The open interval between any integer and itself is } =\emptyset.\\
+            \text{Therefore } U_n=\emptyset.\\
+            \text{Additionally, the intersection between the empty sets and all}\\
+            \text{other sets is equivalent to the empty set, so therefore for any }n,\\
+            U_{n_1}\cap U_{n_2}=\emptyset\cap U_{n_2}=\emptyset.\\
+            \text{Hence, } \bigcap_{n=1}^\infty U_n = \emptyset.\\
+            \text{Therefore, } A=\bigcap_{n=1}^\infty U_n = \emptyset.\\
+            A=\emptyset \text{ is a } G_\delta \text{-set.}\;\qed
+        \end{gather*}
+		
+
+	\end{enumerate}
+
+
+
+
+\section*{HW2: First attempt due \textbf{Friday 2/14}}
+\subsection*{Problem 2}
+Let $f:\R \to \R$ be the function defined by
+   	\[f(x) = x^3. \]
+Prove that $f$ is onto.
+	\begin{proof}
+	Your work goes here.
+	\end{proof}
+
+
+
+\subsection*{Problem 3} 
+Let $A$, $B$, and $C$ be sets, and let $f:A\to B$ and $g:B\to C$ be functions. Assume that $f$ and $g$ are both onto. Prove that the composite function $(g\circ f):A\to C$ is onto. ({\it Reminder: $(g\circ f) (a) = g(f(a))$.})
+	\begin{proof}
+	Your work goes here.
+	\end{proof}
+
+
+
+
+\end{document}

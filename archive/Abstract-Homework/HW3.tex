@@ -1,0 +1,373 @@
+ %document class
+\documentclass[10pt,twoside]{article}
+
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\pgfplotsset{
+	humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+	humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+	human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\br}[1]{\{ #1 \}}
+\newcommand{\brs}[2]{\{ #1 \;|\; #2 \}}
+
+%if you want to change some counters you can use the command below
+%\setcounter{section}{1}
+
+\begin{document}
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+
+\chead{\large{\textbf{Homework 03} }}
+\rhead{Book section: 0.4, 1.1}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+\section*{Homework 03}
+
+
+\subsection*{From the textbook, Section 0.4}
+
+\begin{enumerate}
+
+
+    \item Look at the relations in Exercise 1.  For each relation:  if it is an equivalence relation, describe its equivalence classes; if it is not an equivalence relation, state which of the three properties (reflexive, symmetric, transitive) are violated and demonstrate with a counterexample.
+    \begin{enumerate}
+        \item   This is an equivalence relationship.\\
+                \textbf{Symmetry} is upheld because each $a^3-a=a^3-a$. \\
+                \textbf{Reflexivity }is upheld the equation can be swapped around without loss of generality.\\
+                \textbf{Transivity }is upheld because $a^3-a=b^3-b=c^3-c \Leftrightarrow a^3-a=c^3-c$.\vp
+                Our equivalence classes for $A$ are $[0]$.
+        \item   This is an equivalence relationship.\\
+                \textbf{Symmetry} is upheld because each $a^2=b^2\Leftrightarrow b^2=a^2$. \\
+                \textbf{Reflexivity }is upheld the because $a^2=a^2$.\\
+                \textbf{Transivity }is upheld because $a^2=b^2=c^2 \Leftrightarrow a^2=c^2$.\vp
+                Our equivalence classes for $A$ are $[1]$, and $[0]$.
+        \item   This is not an equivalence relationship.\\
+                \textbf{Reflexivity} is not upheld because $2\cdot2\ne 1$.
+        \item   This is not an equivalence relationship.\\
+                \textbf{Symmetry} is not upheld because although for $a=1,b=2$, $a\equiv b $, b is not related to $a$
+        \item   This is not an equivalence relationship.\\
+                \textbf{Symmetry} is not upheld because although for $a=4, b=1$, can be related with $k= 4$, there is no natural $k$ which can relate $b$ to $a$.
+        \item   This is an equivalence relationship.\\
+                \textbf{Reflexivity, Symmetry, and Transivity} are all upheld because a set can only ever have a singular cardinality, which is related to all other sets of the same cardinality.
+                Our equivalence classes for $A$ are $\emptyset, \{\{1\},\{2\},\{3\}\}, \{\{1,2\},\{2,3\},\{1,3\}\},\{\{1,2,3\}\}.$
+        \item   This is not an equivalence relationship.\\
+                \textbf{Reflexivity} is not upheld because a line cannot be perpendicular to itself.
+        \item   This is an equivalence relationship.\\
+                \textbf{Reflexivity} is upheld because each $x^2+y^2=x_1^2+y_1^2\Leftrightarrow x_1^2+y_1^2=x^2+y^2$. \\
+                \textbf{Symmetry }is upheld the because $x^2+y^2=x^2+y^2$.\\
+                \textbf{Transivity }is upheld because $a^2=b^2=c^2 \Leftrightarrow a^2=c^2$.\vp
+                Our equivalence classes are all circles centered at the origin.
+
+        \item   This is not an equivalence relationship.\\
+                The classes are all lines with slope 3. 
+        
+
+    \end{enumerate}
+    \item Do Exercise 4 as written.\vpp
+        \begin{tabular}{ l l l l l l}
+            \{\{1,2,3,4\}\} \\
+            \{\{1,2,3\},\{4\}\} & \{\{1\},\{2,3,4\}\} & \{\{1,3,4\},\{2\}\} & \{\{1,2,4\},\{3\}\}\\ 
+            \{\{1,2\},\{3,4\}\} & \{\{1,3\},\{2,4\}\} & \{\{1,4\},\{2,3\}\} \\  
+            \{\{1,2\},\{3\},\{4\}\} & \{\{1,3\},\{2\},\{4\}\} & \{\{1,4\},\{2\},\{3\}\} & \{\{2,3\},\{1\},\{4\}\}  
+            & \{\{2,4\},\{1\},\{3\}\} & \{\{3,4\},\{1\},\{2\}\} \\
+            \{\{1\},\{2\},\{3\},\{4\}\}
+        \end{tabular}
+    \pagebreak
+    \item Look at the relation described in Exercise 3 (f).  Prove that it is an equivalence relation and find its equivalence classes. (If you want, you can also do the rest of the exercise, it is less complicated than it seems.)
+    \begin{enumerate}
+        \item \begin{proof}
+            We want to prove the equivalence relation, $m\equiv n$ if $m^2-n^2$ is even.\vpp
+            \underline{\textbf{Symmetric}}\\
+            Let $m$ be 
+            We want to show that $m\equiv m$. 
+            $$m^2-m^2=0,\;0 \text{ is even by definition}.$$
+            Hence, the \textbf{Symmetric} property is true for this relation.\vpp
+            \underline{\textbf{Reflexive}}\\
+            Let $m^2-n^2=2k,k\in\Z$. We want to show that $n^2-m^2=2j,j\in\Z$.
+            $$m^2=2k+n^2$$
+            Therefore,
+            $$n^2-m^2=n^2-2k-n^2=-2k$$
+            Hence, because the symmetry is also an even number, this relation is \textbf{reflexive}.\vpp
+            \underline{\textbf{Transitive}}\\
+            Let $m^2-n^2=2k,k\in\Z$.\\We want to show that for $p\in\R$, if $n^2-p^2=2j,j\in\Z$, then $m^2-p^2=2\ell, \ell\in\Z$.
+            \begin{gather*}
+                m^2=2k+n^2\\
+                p^2=n^2-2j
+            \end{gather*}
+            Therefore,
+            $$m^2-p^2=2k+n^2-n^2+2j=2k+2j=2(k+j)=2\ell$$
+            Hence, if $m\equiv n$ and $n\equiv j$, then $m\equiv j$. \vpp
+            Hence, $m\equiv n$ is a valid equivalence relation.
+        \end{proof}
+        
+        The equivalence classes are split into \textit{evens} [0] and \textit{odds} [1]\\
+        We can define a bijection $f:A_\equiv \rightarrow B$ as:\vp
+        $f(a)=\begin{cases}
+            0 & \text{if }\exists k\in \Z \text{ s.t. } a = 2k \\
+            1 & \text{if }\exists k\in \Z \text{ s.t. } a = 2k + 1
+        \end{cases}$
+        
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection*{From the textbook, Section 1.1}
+For  all the exercises in this section make sure to reflect on why induction is a good proof approach!
+\begin{enumerate}
+\setcounter{enumi}{3}
+    \item Do Exercise 1(a).  
+    \begin{enumerate}
+        \item \begin{proof}
+            We want to show via induction that the sum $1+5+9...+(4n-3)$ can be represented by the equation $n(2n-1)$\vpp
+            \underline{\textbf{Base Case}}\\
+            Let $n=1$. The sum of all $n$s to this point is one. We want to show that $n(2n-1)$ also equals 1:
+            $$n(2n-1)=1(2(1)-1)=1.$$
+            Therefore, we assume that the base case is true.\vpp
+            \underline{\textbf{Inductive Case}}\\
+            We want to show that the equation $(n+1)(2(n+1))-1)$ is equivalent to the known, $n(2n-1)+(4(n+1)-3)$.
+            \begin{align*}
+                (n+1)(2n+1)&=n(2n-1)+(4(n+1)-3)\\
+                2n^2+3n+1 &= 2n^2-n+4n+1\\
+                2n^2+3n+1 &= 2n^2+3n+1
+            \end{align*}
+        Hence, the formula $n(2n-1)$ for $n\ge 0$ equates to the sum of our sequence. 
+        \end{proof}
+    \end{enumerate}
+    \item Do Exercise 2(b). 
+    \begin{enumerate}
+        \item \begin{proof}
+            We want to show via induction that $\forall n\in\N \ge 4, n^2\le 2^n$.\vpp
+            \underline{\textbf{Base Case}}\\
+            Let $n=4$. We want to show that $n^2 \le 2^n$.
+            $$4^2=16\le 2^4 = 16$$
+            Hence, our base case is true.\vpp
+            \underline{\textbf{Inductive Case}}\\
+            We want to show that for $(n+1), n^2\le 2^n$.\\
+            \underline{\textbf{Base Case (2$n^2$)}}\\
+            First, we want to show that $n^2<2^n, \text{for } n = 4$.
+            \begin{align*}
+                n^2&\le 2^n\\
+                16 &\le 16
+            \end{align*}
+            \underline{\textbf{Return to Inductive Case}}\\
+            Now, consider for $n\ge 4$, 
+            \begin{align*}
+                (n+1)^2=n^2+2n+1&\\
+                \textit{Consider: } 2n + 1 &< 3n \;\;(\text{for } n\ge 4).\\
+                \textit{Further conside}&\textit{r: } 3n < n^2 \;\;(\text{for } n\ge 4).
+            \end{align*}
+            And from our base case, we have:
+            $$(n+1)^2=n^2+2n+1<n^2+n^2<2n^2\le2\cdot 2^n$$
+            $$n^2 < 2^n$$
+            Hence, $\forall n\in\N \ge 4, n^2\le 2^n$.
+        \end{proof}
+    \end{enumerate}
+    
+    \hint{Hint:  Try to first argue that $2n+1 \leq 2^n$ for all $n \geq 4$.  Then use this result in the context of your induction argument!}
+        \item Do Exercise 10(b).  
+        \begin{enumerate}
+            \item  We want to find a string of three consecutive integers so that we can increment by 3 from each of those integers to get any postage stamp after the fact.\\
+            Our first instance of this occurs at 12, 13, and 14, with:
+            \begin{align*}
+            3+3+3+3&=12\\
+            7+3+3&=13\\
+            7+7&=14
+            \end{align*}
+            
+            We cannot go any lower than this because the only possible remaining combinations are:
+            $$3,6,7,9,\; \& \;10$$
+            If we want any number divisble by $3$ after 12, we can continually add $3$ cent stamps to get there.
+            If we want numbers with remainder $1$ when divided by 3, we can also keep adding from 13.
+            For those with remainder $2$, our base case would be the 14 cent combination.
+            
+        \end{enumerate}
+       
+    \pagebreak
+
+\end{enumerate}
+
+        
+\subsection*{Extra: A problem not from the book}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item Let $S = \{ 1,a,b,c,d,e \}$.  The table below is a  ``multiplication" table for $S$. For example, $a * c = d$ while $c * a = e$.  Note:  we will write $x^2$ for $x * x$.
+
+$$\begin{array}{c|cccccc}
+* & 1&a&b&c&d&e \\
+\hline
+1 & 1&a&b&c&d&e \\
+a& a&b&1&d&e&c \\
+b& b&1&a&e&c&d \\
+c & c&e&d&1&b&a \\
+d & d&c&e&a&1&b \\
+e & e&d&c&b&a&1 
+\end{array}$$
+
+
+\begin{enumerate}
+\item First some work with sets:
+\begin{enumerate}
+\item Identify all the elements in the set $T_1=\{ x \in S \mid \ x*x=1 \}$. 
+\begin{enumerate}
+    \item $1,c,d,e$
+\end{enumerate}
+\item Identify all the elements in the set $T_2=\{ x \in S \mid \ x * c=d \}$.
+\begin{enumerate}
+    \item $a$
+\end{enumerate}
+\item Identify all the elements in the set $T_3=\{ x \in S \mid \ x * b=b * x \}$.
+\begin{enumerate}
+    \item $1,a,b$
+\end{enumerate}
+\item Identify all the elements in the set $T_4=\{ x^2 \mid \ x \in S \}$.
+\begin{enumerate}
+    \item $1,a,b$
+\end{enumerate}
+\item Identify all the elements in the set $T_5=\{ x*c \mid \ x \in T_4 \}$. 
+\begin{enumerate}
+    \item $c,d,e$
+\end{enumerate}
+\end{enumerate}
+\item Now some work with functions:
+\begin{enumerate}
+\item Consider the map $\phi_1: S \rightarrow S$ defined by $\phi_1(s) = s^2$.  What is the image of $\phi_1$?  Is $\phi_1$ injective?  Surjective? Bijective?
+\begin{enumerate}
+    \item The image is $\{1,a,b\}$.
+    \item It is not Injective
+    \item It is not Surjective
+    \item Is is not Bijective
+\end{enumerate}
+\item Consider the map $\phi_2: S \rightarrow S$ defined by $\phi_2(s) = s*a$. What is the image of $\phi_2$?  Is $\phi_2$ injective?  Surjective? Bijective?
+\begin{enumerate}
+    \item The image is $\{1,a,b,c,d,e\}$
+    \item It is Bijective
+\end{enumerate}
+\item Consider the map $\phi_3: S \rightarrow S$ defined by $\phi_3(s) = a*s$.  What is the image of $\phi_3$?  Is $\phi_3$ 1-1? injective?  Surjective? Bijective?
+\begin{enumerate}
+    \item The image is $\{1,a,b,c,d,e\}$
+    \item It is Bijective
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+   
+
+\newpage
+
+
+\end{document}

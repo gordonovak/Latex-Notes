@@ -1,0 +1,440 @@
+    %document class
+    \documentclass[10pt,twoside]{article}
+
+    %%%%% Required Packages
+    %{
+    %packages
+    \usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+    \usepackage{latexsym}
+    \usepackage{amssymb}
+    \usepackage{amsfonts}
+    \usepackage{amstext}
+    \usepackage{amsmath}
+    \usepackage{amsthm}
+    \usepackage{multicol}
+    \usepackage{hyperref}
+    \usepackage{enumerate}
+    \usepackage{tikz}
+    \usepackage{pgfplots}
+    \usepackage{array}
+    \usepackage{fancyhdr}
+    \usepackage{xcolor, mdframed}
+    \usepackage{enumitem}
+    \pgfplotsset{
+        humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+        humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+        human/.style={humanaxes, humanaxeslabels}
+    }
+    \pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+    %if you want to remove page numbers
+    %\pagestyle{empty}%}
+
+
+    %%%%% Commands for Stuff!
+    %{
+    \theoremstyle{plain}
+    \newtheorem{Theorem}{Theorem}
+    \newtheorem{Proposition}[Theorem]{Proposition}
+    \newtheorem{Corollary}[Theorem]{Corollary}
+    \newtheorem{Lemma}[Theorem]{Lemma}
+    \newtheorem{Question}[Theorem]{Question}
+    \newtheorem{Conjecture}[Theorem]{Conjecture}
+    \newtheorem{Assumption}[Theorem]{Assumption}
+    \newtheorem{Algorithm}[Theorem]{Algorithm}
+
+    \theoremstyle{definition}
+    \newtheorem{Definition}[Theorem]{Definition}
+    \newtheorem{Property}[Theorem]{Property}
+    \newtheorem{Notation}[Theorem]{Notation}
+    \newtheorem{Condition}[Theorem]{Condition}
+    \newtheorem{Example}[Theorem]{Example}
+    \newtheorem{Exercise}[Theorem]{Exercise}
+    \newtheorem{Introduction}[Theorem]{Introduction}
+    \theoremstyle{remark}
+    \newtheorem{Remark}[Theorem]{Remark}
+
+
+
+    %bold topics
+    \newcommand\topic[1]{\noindent{\bf #1}}
+
+    %definition in a box with color
+    \newcommand{\defn}[1]{
+    \begin{mdframed}[backgroundcolor=blue!05] #1
+    \end{mdframed}
+    }
+
+    %hint command
+    \newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+    % here is highlighted/colored text
+    \newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+    \newcommand{\hlred}[1]{\textcolor{red}{#1}}
+    \newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+    \newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+    \newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+    %This will put a circle around something.
+    \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+                \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+    % Commands for abstract algebra
+
+    \newcommand{\integers}{\mathbb{Z}}
+    \newcommand{\reals}{\mathbb{R}}
+    \newcommand{\complex}{\mathbb{C}}
+    \newcommand{\normal}{\triangleleft}
+    \newcommand{\rationals}{\mathbb{Q}}
+    \newcommand{\field}{\mathbb{F}}
+    \newcommand{\naturals}{\mathbb{N}}
+
+    \newcommand{\aut}[1]{{\rm Aut}(#1)}
+    \newcommand{\Ker}{{\rm Ker}\,}
+    \newcommand{\Ima}{{\rm Im}\,}
+    \newcommand{\cyclic}[1]{\langle #1 \rangle}
+    \newcommand{\isom}{\cong}
+
+    \newcommand{\NN}{\mathbb{N}}
+    \newcommand{\ZZ}{\mathbb{Z}}
+    \newcommand{\QQ}{\mathbb{Q}}
+    \newcommand{\RR}{\mathbb{R}}
+    \newcommand{\CC}{\mathbb{C}}
+    \newcommand{\FF}{\mathbb{F}}
+
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\F}{\mathbb{F}}
+
+    % my commands
+    \newcommand{\vp}{\vspace{0.15cm}\\}
+    \newcommand{\vpp}{\vspace{0.25cm}\\}
+    \newcommand{\vpn}{\vspace{0.05cm}\\}
+    \newcommand{\twom}[4]{\begin{bmatrix}#1 & #2 \\ #3 & #4\end{bmatrix}}
+    \newcommand{\rmv}[1]{\,\backslash\{#1\}}
+    \newcommand{\casi}[4]{\begin{cases}#1 & \text{ if }#2\\ #3 & \text{ if }#4\end{cases}}
+    \usepackage{changepage}
+    \usepackage{array}
+
+    \begin{document}
+
+    \section*{Homework 10}
+
+    \pagestyle{fancy}
+    \lhead{MATH 252}
+    \chead{\large{\textbf{Homework 10}}}
+    \rhead{Book section: 3.4}
+    \lfoot{}
+    \cfoot{}
+    %\rfoot{\thepage/\pageref{LastPage} }
+    \setlength{\headheight}{14pt} %added in bc warning
+
+    %}
+
+
+    \subsection*{Special Instructions}
+
+
+    Group assignment! 
+
+    \begin{itemize}
+        \item \textit{Discuss} the problems with your group and only submit one pdf for the whole group. 
+
+    \item Please collaborate on a shared Overleaf project, I will provide one where you can use the link sharing option with your colleagues. 
+
+    \item Your submissions should include detailed responses with complete well written arguments. 
+
+    \item \textbf{Everyone} in the group is responsible for understanding, solving, and proof reading the final version of the homework, but you can and should split up the ``typing" of the solutions.
+    \end{itemize}
+
+
+
+
+    \subsection*{From the textbook, Section 3.4}
+
+    \begin{enumerate}
+        %%%%%%%%%%%%%%% Exercise 1 %%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Do Exercise 1. \vp
+        In each case, determine whether the map $\theta$ is a ring homomorphism. Support your answer. 
+        \begin{enumerate}
+
+
+
+
+
+            %%%%%%%%%% Part A
+            \item $\theta: \Z_3\to \Z_{12}$, where $\theta(r)=4r$. 
+            \begin{proof}
+                We want to show that for $r,s\in \Z_3$, the following:
+                \begin{enumerate}
+                    \item $\theta(r)+\theta(s)=\theta(r+s)$
+                    \item $\theta(r)\cdot \theta(s)=\theta(r\cdot s)$.
+                \end{enumerate}
+                %%%Here!
+                \begin{equation}
+                    \theta (r)+\theta(s)=4r+4s=4(r+s)=\theta(r+s)
+                \end{equation}
+                We know that $\theta(r) = 4r$ and let $\theta(s) = 4s$, 
+                \begin{align*}
+                    \theta (r) \cdot \theta(s) = \theta(r \cdot s)\\
+                    4r \cdot 2s = \theta(4r \cdot 4s) \\ 4(r \cdot s) = \theta(4(r \cdot s)) 
+                \end{align*}
+                If we plug in $1$, 2, and 3 for $rs$ and $r,s$, we get that they're still equal.\vpp
+                Hence, $\theta$ is a \textbf{Ring homomorphism!}
+            \end{proof}
+
+
+
+
+
+
+            %%%%%%%%%% Part B
+            \item $\theta:\Z_4\to\Z_{12}$, where $\theta(r)=3r$. 
+            \begin{proof}
+                We want to show that for $r,s\in \Z_4$, the following:
+                \begin{enumerate}
+                    \item $\theta(r)+\theta(s)=\theta(r+s)$
+                    \item $\theta(r)\cdot \theta(s)=\theta(r\cdot s)$.
+                \end{enumerate}
+                First, consider that:
+                \begin{align*}
+                    \theta(r)+\theta(s)=3r+3s=3(r+s)\mod 12\\
+                    \theta(r+s)=3(r+s)\mod 12
+                \end{align*}
+                Hence, $\theta$ is a group homomorphism under addition.\vp
+                Then, consider that:
+                \begin{align*}
+                    \theta(r)\cdot \theta(s)=9rs\mod 12\\
+                    \theta(r\cdot s)=3rs\mod 12
+                \end{align*}
+                Note that for $r,s=1$, this does not hold.\vpp
+                Hence, $\theta$ is \textbf{not a ring homomorphism}.
+            \end{proof}
+            \newpage
+
+
+
+
+
+
+            %%%%%%%%%% Part C
+            \item $\theta:R\times R\to R$, where $\theta(r,s)=r+s$. 
+            \begin{proof}
+                We want to show that for $(r,s), (x,y)\in R\times R$, the following:
+                \begin{enumerate}
+                    \item $\theta(r,s)+\theta(x,y)=\theta(r+x,s+y)$
+                    \item $\theta(r,s)\cdot \theta(x,y)=\theta(rx,sy)$.
+                \end{enumerate}
+                Let $r,s,x,y\in R$. \vpp
+                %%%Addition
+
+                First, consider that:
+                \begin{align*}
+                \theta((r,s)+(p,q))=\theta(r+p,s+q)=r+q+s+q\\
+                \theta(r,s)+\theta(p,q)=(r+p)+(s+q)=r+q+s+q
+                \end{align*}
+
+                %%% Multiplication
+                Next, for multiplication, consider that 
+                \begin{align*}
+                    \theta(r,s)\cdot\theta(x,y)=(r+s)(x+y)\\
+                    \theta((r,s)\cdot(x,y))=(rx+sy)
+                \end{align*}
+                Thus, we have that $\theta(r,s)\theta(x,y)\ne\theta(rx,sy)$.\vp
+                Hence, $\theta$ is \textbf{not a ring homomorphism}.
+            \end{proof}
+
+
+
+
+
+
+            %%%%%%%%%% Part D
+            \item $\theta:R\times R\to R$, where $\theta(r,s)=rs$. 
+            \begin{proof}
+                We want to show that for $r,s\in \Z_4$, the following:
+                \begin{enumerate}
+                    \item $\theta(r,s)+\theta(x,y)=\theta(r+x,s+y)$
+                    \item $\theta(r,s)\cdot \theta(x,y)=\theta(rx,sy)$.
+                \end{enumerate}
+                Let $(r,s),(x,y)\in R$. \vpp
+                %%%Addition
+
+                First, consider that:
+                \begin{align*}
+                \theta((r,s)+(p,q))=\theta(r+p,s+q)=rs+rq+ps+pq\\
+                \theta(r,s)+\theta(p,q)=rs+pq
+                \end{align*}
+                Hence, $\theta$ is not \textbf{a ring homomorphism!}
+            \end{proof}
+
+
+
+
+
+            
+            %%%%%%%%%% Part E
+            \item $\theta: F(\R,\R)\to\R$, where $\theta(f)=f(1)$. 
+            \begin{proof}
+                We want to show that for $f,g\in \R$, the following:
+                \begin{enumerate}
+                    \item $\theta(f)+\theta(g)=\theta(f+g)$
+                    \item $\theta(f)\cdot \theta(g)=\theta(f\cdot g)$
+                \end{enumerate}
+                
+                %%%Addition
+
+                First, consider that for addition:
+                \begin{align*}
+                    \theta(f)+\theta(g)=f(1)+g(1)\\
+                    \theta(f+g)=(f+g)(1)=f(1)+g(1)
+                \end{align*}
+                
+                %%% Multiplication
+                Next, for multiplication, consider that 
+                \begin{align*}
+                    \theta(f)\cdot \theta(g)=f(1)\cdot g(1)\\
+                    \theta(f\cdot g)=(fg)(1)=f(1)\cdot g(1)
+                \end{align*}
+                Hence, $\theta$ is a \textbf{ring homomorphism!}
+            \end{proof}
+        \end{enumerate}
+
+
+
+
+        \newpage
+        %%%%%%%%%%%%%%%% Exercise 6 %%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Do Exercise 6. \vp
+        If $\theta:R\to R_1$ is a ring homomorphism and $\text{char }R = n>0$, show that $\text{char }R_1$ divides $n$.\vpp
+        \begin{align*}
+            \theta(1_R)=1_{R_1}\\
+            \theta(0_R)=0_{R_1}\\
+            \theta(n\cdot 1_R)=\theta(0_R)=0_{R_1}\\
+            \theta(1_R) + \theta(1_R)\cdots\theta(1_R)&=\theta(0_R)\\
+            &=0_{R_1}\\
+            &=n\cdot 1_{R_1}
+        \end{align*}
+        Let $m=\text{char }R_1$. Because the characteristic of $R_1$ is the smallest number such that $m\cdot 1_{R_1}=0_{R_1}$, we have that $n$ must be some multiple (possibly 1) of $m$. So for some $q\in \Z$, we have that:
+        \begin{align*}
+            qm = n
+        \end{align*}
+        Hence, $m\mid n$. \qed
+
+
+
+        %%%%%%%%%%%%%%%% Exercise 19 %%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        \item Do Exercise 19. \vpp
+        Let $\theta: R\to S$ be an onto ring homomorphism. 
+        \begin{enumerate}
+            \item If $A$ is an ideal of $R$, show that $\theta(A)=\{\theta(a)\mid a\in R\}$ is an ideal of $S$.
+            \begin{proof}
+                We want to show that $\theta(A)$ is an ideal of $S$ by showing that:
+                \begin{enumerate}
+                    \item $\theta(A)$ is a subgroup under addition
+                    \item $\theta(A)$ absorbes all values of $S$ under multiplcation.
+                \end{enumerate}
+                First, let's show the subgroup under addition property. We know that for $a_1,a_2\in A$, that $a_1+a_2=a\in A$, such that :
+                \begin{align*}
+                    \theta(a_1+a_2)=\theta(a) = s\\
+                    \theta(a_1)+\theta(a_2)=s_1+s_2=s\in S
+                \end{align*}
+                Thus, the resultant values from $\theta(A)$ are closed under addition. \vp
+                We can also show that inverses exists. For $a, -a \in A$, 
+                \begin{align*}
+                    \theta(a)+\theta(-a)=s_1+s_2\\
+                    =\theta(a-a)=\theta(0_A)=0_S=s_1+s_2
+                \end{align*}
+                Hence, additive inverses exist as well. \vp
+                Furthermore, we just know the identity exists because:
+                \begin{align*}
+                    \theta(0_A)=0_S
+                \end{align*}
+                Hence, $\theta(A)$ is a additive subgroup of $S$.\vpp
+                Now, we will show that $\theta(A)$ also has the absorption property. For $a,a_0\in A, r\in R$:
+                \begin{align*}
+                    \theta(a)\cdot\theta(r)=o\cdot s\\
+                    =\theta(a\cdot r)=\theta(a_0)=s\in \theta(A)
+                \end{align*} 
+                Thus, for an element $o\in \theta(A)$, we have that any element in $S$ multiplied by it will remain in $\theta(A)$.\vp
+                Hence, $\theta(A)$ is an ideal of $S$. 
+            \end{proof}
+            \newpage
+            
+            \item If also $\ker\theta\subseteq A$, show that $\frac{R}A\cong \frac{S}{\theta(A)}$. [\textit{Hint:} Use the isomorphism theorem where $\alpha:R\to\frac{S}{\theta(A)}$ is defined by $\alpha(r)=\theta(r)+\theta(A)$ for all $r\in R$. ]
+            \begin{proof}
+                Let
+                \begin{align*}
+                    \alpha:R\to \frac{S}{\theta(A)}
+                \end{align*}
+                Be defined as:
+                \begin{align*}
+                    \alpha(R)=\theta(r)+\theta(A)
+                \end{align*}
+                We want to show that $\alpha$ is a homomorphism, so that we can use the first isomorphism theorem to relate $\frac{R}{\ker(\alpha)}$ to $\frac{S}{\theta(A)}$.\vp
+                First, we want to show that $\alpha$ is a homomorphism.\\
+                Consider the case under addition for $x,y\in R$:
+                \begin{align*}
+                    \alpha(x)+\alpha(y) &= \theta(x)+\theta(y) + \theta(A)+\theta(A)\\
+                    &=\theta(x+y)+\theta(A)\\
+                    \alpha(x+y)&=\theta(x+y)+\theta(A)
+                \end{align*}
+                Thus, $\alpha$ fulfills the requirements for a group homomorphism under addition.\vp
+                Furthermore, let's condier the case under multiplication:
+                \begin{align*}
+                    \alpha(x)\cdot \alpha(y)&=(\theta(x)+\theta(A))\cdot(\theta(y)+\theta(A))\\
+                    &=\theta(x)\theta(y)+\theta(A)\\
+                    &=\theta(x\cdot y)+\theta(A)\\
+                    \alpha(x\cdot y)&=\theta(x\cdot y)+\theta(A)
+                \end{align*}
+                Hence, $\alpha$ is a ring homomorphism.\vpp
+                Because it is a ring homomorphism, we know via the first isomorphism theorem that:
+                \begin{align*}
+                    \frac{R}{\ker(\alpha)}\cong \text{im}(\alpha)
+                \end{align*}
+                Consider that the $\ker(\alpha)=A$. This is because for $\alpha$, we have that:
+                \begin{align*}
+                    \alpha(r)=\theta(r) + \theta(A)= \theta(A),\;\forall r\in A.
+                \end{align*}
+                Because $A$ is closed under addition, and any element in $A$ added to the coset $A$ will just result in $A$ again.\vp
+                Further consider that $\text{im}(\alpha) = \frac{S}{\theta(A)}$. Because $\theta$ is an onto function, we know that $\theta(r)$ will result in all possible values of $s\in S$.\\
+                Thus, becasue we are adding all possible values in $s$ to the coset $\theta(A)$, we end up with the set of all possible cosets, $\frac{S}{\theta(A)}$. \vpp
+                Hence, via the first isomoprhism theorem, we have:
+                \begin{align*}
+                    \frac{R}{\ker(\alpha)}\cong \frac{S}{\theta(A)}.
+                \end{align*}
+            \end{proof}
+        \end{enumerate}
+
+
+
+        \newpage
+        %%%%%%%%%%%%%%%% Exercise 22 %%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Do Exercise 22.\vp
+        Let $\theta:R\to S$ be a ring homomorphism. If $\theta(R)$ and $\ker(\theta)$ both contain no nonzero nilpotents, show that the same is true of $R$.
+        \begin{proof}
+            We want to show that if $\theta(R)$ and $\ker(\theta)$ have no nonzero nilpotents, neither does $R$. \vp
+            Consider that for the sake of contradiction that $R$ has a nonzero nilpotent.\\
+            Then, we have that for $r^n = 0$, for $r\in \R, n\in \Z$, that:
+            \begin{align*}
+                \theta(r^n)&=\theta(0_R)=0_S\\
+                &=\theta(r)^n=0_S
+            \end{align*}
+            Because $\ker(\theta)$ has no nonzero nilpotents, that must mean that $\theta(r)\ne 0$. \\
+            Therefore $\theta(r)\in\theta(R)$ is a nonzero nilpotent, because $\theta(r)^n=0_S$ for $\theta(r)\ne 0$. \vp
+            However $\theta(R)$ has no nonzero nilpotents, a contradiction. \\
+            Hence, $R$ has no nonzero nilpotents.
+        \end{proof}
+    \end{enumerate}
+
+    \end{document}

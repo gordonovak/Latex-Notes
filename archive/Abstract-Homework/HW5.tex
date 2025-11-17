@@ -1,0 +1,513 @@
+ %document class
+\documentclass[10pt,twoside]{article}
+
+%{
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\usepackage{enumitem}
+\pgfplotsset{
+	humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+	humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+	human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\br}[1]{\{ #1 \}}
+\newcommand{\brs}[2]{\{ #1 \;|\; #2 \}}
+
+%if you want to change some counters you can use the command below
+%\setcounter{section}{1}
+
+\begin{document}
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+
+\chead{\large{\textbf{Homework 03} }}
+\rhead{Book section: 0.4, 1.1}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+%}
+
+\newpage
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+\chead{\large{\textbf{Homework 05} }}
+\rhead{Book section: 2.1, 2.2}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+\section*{Homework 05}
+
+
+
+
+\subsection*{From the textbook, Section 2.1}
+
+\begin{enumerate}
+    \item From Exercise 1 (a), (c), (d). For each part:
+    \begin{itemize}
+        \item If the operation is commutative, prove it.  If it is not, then give a concrete counterexample.
+        \item If the operation has a unity identify it.  If it does not, then give a proof that it does not (say, by contradiction?).
+        \item If the operation has units, then describe them nicely as a set using good notation!
+    \end{itemize}  
+    \begin{enumerate}
+        \item $M=\mathbb{Z}; a*b = a - b$.
+        \begin{enumerate}
+            \item This is not \textbf{commutative}.
+            \begin{align*}
+                a - b &= b - a \\
+                a &= -a
+            \end{align*}
+            For all \( \mathbb{Z} \setminus \{0\} \), this does not hold true.
+            
+            \item It also does not have a \textbf{unity}.
+            \begin{align*}
+                (a - e) &= (e - a) \\
+                a &= e
+            \end{align*}
+            The unity cannot change from element to element.
+        \end{enumerate}
+        
+        \item SKIP
+        \item $M=\R; a*b=a+b-ab$.
+        \begin{enumerate}
+            \item This operation is \textbf{commutative}.
+            \begin{align*}
+                a+b-ab &= b+a-ba\\
+                -ab &= -ba\\
+                1&=1
+            \end{align*}
+            \item This operation has a \textbf{unity}\\
+                \textit{Proof:} Let $e = 0$.
+                \begin{align*}
+                    a + e - ae &= e + a - ea\\
+                    a + 0 - 0 &= a + 0 - 0\qed
+                \end{align*}
+            \item We want to find $a^{-1}\in M$ such that $a\cdot a^{-1}=e$.\\
+                \begin{align*}
+                    a + x_a - ax_a &= e\\
+                    x_a(1-a) + a &= e\\
+                    x_a = \frac{-a}{(1-a)}&
+                \end{align*}
+                So, $x_a$ above is the inverse of any given element $a$, and $x_a\in M$ because $M=\R$.
+        \end{enumerate}
+        \item $M=$ any set with $|M|\ge 2;$ $a*b=b$.
+        \begin{enumerate}
+            \item This is not \textbf{commutative}.
+            \begin{align*}
+                a*b= b \ne b*a = a
+            \end{align*}
+            For all $a\ne b$, this does not hold true.
+            \item It also does not have a \textbf{unity}.
+            \begin{align*}
+                (a * e) &= e \ne (e*a) = a
+            \end{align*}
+            The unity cannot change from element to element.
+        \end{enumerate}
+
+    \end{enumerate}
+    \pagebreak
+    \item Do Exercise 3 (a). Note that there are only four possible ways to fill in the table.  So you can simply consider each one as a separate case.  Also:  if you want some help formatting a table in \LaTeX, check out \url{https://www.overleaf.com/learn/latex/Tables} and \url{https://www.tablesgenerator.com/}
+    \begin{enumerate}
+        \item Completing table one: \vp
+                \begin{tabular}{lll}
+                    \multicolumn{1}{l|}{}  & a & b     \\\hline
+                    \multicolumn{1}{l|}{a} &   & b     \\
+                    \multicolumn{1}{l|}{b} &   & a     \\
+                \end{tabular} $\Longrightarrow$
+                \begin{tabular}{lll}
+                    \multicolumn{1}{l|}{}  & a & b     \\\hline
+                    \multicolumn{1}{l|}{a} & a & b     \\
+                    \multicolumn{1}{l|}{b} & b & a     \\
+                \end{tabular}\vp
+                This forces table one to be associative, because $(b*a)*a = (a*a)*b$, and communative, because $b*a = a*b$.
+                \item Completing table two:\vp
+                \begin{tabular}{lll}
+                    \multicolumn{1}{l|}{}  & a & b     \\\hline
+                    \multicolumn{1}{l|}{a} &   & a     \\
+                    \multicolumn{1}{l|}{b} &   & b     \\
+                \end{tabular} $\Longrightarrow$
+                \begin{tabular}{lll}
+                    \multicolumn{1}{l|}{}  & a & b     \\\hline
+                    \multicolumn{1}{l|}{a} & b & a     \\
+                    \multicolumn{1}{l|}{b} & a & b     \\
+                \end{tabular}\vp
+                Now, table two also follow the associative property, because $(a*a)*b=b=a*(a*b)$. This also satisfied communativity as $a*b = b*a$. 
+    \end{enumerate}
+    \item Do Exercise 9. Careful: do NOT assume that inverses exist since you are ONLY working in a monoid, not a group. But you do have \textit{canceling laws}! \vp
+    Assume that $a$ is left cancelable in a moniod $M$.
+    \begin{enumerate}
+        \item If $a^5=b^5$ and $a^{12} = b^{12}$, show that $a = b$.
+        \begin{proof}
+            We want to show that $a = b$. \vp
+            If $a^{12} = b^{12}$, then $a^5a^5a^2 = b^5b^5b^2$.\\
+            Because $a^5= b^5$, then $a^5a^5a^7=a^5a^5b^2$. \\
+            Thus, because $a$ is cancelable, $a^2 = b^2$.\vp
+            If $a^5 = b^5$, then $a^2a^2 a = b^2b^2 b$. \\
+            Because $a^2 = b^2$, $a^2 a^2 a = a^2 a^2 b$. \vpp
+            Hence, because $a$ is cancelable, $a = b$. 
+        \end{proof}
+        \item If $a^m = b^m$ and $a^n=b^n$ where $m$ and $n$ are relatively prime, show that $a=b$.
+        \begin{proof}
+            We want to show that $a = b$.\vp
+            Because $m$ and $n$ are relatively prime, Let $x, y\in \Z$ such that $xm + yn = 1$. \vp
+            Becuase $a^m = b^n$ and $a^m=b^m$, then, we write:
+            \begin{align*}
+                a^{xm}a^{yn}=a^{xm+yn}&=a^1\\
+                (a^m)^x(a^n)^y&=a\\
+                \text{Substitute in } b^n \;\&\; b^m &\text{ for } a^n \;\&\; a^m: \\
+                (b^m)^x(b^n)^y= b^{mx}b^{my}&=b^1=a
+            \end{align*}
+            Hence, $a=b$. 
+        \end{proof}
+    \end{enumerate}
+    \hint{Hint: $a^{24}a=a^{24}b$ implies $a=b$.}
+     
+\end{enumerate}
+
+
+\pagebreak
+\subsection*{From the textbook, Section 2.2}
+
+\begin{enumerate}
+
+\setcounter{enumi}{3}
+
+    \item From Exercise 1 (c), (e), (f), (g). If you think the given set-operation pair forms a group, then prove/verify each group axiom.  Otherwise, state explicitly which axioms fail with proof/counterexample.  
+
+    Only argue associativity for part (c). For (e),(f),(g) you do not need to argue associativity since we are using operations which we *know* are already associative!  
+
+    \begin{enumerate}
+    \item \textit{Skip}
+    \item \textit{Skip}
+    \item $G=\R;a\cdot b = a+b+1$.
+    \begin{proof}
+        We want to show that $G$ is a group.\vp
+        \underline{(G1) Closure}\vp
+        $G$ is closed because addition is closed under $\R$.\vpp
+        \underline{(G2) Associativity}
+        \begin{proof}
+            We want to show that $a*(b*c)=(a*b)*c$.
+            \begin{align*}
+                (a*b)*c&=a+b+c+2\\
+                a*(b*c)&=a+b+c+2\\
+            \end{align*}
+            Thus, $G$ is associative.
+        \end{proof}
+        \underline{(G3) Identity}
+        \begin{proof}
+            Let $e = -1$. We want to show that $a*e=e*a=a$
+            \begin{align*}
+                a*e = a + 1 - 1 = a\\
+                e*a = -1 + a + 1 = a\\
+            \end{align*}
+            Hence, $G$'s identity is -1.
+        \end{proof}
+        \underline{(G4) Inverse}
+        \begin{proof}
+            Let $a\in G$. We want to show that $\exists a^{-1}\in G$ such that $a*a^-1 = e$. 
+            \begin{align*}
+                a + a^{-1} + 1&= -1\\
+                a^{-1} &= -2 -a\in\R\\
+            \end{align*}
+            Hence, every element in $G$ has an inverse.
+        \end{proof}
+        Hence, $G$ is a group.
+        \end{proof}
+        \item \textit{Skip}
+        \item $G=\{\epsilon,(1\;2),(1\;3),(1\;4) \}$.
+        \begin{proof}
+            We want to show that $G$ is a group.\vp
+            \underline{(G1) Closure - FAILS}\vp
+            $G$ is not closed:
+            \begin{align*}
+                (1\;2)(1\;3) = (1 3 2) \notin G
+            \end{align*}
+            \underline{(G2) Associativity - FAILS}
+            $G$ fails under associativity:
+            \begin{align*}
+                (1\;2)(1\;3)\ne (1\;3)(1\;2)\\
+                (1\;3\;2)\ne(1\;2\;3)
+            \end{align*}
+    \end{proof}
+    \item $G=\{0,2,4,6\};\;(\Z_8,+)$.
+    \begin{proof}
+        We want to show that $G$ is a group.\vp
+        \underline{(G1) Closure}\vp
+        $G$ is closed under addition because the sum of two even numbers will always be even, and any even number over 8 will be reduces to an even number less than 8. Hence, $G$ is closed under addition $\Z_8$.\vpp
+        \underline{(G2) Associativity}
+        \begin{proof}
+            We want to show that $a*(b*c)=(a*b)*c$.
+            \begin{align*}
+                (a*b)*c&=(a+b+c)\mod 8\\
+                a*(b*c)&=(a+b+c)\mod 8\\
+            \end{align*}
+            Thus, $G$ is associative.
+        \end{proof}
+        \underline{(G3) Identity}
+        \begin{proof}
+            Let $e = 0$. We want to show that $a*e=e*a=a$, and $e\in G$. 
+            \begin{align*}
+                a*e = (a + 0) \mod 8= a\mod 8\\
+                e*a = (0+a)\mod 8 = a \mod 8
+            \end{align*}
+            Hence, $G$'s identity is 0.
+        \end{proof}
+        \underline{(G4) Inverse}
+        \begin{proof}
+            Let $a\in G$. We want to show that $\exists a^{-1}\in G$ such that $a*a^{-1} = e$. 
+            \begin{align*}
+                a + a^{-1} &= 0\\
+                a^{-1} &=\bar 8-a,\\
+                \text{if }a \in \Z_8, &\text{ then consider that } a \text{ is even.}\\
+                \text{Let } \bar 2 k = a. \text{ Thus, }&\bar 8 - a = \bar 2(\bar 4 - k)\in \{0,2,4,6\}.
+            \end{align*}
+            This holds because any sum of even numbers will result in another even number in mod 8.
+        \end{proof}
+        Hence, $G$ is a group.
+    \end{proof}
+    \item $G=\{16,12,8,4\}$
+    \begin{proof}
+        We want to show that $G$ is a group.\vp
+        \underline{(G1) Closure}\vp
+        $G$ is closed under multiplication, because any multiplication of two multiples of $4$ that are not divisible by $20$ will result in another multiple of 4 that is not divisible by 20.\vpp
+        This is because every number can be represented as a multiple of four:
+        \begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=4pt, partopsep=0pt]
+            \item $\overline {16} = 4\cdot \bar 4$
+            \item $\overline {12} = 3 \cdot \bar 4$
+            \item $\overline {8} = 2\cdot 4$
+            \item $\bar 4 = 1\cdot \bar 4$
+        \end{enumerate}
+        However, because 1, 2, 3, \& 4 are all coprime with 5, no multiplication between any of those numbers will result in $5\cdot \bar 4 = \overline{20}$, which means that 
+        the group is closed under the operation of multiplication in $\Z_{20}$.\newpage
+        \underline{(G2) Associativity}
+        Multiplication is associative by definition.
+        \underline{(G3) Identity}
+        \begin{proof}
+            Let $e = 16$. Therefore, we have:
+            \begin{enumerate}[itemsep=2pt, parsep=0pt, topsep=4pt, partopsep=0pt]
+                \item $\bar {16} * \bar {16} = \bar {16}$
+                \item $\bar {16} * \bar 12 = \bar 12$
+                \item $\bar {16} * \bar 8 = \bar 8$
+                \item $\bar {16} * \bar 4 = \bar 4$
+            \end{enumerate}
+        \end{proof}
+        \underline{(G4) Inverse}
+        \begin{proof}
+            Every element also has an inverse such that $a \cdot a^{-1}=16$:
+            \begin{enumerate}
+                \item $\bar {16} * \bar {16} = \bar {16}$
+                \item $\bar 8 * \bar 12 = \bar 16$
+                \item $\bar 12 * \bar 8 = \bar 16$
+                \item $\bar 4 * \bar 4 = \bar 16$
+            \end{enumerate}
+        \end{proof}
+        Hence, $G$ is a group.
+    \end{proof}
+    \end{enumerate}
+    
+    \item Do Exercise 10 (a),(b). You should assume that $a$ and $b$ are different elements!
+
+    \begin{enumerate}
+        \item If $a^4=1$ and $ab=ba^2$ in a group, show that $a= 1$.
+        \begin{proof}
+            Because this a group closed under the operation $ab=ba^2$, we know that:
+            \begin{align*}
+                ab&=ba^2\\
+                ab(a^2)&=ba^2(a^2)=b
+            \end{align*}
+            Substituting in $aba^2$ for $b$, we get:
+            \begin{align*}
+                ab&=ba^2\\
+                a(aba^2)&=ba^2\\
+                a^2ba^2\cdot a^2&=ba^2\cdot a^2\\
+                a^2ba^4&=ba^4\\
+                a^2&=1
+            \end{align*}
+        \end{proof}
+        \item If $a^6=1$ and $ab=ba^3$ in a group, show that $a^2=1$ and $ab=ba$. 
+        \begin{proof}
+            Because this group is closed under $ab=ba^3$ and $a^6=1$, we know:
+            \begin{align*}
+                ab&=ba^3\\
+                ab(a^3)&=b(a^6)=b
+            \end{align*}
+            Substituting in $aba^3$ for $b$, we get:
+            \begin{align*}
+                ab&=ba^3\\
+                a(aba^3)&=ba^3\\
+                a^2ba^3&=ba^3\\
+                a^2ba^6&=ba^6\\
+                a^2 &= 1
+            \end{align*} 
+            Then, because $a^2 = 1$, we know:
+            \begin{align*}
+                ab&=ba^3\\
+                ab&=ba(a^2)\\
+                ab&=ba
+            \end{align*}
+            Hence, $a^2=1$ and $ab=ba$. 
+        \end{proof}
+    \end{enumerate}
+    \item Do Exercise 21. 
+    \begin{enumerate}
+        \item Show that a group $G$ is abelian if and only if $(gh)^2=g^2h^2$.
+        \begin{proof}
+            We want to show that $(gh)^2=g^2h^2$.
+            $$(gh)^{-2}(gh)^2=g^2h^2(gh)^{-2}$$
+            Thus,
+            \begin{align*}
+                e&=g^2h^2h^{-1}g^{-1}h^{-1}g^{-1}\\
+                e&=g^2hg^{-1}h^{-1}g^{-1}\\
+                g&=g^2h^1g^{-1}h^{-1}\\
+                ghg&=g^2h^1\\
+                g(hg)&=g(gh)\\
+                hg&=gh
+            \end{align*}
+        \end{proof}
+        \begin{proof}
+            We want to show that if $G$ is abelian, $(gh)^2=g^2h^2$.
+            \begin{align*}
+                gh &= hg \\
+                h &= g^-1hg\\
+                e &= h^{-1}g^{-1}(hg)\\
+                e &= (hg)^{-1}(hg)\\
+                hg &= (hg)^{-1}(hg)^2\\
+                hghg &= (hg)^2\\
+                hhgg &= (hg)^2\\
+                h^2g^2&= (hg)^2
+            \end{align*}
+        \end{proof}
+    \end{enumerate}
+
+
+
+    \item Do Exercise 28. This is a bit like Exercise 9 and you will need B\'{e}zout's Identity/GCD Theorem.
+    \item Let $a$ and $b$ be elements of a group $G$. If $a^n = b^n$ and $a^m = b^m$ where $\gcd(m,n) = 1$, show that $a=b$. 
+        \begin{proof}
+            We want to show that $a = b$.\vp
+            Because $\gcd(m,n)=1$, $m$ and $n$ are relatively prime, Let $x, y\in \Z$ such that $xm + yn = 1$. \vp
+            Becuase $a^m = b^n$ and $a^m=b^m$, then, we write:
+            \begin{align*}
+                a^{xm}a^{yn}=a^{xm+yn}&=a^1\\
+                (a^m)^x(a^n)^y&=a\\
+                \text{Substitute in } b^n \;\&\; b^m &\text{ for } a^n \;\&\; a^m: \\
+                (b^m)^x(b^n)^y= b^{mx}b^{my}&=b^1=a
+            \end{align*}
+            Hence, $a=b$. 
+        \end{proof}
+\end{enumerate}
+
+
+\end{document}

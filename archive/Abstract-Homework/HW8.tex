@@ -1,0 +1,2547 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+%{
+
+% Packages to make things pretty
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[mathscr]{euscript}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{multicol}
+\usepackage{mathrsfs} %for right font for power set P
+\everymath{\displaystyle} %makes all math display style (bigger and easier to read)
+\usepackage[normalem]{ulem}
+\usepackage{remreset}
+\usepackage{titlesec}
+\usepackage{changepage}
+
+\makeatletter
+  \@removefromreset{subsection}{section}
+\makeatother
+%\renewcommand{\thesection}{}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{}{0pt}{}
+\renewcommand{\thesubsection}{Problem \arabic{subsection}}
+%\newcommand{\HW}[1]{\section*{#1}}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{}{0pt}{}
+
+% Theorem Environments
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}[section]{Conjecture}
+\newtheorem*{definition}{Definition}
+\newtheorem*{claim}{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newcounter{tmp}
+\newtheorem{question}[theorem]{Question}
+\newtheorem*{answer}{Answer}
+\newtheorem{challenge}[section]{Challenge}
+\newtheorem*{postulate}{Postulate}
+
+% These are a bunch of my own personal macros, i.e. command shortcuts I've come up with for common things I use frequently. Feel free to use or ignore them!
+\newcommand{\lcu}{\left\lbrace}
+\newcommand{\rcu}{\right\rbrace}
+\newcommand{\lbr}{\left[}
+\newcommand{\rbr}{\right]}
+\newcommand{\lpa}{\left(}
+\newcommand{\rpa}{\right)}
+\newcommand{\lan}{\left\langle}
+\newcommand{\ran}{\right\rangle}
+\newcommand{\bfi}{\mathbf{i}}
+\newcommand{\bfj}{\mathbf{j}}
+\newcommand{\bfk}{\mathbf{k}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Epsilon}{\mathcal{E}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\Ep}{\mathcal{E}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\FGR}{{\bf First attempt grade: R}}
+\newcommand{\SGR}{{\bf Second attempt grade: R}}
+\newcommand{\TGR}{{\bf Third attempt grade: R}}
+\newcommand{\BGR}{{\bf Bonus attempt grade: R}}
+\newcommand{\FR}{{\bf Final grade:R}}
+\newcommand{\FGM}{{\bf Final grade: M}}
+
+% Custom commands for spacing
+\newcommand{\vp}{{\vspace{0.15cm}\\}}
+\newcommand{\vpp}{{\vspace{0.25cm}\\}}
+% Custom Commands for brackets
+\newcommand{\br}[1]{\{ #1 \}}
+% Custom Commands for limits
+\newcommand{\dlim}{\displaystyle\lim}
+\newcommand{\tlim}{\textstyle\lim}
+\newcommand{\dlimx}[1]{\displaystyle\lim_{x\to #1}}
+\newcommand{\tlimx}[1]{\textstyle\lim_{x\to #1}}
+\newcommand{\dlimn}[1]{\displaystyle\lim_{n\to #1}}
+\newcommand{\tlimn}[1]{\textstyle\lim_{n\to #1}}
+
+\title{\textbf{Math 244 HW Novak}}
+\author{Gordon Novak}
+\date{\today}
+
+%%*****NTS: Make the problems subsections for easier scrolling.
+%%*****NTS: Carry forward the section/subsection pattern.
+
+
+
+% Actual start of the document
+\begin{document}
+
+\maketitle
+%}
+
+%% HW-1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (Good)
+\section*{HW1: First attempt due \textbf{Wednesday 2/12}}
+{\it Note: For this first homework assignment, I am not yet holding you to any rigorous proof-writing standards. These will come later.}
+\subsection*{Problem 1} \FGR (part d needs resubmitting)\\
+\FGM\\
+A subset $A$ of $\R$ is called a {\bf $G_\delta$-set} ({\it pronounced ``G-delta-set"}) if $A$ can be written as a countable intersection of open intervals. In other words, $A$ is a $G_\delta$-set if there exist countably-many open intervals $U_n$ such that
+	\[A = \bigcap_{n=1}^\infty U_n. \]
+Notice that this includes intersections of finitely many open intervals.
+	\begin{enumerate}[label=(\alph*)]
+	\item Show that $(3,10)$ is a $G_\delta$-set.\\
+    
+    		$Proof:$ Let $A = (3,10)$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n. $\\
+            \begin{gather*}
+                \text{Let } U_n = (4-n, \; 9+n) \\
+                \text{Let }k\in \N, \text{ s.t. } k>n. \\
+                \text{Now we will evaluate the right \& left bounds for } U_n\;\&\;U_k:\\
+                \text{Right bound: }4-n>4-k\Leftrightarrow n<k\\ 
+                \text{Left bound: }9+n < 9+k\Leftrightarrow n < k\\
+                \text{Because the right bound }  U_n \text{ is always greater than the } k \text{ variant}\\
+                \text{and the respective left bound is less than the } k \text{ variant, for any } n \text{  and } k,\\
+                U_n \subset U_k. \\
+                \text{And because the intersection of any set and its subset is equal to the subset, }\\
+                U_n\cap U_k = U_n\\
+                \text{It follows that for the minimum } n \text{ in } U_n,\; U_{n_\text{min}}\subseteq U_n\\ \text{because for any } n \in \N \text{ less than another integer, } U_n \text{ is a subset of said integer's set.} \\
+                \text{So }\bigcap_{n=1}^\infty U_n = U_{n_\text{min}}. \text{ Because the minimum of } n \text{ is } 1,\\
+                \text{we can write }A=\bigcap_{n=1}^\infty U_n=U_{n_\text{min}}=(3,10).\\
+                \text{Therefore } A \text{ is a } G_\delta \text{-set}.\;\qed
+            \end{gather*}
+
+            //This works. It is very overcomplicated, in my opinion. Way easier is
+                \[(3,10) = (2,10) \cap (3,11). \]
+
+            Also, I would rather not have your work centered in a gather environment. I'm fine with each line being separated, but just write it as regular text with math-mode where appropriate.
+
+            Also also, you can use the proof environment \verb| \begin{proof}  \end{proof} | .//
+		
+
+        %\pagebreak
+		
+		
+	\item Show that $[3,10]$ is a $G_\delta$-set.\\
+                $Proof:$ Let $A = (3,10)$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n$
+		\begin{gather*}
+		    \text{Let } U_n = (3-\frac{1}n, \; 10+\frac{1}n) \\
+                \text{Let }k\in \N, \text{ s.t. } k<n. \\
+                \text{Now we will evaluate the right \& left bounds for } U_n\;\&\;U_k:\\
+                \text{Right bound: }3-\frac{1}n>3-\frac{1}k\Leftrightarrow n<k\\ 
+                \text{Left bound: }10+\frac{1}n > 10+\frac{1}k\Leftrightarrow n< k\\
+                \text{Because the right bound }  U_n \text{ is always greater than the } k \text{ variant}\\
+                \text{and the respective left bound is less than the } k \text{ variant, for any } n \text{  and } k,\\
+                U_n \subset U_k. \\
+                \text{And because the intersection of any set and its subset is equal to the subset, }\\
+                U_n\cap U_k = U_n\\
+                \text{It follows that for all } n \text{ in } U_n,\; \lim_{n\rightarrow \infty} U_n \subseteq U_n,\\
+                \text{So } U_\infty \cap U_n = U_\infty, \text{which follows that } \bigcap_{n=1}^\infty U_n = \lim_{n\rightarrow \infty} U_n.\\
+                \text{So we can write }A=\bigcap_{n=1}^\infty U_n=\lim_{n\rightarrow \infty} U_n=[3,10].\\
+                \text{Therefore } A = [3,10] \text{ is a } G_\delta \text{-set}.\;\qed
+		\end{gather*}
+
+        //Correct! For the time being, don't use limits in your arguments. We haven't defined what a limit is yet. For this HW it's fine.//
+		
+		
+		\item Show that $\{1\}$ is a $G_\delta$-set.\\
+		$Proof:$ Let $A = {1}$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n$ 
+
+        
+            \begin{gather*}
+                \text{Let } U_n = (1-\frac{1}n, \; 1+\frac{1}n) \\
+                \text{Let }k\in \N, \text{ s.t. } k<n. \\
+                \text{Now we will evaluate the right \& left bounds for } U_n\;\&\;U_k:\\
+                \text{Because the right bound }  U_n \text{ is always greater than the } k \text{ variant}\\
+                \text{and the respective left bound is less than the } k \text{ variant, for any } n \text{  and } k,\\
+                U_n \subset U_k. \\
+                \text{And because the intersection of any set and its subset is equal to the subset, }\\
+                U_n\cap U_k = U_n\\
+                \text{It follows that for all } n \text{ in } U_n,\; \lim_{n\rightarrow \infty} U_n \subseteq U_n,\\
+                \text{So } U_\infty \cap U_n = U_\infty, \text{which follows that } \bigcap_{n=1}^\infty U_n = \lim_{n\rightarrow \infty} U_n.\\
+                \text{So we can write }A=\bigcap_{n=1}^\infty U_n=\lim_{n\rightarrow \infty} U_n=[1,1] = \{1\}.\\
+                \text{Therefore } A = \{1\} \text{ is a } G_\delta \text{-set}.\;\qed
+		\end{gather*}
+
+        //Correct!//
+	%\pagebreak
+		
+	\item Is $\emptyset$ a $G_\delta$-set? Why or why not?\\
+		$Proof:$ Let $A = \emptyset$. WTS $A$ can be written as $A =\bigcap_{n=1}^\infty U_n$
+
+        \begin{gather*}
+            \text{First, we need to establish that }\blue{\emptyset\in \R.} \text{//The empty set is not an element of } \R, \text{ it's a subset. So this notation is incorrect.//}\\
+            \text{Let } U_n=(n,n). \text{//This set is already the empty set, and is therefore not an open interval.//}\\
+            \text{The open interval between any integer and itself is } =\emptyset.\\
+            \text{Therefore } U_n=\emptyset.\\
+            \text{Additionally, the intersection between the empty sets and all}\\
+            \text{other sets is equivalent to the empty set, so therefore for any }n,\\
+            U_{n_1}\cap U_{n_2}=\emptyset\cap U_{n_2}=\emptyset.\\
+            \text{Hence, } \bigcap_{n=1}^\infty U_n = \emptyset.\\
+            \text{Therefore, } A=\bigcap_{n=1}^\infty U_n = \emptyset.\\
+            A=\emptyset \text{ is a } G_\delta \text{-set.}\;\qed
+        \end{gather*}
+
+        //This doesn't quite work. Hint: Maybe you can do this using only finitely many open intervals.//
+        \subsubsection*{Second Attempt}
+        \begin{proof}
+            $\text{Let } U_n=(n,n+1).\;\;\text{Therefore: }$
+            $\bigcap_{n=1}^\infty U_n = (1, 2) \cap(2,3)\;\cap\;...$\\
+            $(1,2)\cap(2,3)=\emptyset. \text{ The intersection between empty set and any other set is the empty set.} $\\
+            Therefore, $\emptyset\cap\bigcap_{n=3}^\infty U_n=\emptyset$. Because $A=\emptyset=\emptyset\cap\bigcap_{n=3}^\infty U_n=\bigcap_{n=1}^\infty U_n$, A is a $G_\delta\text{-set}$
+        \end{proof}
+
+        //Correct!//
+		
+
+        //For second attempts, I'd like you to create a sub-subsection for each part that needs to be redone. This should be directly under the work that needs resubmitting. I've included them in your draft for you this first time, but please add them yourself moving forward. Same goes for third attempts and token-reattampts.//
+        
+        
+
+	\end{enumerate}
+\pagebreak
+
+
+
+
+%% HW-2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (Good)
+\section*{HW2: First attempt due \textbf{Friday 2/14}}
+\subsection*{Problem 2} \FGR\\
+\SGR\\
+\TGR\\
+\FGM\\
+Let $f:\R \to \R$ be the function defined by
+   	\[f(x) = x^3. \]
+Prove that $f$ is onto.
+	\begin{proof}
+        $\text{WTS that there exists a } 1-1 \text{ correspondence between }f(x) \;\&\;x^3.$ //This WTS is too strong. We're only showing that $f$ is onto. Yes, it happens to be a bijection, but that fact is not needed. Nor does your proof actually acknowledge it.
+        
+        Additionally, your WTS is too vague (weird, too strong and too vague). What I meant by that is, tailor your WTS to the quantified version of the definition. In this case, ``Let $y \in \R$. We want to show that $\exists x \in \R$ such that $f(x) = y$.// \\
+        Let $x^3=y$ for $y\in\R$. //This ``let'' is not valid, since you're starting with the statement we intend to prove. That technically means you're assuming the statement is true in order to prove it's true, which makes no sense.//\\
+        Therefore, $\sqrt[3]{y}=x$. This means that any $x$ can be linked (corresponded) to a rational //Rational? We're in the reals here, lots of these values can be irrational.// number $\sqrt[3]y$.\\
+        Plugging into the function gives: $f(\sqrt[3]{y})=y$\\
+        Because for any and every $\R$ $y$, we can find an $x$ that equals $\sqrt[3]y$.\\
+        So, $f(x)=x^3$ must be onto.
+
+        //Your idea is right. There's a major structural issue in the proof.//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+
+    \begin{proof}
+
+        Let $y\in\R$ //period//\\
+        We want to show that $\blue{\forall y} \in \R$, //Don't requantify $y$. It's already been ``let'', and quantifying it a second time techincally reinstatiates it as a new arbitrary $y$.// $\exists x\in \R$ s.t. //Please don't abbreviate ``such that'' when typing.// \blue{$f(x)=y=x^3$.} //Just $f(x) = y$, or $x^3 = y$.//
+        $$\blue{x^3=y}$$
+        //I would cut this line. It's part of your scratch work, as in you started with the conclusion we wanted and worked backwards to the correct $x$. In the proof, we pretend we knew the correct $x$ all along, introduce it to the reader out of the clear blue sky, and then demonstrate that it is the correct $x$.//
+        $$\blue{x=\sqrt[3]y\text{ (Defined for all }\R )}$$
+        //Better: ``Consider $x = \sqrt[3]{y}$.'' You could then point out to the reader that this number is well-defined and real if you want.//
+        
+        \blue{Therefore,} //``Then'' is probably a better word here.// plugging $x$ into $f(x)$ gives $f(\sqrt[3]y)=y$.\\
+        Hence, \blue{because for all $f(x)$, there exists an $x$ such that $f(x)=y$ for $y\in\R$,} //This wording is a little off, but more importantly unnecessary. You can just say ``Hence $f$ is onto.'' since we've shown the WTS.//\\
+        $f(x)$ is onto.
+	\end{proof}
+
+    //Much closer! Still some writing to clean up. For third submissions, I encourage you to talk to me in student hours to help be sure you'll get an M without needing to spend a token.//
+
+    \subsubsection*{Third Attempt}
+
+    \begin{proof}
+        Let $y\in\R$.\\
+        We want to show that $\blue{\forall y}$, //Seriously, don't requantify after ``letting.''// $\exists x\in \R$ s.t. //Don't abbreviate ``such that'' when typing.// $f(x)=y$.
+        $$\text{Consider }x = \sqrt[3]{y} //\text{period}//$$
+        $x$ is Well-Defined and Real for all $y$.\\
+        Plugging $x$ into $f(x)$ gives $f(\sqrt[3]y)=y$.\\
+        Hence, $f(x)$ is onto.
+
+        //I don't like doing this, but this had enough writing issues that I can't give it an M.
+
+        If you opt to use a token, your re-attempt is due Friday, 3/07. I highly recommend asking me about the requantifying thing, because I don't want it to be the reason you use up your tokens.//
+    \end{proof}
+
+    \subsubsection*{Token Attempt}
+
+    \begin{proof}
+        Let $y\in\R$.\\
+        We want to show that $\exists x\in \R$ such that $f(x)=y$.
+        $$\text{Consider }x = \sqrt[3]{y}.$$
+        $x$ is Well-Defined and Real for all $y$.\\
+        Plugging $x$ into $f(x)$ gives $f(\sqrt[3]y)=y$.\\
+        Hence, $f(x)$ is onto.
+    \end{proof}
+
+\subsection*{Problem 3} \FGR\\
+\SGR\\
+\FGM\\
+Let $A$, $B$, and $C$ be sets, and let $f:A\to B$ and $g:B\to C$ be functions. Assume that $f$ and $g$ are both onto. Prove that the composite function $(g\circ f):A\to C$ is onto. ({\it Reminder: $(g\circ f) (a) = g(f(a))$.})
+	\begin{proof}
+	We want to show that for every $a\in A$, there exists a $c\in C$ for $(g\circ f)(a)=c.$ (1-1 Correspondence) //Two things. First, again the 1-1 correspondence thing is too strong. Much more importantly though, you have the definition of onto exactly backwards. What we want is that $\forall c\in C$, $\exists a \in A$ such that $(g\circ f)(a) = c$. So start with ``Let $c\in C$.'' Then write the correct WTS.//\\
+    $f(a)=b$ is onto. //$f(a) = b$ is an equation. Equations can't be onto, functions can. So $f$ is the thing that's onto.// So for every $a\in A$, there is a $b\in B$.\\
+    $g(b)=c$ is onto. So for every $b\in B$, there is a $c\in C$.\\
+    //In both of the preceding sentences, you have the definition of onto backwards. On top of that, the order of the sentences is also backwards. Revisit this once you have your WTS corrected.//
+    Therefore, for any input function into $g$, the function is regardless onto.
+    Because $f(a)=b$, and $g(b) = c$, we can substitute:\\
+    $g(f(a))= c$.\\
+    Because $g(x)=y$ is onto, so is $g(f(a))=b$.\\
+    And because $g(f(a))=(g\circ f)(a)$,\\ 
+    $(g\circ f )(a)$ must also be onto.
+
+    //Hopefully addressing the major structural issue will fix everything else.//
+	\end{proof}
+
+\subsubsection*{Second Attempt}
+    \begin{proof}
+        Let $c\in C$. \\
+        We want to show that $\blue{\forall c\in C,}\exists a\in A$ //Again, don't requantify after ``letting''.// s.t. $(g\circ f)(a)=c$.\\
+        We know that:
+        $$\forall b\in B, \exists a\in A \text{ s.t. } f(a)=b$$
+        And we know that:
+        $$\forall c\in C, \exists b\in B \text{ s.t. } g(b)=c$$
+
+        //You have this argument exactly backwards. We're starting with a given $c\in C$. Use $g$ to find the $b\in B$ that hits $c$. Then use $f$ to find the $a\in A$ that hits $b$. Doing this the other way around doesn't work, since we need to know what $b$ we're trying to hit with $f$.//
+
+        Therefore, because we know that $f(a)=b$, we can substitute in $f(a)$ such that:
+        $$g(f(a))=c$$
+        And because $\forall b\in B, \exists a\in A \text{ s.t. } f(a)=b$ and $\forall c\in C, \exists b\in B \text{ s.t. } g(b)=c$,
+        $$\forall c\in C, \exists a\in A \text{ s.t. } g(f(a))=c.$$
+        Therefore, $(g\circ f)(a): A\rightarrow C$ is onto. //This entire concluding paragraph will be completely changed once you address the backwards-issue.//
+    \end{proof}
+
+\subsubsection*{Third Attempt}
+    \begin{proof}
+        Let $c\in C$. \\
+        We want to show that $\forall c, \;\exists a\in A$ such that $(g\circ f)(a)=c$.\\
+        We know that:
+        $$\exists b\in B \text{ such that } g(b)=c$$
+        And we know that:
+        $$\exists a\in A \text{ such that } f(a)=b$$
+        Therefore, because we know that $g(b)=c$, and $f(a)=b$, we can substitute in $f(a)$ such that:
+        $$g(f(a))=c$$
+        We consequently know that for any arbitrary $c,\;\exists a$ such that $g(f(a))=c$. \\
+        Hence, $(g\circ f):A\rightarrow C$ is onto.
+
+        //This has the same issues as the previous problem. Tell you what, I'll count this one as good enough since you'll get a chance to go over these issues via the other problem.//
+    \end{proof}
+\pagebreak
+
+
+    
+
+%% HW-3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (Good)
+\section{HW3: First attempt due \textbf{Monday 2/17}}
+    
+%%%% Problem 4 %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Problem 4} 
+    \FGR (part b)\\
+    \SGR (b)\\
+    \FGM\\
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that the set $A = \lcu \frac{1}{n} : n\in \N \rcu$ is bounded.
+        \begin{proof}
+            We want to show that $\exists M\in \R$ s.t. $\forall n\in\N, M\ge \left |\frac{1}n\right  |$.\\
+            First, we want to show that $n=1$ has the maximum value for $\frac{1}n$.\\
+            $\frac{1}n>\frac{1}{n+1}\Leftrightarrow n+1>n$. Therefore, the minimum value of $n$ will have the max $\frac{1}n$.\\
+            $n_\text{min}=1$ because $n\in\N$. \\
+            Let $M=2$. $M>\frac{1}n$. \\
+            Therefore, $A=\left \{ \frac{1}n:n\in\N\right \}$ is bounded.
+
+            //Correct!//
+        \end{proof}
+
+%%%% First Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Prove that $\Q$ is unbounded.
+        \begin{proof}
+            Let $A=\{q: \forall q\in \Q \}$.//Why? You never even use the symbol $A$ in the actual proof.// We want to show that $\forall M\in\R$, $\exists q\in\Q$ s.t.//Don't abbreviate ``such that'' when typing.// $|q| > M$. //Better form for a WTS: Give yourself the starting variables first. In this case:
+            
+            ``Let $M\in \R$. We want to show that $\exists q\in \Q$ such that $|q|>M$.''//\\
+            Because $\Z \subseteq \Q$, \blue{$\forall z\in\Z, \exists q\in \Q $ s.t. $q=z$.} //That's slightly awkward wording. If you're going to include this statement, better phrasing would be ``$\forall z \in \Z$, $z\in \Q$.''//\\Via the A.P.,//This is fine to abbreviate!// $\exists z > M$, and consequently $\exists q > M$. \\
+            Therefore $\exists q > |M|$ and $\exists q$ s.t.//again// $|q|>M$.\\
+            Hence, $\Q$ is unbounded.
+
+            //I'm going to propose alternate wording for the main part of the proof (as in everything after the WTS). It will avoid having to give two different names to the same quantity, and it will more accurately cite the A.P.
+
+            ``By the A.P., $\exists n \in \N$ such that $n>M$. Since $\N \subseteq \Q$, $n\in \Q$. Hence $\Q$ is unbounded.//
+        \end{proof}
+
+%%%% Second Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsubsection*{Second Attempt (Part b)}
+        \begin{proof}
+            Let $M\in\R$. We want to show that $\exists n\in\Q$ such that $|n| > M$.\\
+            \blue{Let $n\in\N$.} //Cut this. When you ``let'', the variable is arbitrary. We don't want an arbitrary $n$, we want the specific $n$ from the A.P.//
+            
+            Via the A.P. $\exists n$ such that $n>M$, and consequently $|n| > M$. \\
+            Since $\N \subseteq \Q, $ $n\in\Q$.\\
+            Hence, $\Q$ is unbounded.
+
+            //One tiny edit left!//
+        \end{proof}
+
+%%%% Third Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsubsection*{Third Attempt (Part b)}
+        \begin{proof}
+            Let $M\in\R$. We want to show that $\exists n\in\Q$ such that $|n| > M$.\\
+            Via the A.P. $\exists n\in\N$ such that $n>M$, and consequently $|n| > M$. \\
+            Since $\N \subseteq \Q, $ $n\in\Q$.\\
+            Hence, $\Q$ is unbounded.
+        \end{proof}
+    \end{enumerate}
+           
+    
+
+%%%% Problem 5 %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Problem 5} \FGR (both parts)\\
+    \SGR (b)\\
+    \FGM\\
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that,  $\forall a,b,c\in \R$, $|a+b+c| \leq |a| + |b| + |c|$. ({\it Hint: Use the triangle inequality twice.})
+
+%%%% First Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \begin{proof}
+            Let $\forall a,b,c\in \R$. //Just ``Let'', not ``Let $\forall$''. Also, include a WTS here.//\\
+            Via. the \textbf{Tri. Ineq, } $$|a+b+c|\le|a+b|+|c|$$
+            Via. the \textbf{Tri. Ineq, } $$|a+b|\le|a|+|b|$$
+            Then, add $|c|$ to both sides to find:
+            $$|a+b|+|c|\le |a|+|b|+|c|$$
+            Therefore:
+            $$|a+b+c|\le|a+b|+|c|\le |a|+|b|+|c|$$
+            Hence,  $|a+b+c|\le|a|+|b|+|c|$.
+
+            //Correct! Again, I'm going to give you some cleaner wording so you can get used to being more concise. Plus it will show you a cool function in \LaTeX.
+
+            ``Let $a,b,c\in \R$. We want to show that $|a+b+c| \leq |a| + |b| + |c|$.
+
+            We have that
+                \begin{align*}
+                |a+b+c| &\leq |a+b| + |c| \text{ by the triangle inequality}\\
+                    &\leq |a| + |b| + |c| \text{ by the triangle inequality.}''
+                \end{align*}
+
+            The align* environment comes in really handy if you have a really long string of algebra to do.//
+            
+%%%% Second Attempt (a)%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \end{proof}
+            \subsubsection*{Second Attempt (part a)}
+            \begin{proof}
+                Let $a,b,c\in\R$. We want to show that $|a+b+c|\le |a+b+c|$.
+                \begin{align*}
+                    |a+b+c| &\le|a+b|+|c|\text{ via the }\textbf{Triangle Inequality}\\
+                            &\le|a|+|b|+|c|\text{ via the}\textbf{ Triangle Inequality}.
+                \end{align*}
+                Hence,
+                $$|a+b+c|\le|a|+|b|+|c|.$$
+
+                //Correct!//
+            \end{proof}
+                
+
+%%%% First Attempt (b)%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \item Prove the \textbf{Reverse Triangle Inequality}, that is, prove that $\forall a,b\in \R$, $|a-b| \geq ||a| - |b||$.\\ ({\it Hint: Start from $|a|$, add a strategic zero, and use the regular Triangle Inequality.})
+            \begin{proof}
+                Let $\forall a,b\in\R$. //Again, just ``let.''//
+                First,
+                $$|a-a|=|a|-|a|=0$$
+                //That previous line really isn't needed.//
+                $$|b|=|b+0|=|b+(a-a)|$$
+                Via. \textbf{Tri. Ineq,}
+                $$|b - a + a|\le|b-a| + |a|$$
+                $$|b - a + a| - |a| \le |b-a|$$
+                $$|b - (0)| - |a| \le |b-a|$$
+                $$|b|-|a|\le|b-a|$$
+                //You can make all the preceding algebra a lot more concise.
+                    \[``|b| = |b-a +a| \leq |b-a| + |a|,\]
+                and therefore
+                    \[|b|-|a| \leq |b-a|.''// \]
+                    
+                $$||b|-|a||\le|b-a|$$
+                //Problem. The last line there does not follow from the previous. In simpler terms, just because $x \leq |y|$, it does not follow that $|x| \leq |y|$ (take for example $x=-3$ and $y=2$).
+
+                Instead, do the same thing with $|a|$ that you did with $|b|$, then use Theorem 3 part 3 from the Axioms of $\R$ handout to finish the proof.//
+
+                
+                Therefore the last equation is logically equivalent to:
+                $$|a-b| \geq ||a| - |b||$$
+
+                //You're on the right track!//
+            \end{proof}
+
+%%%% Second Attempt (b)%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \subsubsection*{Second Attempt (Part b)}
+            \begin{proof}
+                Let $a,b,c\in\R$. //$c$?// We want to show that $|a-b| \geq ||a| - |b||$.
+                \begin{align*}
+                    |b| &=|b+0|=|b+(a-a)|\\
+                    |b+a-a| &\le |b-a|+|a| \text{ via. the }\textbf{Tri. Ineq}\\
+                    |b|-|a| &\le |b-a| = |a-b| \textbf{ (Eq. 1)}
+                \end{align*}
+                Then we will do the same thing with $a$:
+                \begin{align*}
+                    |a| &=|a+0|=|a+(b-b)|\\
+                    |a+b-b| &\le |a-b|+|b|\\
+                    |a|-|b| &\le |a-b| \textbf{ (Eq. 2)}
+                \end{align*}
+                Via. \textbf{Eq. 1 \& Eq. 2}, we see that both $|a|-|b|$ and $-(|a|-|b|)$ are $\le |a-b|$. \\
+                Therefore, via. the Axioms of $\R$, 
+                $$||a|-|b||\le |a-b| //\text{period}//$$
+
+                //Two tiny edits!//
+            \end{proof}
+
+%%%% Third Attempt (b)%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \subsubsection*{Third Attempt (Part b)}
+            \begin{proof}
+                Let $a,b\in\R$. We want to show that $|a-b| \geq ||a| - |b||$.
+                \begin{align*}
+                    |b| &=|b+0|=|b+(a-a)|\\
+                    |b+a-a| &\le |b-a|+|a| \text{ via. the }\textbf{Tri. Ineq}\\
+                    |b|-|a| &\le |b-a| = |a-b| \textbf{ (Eq. 1)}
+                \end{align*}
+                Then we will do the same thing with $a$:
+                \begin{align*}
+                    |a| &=|a+0|=|a+(b-b)|\\
+                    |a+b-b| &\le |a-b|+|b|\\
+                    |a|-|b| &\le |a-b| \textbf{ (Eq. 2)}
+                \end{align*}
+                Via. \textbf{Eq. 1 \& Eq. 2}, we see that both $|a|-|b|$ and $-(|a|-|b|)$ are $\le |a-b|$. \\
+                Therefore, via. the Axioms of $\R$, 
+                $$||a|-|b||\le |a-b|.$$
+
+            \end{proof}
+        \end{enumerate}
+
+
+\pagebreak
+
+
+%% HW-4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress)
+\section*{HW4: First attempt due \textbf{Wednesday 2/19}}
+
+%%%% Problem 6 %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection*{Problem 6} \FGR\\
+    \SGR\\
+    \TGR\\
+    Prove that $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa = (0,2)$.
+        \begin{proof}
+        Let $n\in\N \text{ for }\frac{1}n\le a < 2$ (equivalent to $a\in\bigcup_{n=1}^\infty \lbr \frac{1}{n},2\rpa$). //Since $n$ is being used as the indexing variable for the big union, it's bad form to use it as a variable outside of that context in the same proof.//\\
+        We want to show that: $$\frac{1}n\le a <2 \Leftrightarrow 0<a<2$$
+        //There's a big problem with your setup, and it is that the statement $\frac{1}n\le a <2 \Leftrightarrow 0<a<2$ is not true. As in, those true statements are not logically equivalent unless the $n$ is subject to a $\forall$. Which it isn't, you ``let'' it so $n$ is currently an arbitrary value. Not all values simultaneously, a specific unknown value.
+
+        Ultimately the entire proof being based on this incorrect equivalency makes it invalid.//
+        
+        First, we know:
+        $$\frac{1}n\le a$$ $$1\le a\cdot n$$
+        Because $a\cdot n$ is positive, we know that $a $ must be $> 0$.
+        Therefore, we can rewrite this inequality as:
+        $$0<a<2$$
+        Therefore, $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \Leftrightarrow \frac{1}n\le a<2 \Leftrightarrow 0<a<2 \Leftrightarrow (0,2)$.\\
+        Hence, $\bigcup_{n=1}^\infty \lbr \frac{1}{n},2\rpa =(0,2)$. 
+
+        //Instead, follow the set-equality proof shell. You're going to prove, one at a time, that the two sets are subsets of each other. Each subset proof will follow the subset proof shell.//
+        \end{proof}
+
+%%%% Second Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsubsection*{Second Attempt}
+        \begin{proof}
+            We want to show that $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa = (0,2)$ by showing that each set is a subset of the other.
+            \underline{$\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \subseteq (0,2)$}\vp
+            We want to show that if $x\in  \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa, x\in (0,2)$.\vp
+            Because \blue{$\forall n\in \N, \frac{1}n>0,$ and $2>x>\frac{1}n>0$, for any $x$,} //You still haven't actually established that $x$ is bigger than a specific $1/n$.
+            
+            Here's the idea. $x$ is in a big union of intervals, right? So $x$ must be in at least one of those intervals, right? In other words, since $x \in  \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa$, $\exists N \in \N$ such that $x \in [1/N,2)$. Then justify that $x$ is positive.//
+            
+            $x$ fits within the interval $(0,2)$.\\
+            Hence, $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \subseteq (0,2)$.\\\vp
+            \underline{$\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \supseteq (0,2)$}\vp
+            We want to show that if $x\in  (0,2), x\in \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa$.\vp
+            Via. the A.P. we know that $\blue{\forall n \in \N}$: //Wrong quantifier. The A.P. gives us that $\exists N \in \N$. Also, since the symbol $n$ is already being used to index the big union, it's best to use a different symbol, like $N$, to refer to the specific value you produce and use.//
+            
+            $$x\cdot n > 1 \Leftrightarrow x > \frac{1}n.$$
+            And because of the interval, we know $x<2$.\\
+            Hence, $\forall x \in (0,2), x\in \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa$.\\\vp
+            Hence, $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa = (0,2)$.
+
+            //You're almost there!//
+        \end{proof}
+
+%%%% Third Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsubsection*{Third Attempt}
+        \begin{proof}
+            We want to show that $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa = (0,2)$ by showing that each set is a subset of the other.
+            \underline{$\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \subseteq (0,2)$}\vp
+            We want to show that if $x\in  \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa, x\in (0,2)$. \blue{Let $N\in\N$} //You actually don't want to give yourself an arbitrary $N$ here. You're calling a specific one into existence soon anyway.//
+            \vp
+            Let $x\in\bigcup_{n=1}^\infty \lbr \frac{1}n, 2 \rpa$. Therefore, there exists \blue{a union for $N\in\N$} //I don't understand how you're using the word ``union'' here. It'd probably be easiest to discuss this in person.//
+            
+            such that $x\in\lbr \frac{1}N, 2\rpa.$\\
+            Because $N>0$, $\frac{1}N > 0$. \\
+            Therefore, because $x\in \lbr \frac{1}N, 2\rpa$,  $x\ge \frac{1}N > 0 \Leftrightarrow x>0$.\\
+            And because \blue{for all unions,} //Again.// $x<2$, 
+            $$2>x>0.$$            
+            Hence, for any $x$, $x$ fits within the interval $(0,2)$.\\
+            Hence, $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \subseteq (0,2)$.\\\vp
+            \underline{$\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \supseteq (0,2)$}\vp
+            Let $x\in(0,2)$.
+            We want to show that $x\in \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa$.\vp
+            Therefore, we want to find \blue{a union for which} //Again.// $\frac{1}N \le x, \;N\in\N$.\\
+            Via. the A.P. we know that there exists an $N$ such that:
+            $$x\cdot N > 1 \Leftrightarrow x > \frac{1}N$$
+            Thus because $x<2$ due to its interval, for all $x$, there exists an \blue{intersection} //Huh?// which contains $x$.\\
+            Hence, because $\forall x \in (0,2), x\in \bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa$, $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa \supseteq (0,2)$ \\\vpp
+            Hence, $\bigcup_{n=1}^\infty \lbr \frac{1}{n}, 2\rpa = (0,2)$ 
+
+            //You're using the words ``union'' and ``intersection'' wrong in several places. Let's discuss, and probably use a token on this one as well. It'll be due Wednesday the 12th.//
+        \end{proof}
+        
+    \subsection*{Problem 7} \FGM\\
+    Consider Definition 1 on the ``Axioms of $\R$'' handout. The set $\Z$ is not a field, because it fails exactly one of the conditions in Definition 1. Determine which one, and prove that $\Z$ fails this condition by means of a counterexample.
+
+%%%% First Attempt %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{proof}
+        The set $\Z$ fails as a field because it fails the condition of the multiplicative inverse.\\
+        We want to show that $$\exists z\in\Z \text{ such that } z^{-1}\notin \Z$$
+        Let $z=2$.
+        $$z^{-1}=\frac{1}2. \text{ However, } \frac{1}2 \notin \Z$$
+        Therefore, $\Z$ is not a field.
+        \end{proof}
+
+        //Correct!//
+
+        
+
+
+%% HW-5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress)
+\section*{HW5: First attempt due \textbf{Friday 2/21}}
+        \subsection*{Problem 8} \FGR(both parts)\\
+        \SGR (both)\\
+        \FGM\\
+        \begin{enumerate}[label=(\alph*)]
+            \item Let $a,b\in\R$. Prove that $a\leq b$ if and only if $\forall \Epsilon>0$, $a <b+\Epsilon$. ({\it See the Day 5 Worksheet for hints.})
+                \begin{proof}
+                Let $a,b,\Epsilon\in\R.$ //Problem. $\Epsilon$ is only supposed to be arbitrary in the forwards direction, so it's bad form the ``let'' it before starting a part. Also, $\Epsilon$ isn't even supposed to be an arbitrary real number, it's specifically supposed to be positive.// \\
+                \textbf{Proof Part 1:}\\
+                Suppose $a\le b$. //This is where I would ``let $\Epsilon>0$'' for this part. Right before the WTS.// We want to show that $\forall\Epsilon > 0, a<b+\Epsilon$.\\
+                Because $\Epsilon > 0,$
+                $$b < b + \Epsilon$$
+                Therefore,
+                $$a\le b < b+\Epsilon$$
+                Hence, $$a<b+\Epsilon$$
+                //Correct idea for the forwards direction!//
+                
+                $a-b<0$ //What is this doing here?//\\\\
+                \textbf{Proof Part 2:}\textit{ Contrapositive}\\
+                Suppose $a>b$. We want to show that $\exists \Epsilon>0, a\ge b+\Epsilon$.\\
+                Let $a=b+c$, for $c\in\R >0$. \\
+                Let $\Epsilon = \frac{c}2$.
+                Therefore, the statement:
+                $$b+c\ge b+\Epsilon$$
+                Holds true, and therefore if $a>b$, there exists $\Epsilon>0,$ //``such that''// $a\ge b+\Epsilon$//period//
+                //This reverse direction works! It is easier to just choose $\Epsilon = a-b$, which is positive by assumption.//
+                \end{proof}
+                
+                
+              
+                
+            \item Let $a,b\in \R$. Prove that $a=b$ if and only if $\forall \Epsilon>0$, $|a-b| < \Epsilon$. ({\it Hint: Similar to the previous problem, once direction is extremely short, and the other direction will require proof by contrapositive.})\\
+            {\it Also a note: This result is going to be an incredibly useful tool for a large chunk of this course.}
+                \begin{proof} We want to prove the statement both ways.\\
+                Let $a,b,\Epsilon\in\R$. //Again, too early to ``let'' $\Epsilon$, and you're not being specific enough with $\Epsilon$ needing to be positive.//\\
+                
+                \textbf{Proof Part 1: }\\
+                Suppose $a = b$.\\
+                //``Let'' $\Epsilon$ right here.// We want to show that $\forall \Epsilon>0,|a-b|<\Epsilon$.\\
+                \blue{Therefore,} //We use ``therefore'' if a sentence follows directly from the preceding sentence(s). (Same goes for hence, so, it follows that, etc.) Your WTS is a buffer between what you're about to say and how it is justified. So it's better form to say ``Since $a=b$,'' here.// $|a-b|=|b-b|=0$.
+                $$\blue{0=|a-b|<\Epsilon} //period//$$
+                //Some kind of connection word or phrase should lead in to this math line. ``So'' is a good option.//
+                $$\blue{0<\Epsilon}$$
+                //I don't see why this last line is included.//
+                \textbf{Proof Part 2: } \textit{Contrapositive}\\
+                Suppose $a\ne b$ .
+                We want to show that $\exists \Epsilon>0, |a-b|\ge\Epsilon$.\\
+                Because $a\ne b$, $|a-b|>0$. Therefore, $\frac{|a-b|}2>0$.\\
+                Let $\Epsilon=\frac{|a-b|}2$. //``Then''//
+                $$|a-b|\ge\frac{|a-b|}2=\Epsilon //period//$$
+                $$\blue{|a-b|\ge\Epsilon}$$
+                //There's really no need to restate this, since the previous line already shows that $|a-b| \geq \Epsilon$.//
+                
+                Hence, $a=b$, if and only if $\forall \Epsilon>0, |a-b|<\Epsilon $//period//
+
+                //The reverse direction works!// 
+                \end{proof}
+            \end{enumerate}  
+            \subsubsection*{Second Attempt (part a)}
+                \begin{proof}
+                Let $a,b\in\R.$\\
+                \textbf{Proof Part 1: }\textit{Direct Proof}\\
+                Let $\Epsilon\blue{\in\R}>0$. //Two things. First, $\Epsilon>0$ already implies it's real. Second, the grammar of those symbols makes no sense. $\R$ is a set, and the way you placed the symbols means you have the statement $\R>0$ sitting there, which is nonsense because sets can't be positive. Suffice it to say, cut the $\in\R$.//
+                
+                Suppose $a\le b$.\\
+                We want to show that $\blue{\forall\Epsilon,}\; a<b+\Epsilon$ //Don't requantify. Seriously, come ask me about this.//
+                
+                Because $\Epsilon>0$,
+                $$b<b+\Epsilon$$
+                Therefore,
+                $$a\le b<b+\Epsilon$$
+                \textbf{Proof Part 2:}\textit{ Contrapositive}\\
+                Suppose $a>b$. We want to show that $\exists \Epsilon>0,$//``such that''// $ a\ge b+\Epsilon$.\\
+                Because $a>b,$ $a-b>0$, and therefore:
+                $$a-b\in\Epsilon$$
+                //Huh? When did $\Epsilon$ become a set?//
+                
+                Let $\Epsilon = a-b$ //period// Therefore,
+                $$a\ge b+\Epsilon \blue{\Leftrightarrow a\ge a}$$
+                //Why is that $\iff a\geq a$ there? Better (in)equality grammar would be ``$a = b+(a-b) = b+\Epsilon$, as desired.''//
+                
+                Hence, $a\leq b$ if and only if $\forall \Epsilon>0$, $a <b+\Epsilon$.
+
+                //Correct ideas!//
+                \end{proof}
+
+
+
+
+
+% Second Attempts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                \subsubsection*{Second Attempt (part b)}
+                \begin{proof}
+
+                    We want to prove our statement both directions.
+                    Let $a,b\in\R.$\\\\
+                    \textbf{Proof Pt. 1: }\textit{Direct Proof}.
+                    Suppose $a=b$. Let $\Epsilon\in \R>0$.\\
+                    We want to show that $\forall\Epsilon,|a-b|<\Epsilon$.\\
+                    Since $a=b$, $|a-b|=|b-b|=0$. So,
+                    $$0=|a-b|<\Epsilon$$
+                    \textbf{Proof Pt. 2: }\textit{Contrapositive}.
+                    Suppose $a\ne b$ .
+                    We want to show that $\exists \Epsilon>0, |a-b|\ge\Epsilon$.\\
+                    Because $a\ne b$, $|a-b|>0$x. Therefore, $\frac{|a-b|}2>0$.\\
+                    Let $\Epsilon=\frac{|a-b|}2$. //``Then''//
+                    $$|a-b|\ge\frac{|a-b|}2=\Epsilon //period//$$
+                    $$\blue{|a-b|\ge\Epsilon}$$
+                    //There's really no need to restate this, since the previous line already shows that $|a-b| \geq \Epsilon$.//
+                
+                Hence, $a=b$, if and only if $\forall \Epsilon>0, |a-b|<\Epsilon $//period//
+                \end{proof}
+
+                \subsubsection*{Third Attempt (part a)}
+                \begin{proof}
+                    Let $a,b\in\R.$\\
+                    \textbf{Proof Part 1: }\textit{Direct Proof}\\
+                    Let $\Epsilon>0$.\\
+                    Suppose $a\le b$.\\
+                    We want to show that $a<b+\Epsilon$.
+                    Because $\Epsilon>0$,
+                    $$b<b+\Epsilon.$$
+                    Therefore,
+                    $$a\le b<b+\Epsilon.$$
+                    \textbf{Proof Part 2:}\textit{ Contrapositive}\\
+                    Suppose $a>b$. We want to show that $\exists \Epsilon>0,$ such that $ a\ge b+\Epsilon$.\\
+                    Because $a>b,$ $a-b>0$, let $\Epsilon = (a-b)$.\\
+                    Therefore,
+                    $$a\ge b+\Epsilon = b-b+a=a$$
+                    Hence, $a\leq b$ if and only if $\forall \Epsilon>0$, $a <b+\Epsilon$.
+                \end{proof}
+
+                \subsubsection*{Third Attempt (part b)}
+                \begin{proof}
+                    We want to prove our statement both directions.
+                    Let $a,b\in\R.$\vp
+                    \textbf{Proof Pt. 1: }\textit{Direct Proof}.\\
+                    Suppose $a=b$. Let $\Epsilon > 0$.\\
+                    We want to show that $|a-b|<\Epsilon$.\\
+                    Since $a=b$, $|a-b|=|b-b|=0$. So,
+                    $$0=|a-b|<\Epsilon$$
+                    \textbf{Proof Pt. 2: }\textit{Contrapositive}.
+                    Suppose $a\ne b$ .
+                    We want to show that $\exists \Epsilon>0, |a-b|\ge\Epsilon$.\\
+                    Because $a\ne b$, $|a-b|>0$. Therefore, $\frac{|a-b|}2>0$.\\
+                    Let $\Epsilon=\frac{|a-b|}2$. Then,
+                    $$|a-b|\ge\frac{|a-b|}2=\Epsilon.$$
+                Hence, $a=b$, if and only if $\forall \Epsilon>0, |a-b|<\Epsilon $.
+                \end{proof}
+            
+        \subsection*{Problem 9} \FGR\\
+        \SGR\\
+        \FGM\\
+        {\bf Def'n}: Let $a,b\in \R$ with $a<b$. A function $f:(a,b)\to \R$ is said to be {\bf strictly increasing} if $\forall x_1, x_2\in (a,b)$, we have that
+            \[\text{if } x_1 < x_2 \text{, then } f(x_1) < f(x_2). \]
+        \vskip 0.5cm
+        
+        ({\it Note: I'm not counting this definition toward Definition Quizzes, at least not yet.})
+        
+        \noindent Now suppose that $f:(a,b) \to \R$ is a strictly increasing function. Prove that $f$ is one-to-one.
+            \begin{proof}
+            Let $x_1,x_2\in (a,b), a,b\in\R$. //$a$ and $b$ are already established in the statement of the problem, as they were needed to introduce $f$. You don't need to reintroduce them.//\\
+            We want to show that if $x_1\ne x_2$, $f(x_1)\ne f(x_2)$. //Point out to the reader that you are proving the contrapositive of one-to-one. Also, it'd be better to set that up with a WTS.
+            
+            ``Suppose for the sake of contraposition that $x_1 \neq x_2$. We want to show that $f(x_1) \neq f(x_2)$.''//\\ 
+            Suppose \blue{$x_1<x_2$.} //This assumption is not immediately valid. Look up the term ``without loss of generality'' in the Proofs Glossary handout.// Therefore $x_1\ne x_2$.\\
+            Via the definition of a {\bf strictly increasing function},
+            $$f(x_1)<f(x_2)$$
+            $$\text{Therefore, }f(x_1)\ne f(x_2)$$
+            Hence, because $x_1\ne x_1$ and $f(x_1)\ne f(x_2)$, $f$ is one to one.
+
+            //Correct idea!//
+            \end{proof}
+
+            \subsubsection*{Second Attempt}
+            \begin{proof}
+                Let $x_1,x_2\in (a,b)$. Suppose for the sake of contraposition that $x_1 \neq x_2$.\\ 
+                We want to show that $f(x_1) \neq f(x_2)$.\vp
+                Suppose \textit{without loss of generality} that $x_1<x_2$. \blue{Therefore $x_1\ne x_2$.} //Cut this, it has the logic backwards.
+                
+                We already assumed $x_1 \neq x_2$. We are additionally assuming WLoG that $x_1<x_2$ (since it's either that or the other way around).//\\
+                Via the definition of a {\bf strictly increasing function},
+                $$f(x_1)<f(x_2) //\text{period}//$$
+                $$\text{Therefore, }f(x_1)\ne f(x_2) //\text{period}//$$
+                Hence, because $x_1\ne x_1$ and $f(x_1)\ne f(x_2)$, $f$ is one to one.
+
+                //Almost done!//
+            \end{proof}
+
+            \subsubsection*{Third Attempt}
+            \begin{proof}
+                Let $x_1,x_2\in (a,b)$. Suppose for the sake of contraposition that $x_1 \neq x_2$.\\ 
+                We want to show that $f(x_1) \neq f(x_2)$.\vp
+                Suppose \textit{without loss of generality} that $x_1<x_2$.\\
+                Via the definition of a {\bf strictly increasing function},
+                $$f(x_1)<f(x_2).$$
+                $$\text{Therefore, }f(x_1)\ne f(x_2).$$
+                Hence, because $x_1\ne x_1$ and $f(x_1)\ne f(x_2)$, $f$ is one to one.
+
+            \end{proof}
+
+\pagebreak
+
+
+
+%% HW-6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress)
+\section*{HW6: First attempt due \textbf{Monday 2/24}}
+\subsection*{Problem 10} \FGR\\
+\SGR\\
+\FGM\\
+Let $a,b\in \R$ with $a<b$. Prove that the interval $(a,b)$ is open.
+	\begin{proof}
+	We want to show that $\blue{\forall x\in(a,b)},\;\exists \Epsilon>0$ //Better form: Start the proof with ``Let $x \in (a,b)$. WTS...''// such that $(x-\Epsilon,x+\Epsilon)\subseteq (a,b)$.\\
+    Let $\Epsilon = \frac{\min ({x-a},{b-x})}2$. //Good idea!// \textit{(The minimum distance of $x$ between either $a$ or $b$ divided by 2)} //Avoid parentheticals in proof writing. If you want to point out to the reader what this quantity represents, do so in the main text.//\\\\
+    \textbf{Case 1: } //Splitting this into cases is not necessary. No matter which of the two values $\Epsilon$ takes on, $x -\Epsilon \geq x - \frac{x-a}{2}> a$, and $x+\Epsilon \leq x+\frac{b-x}{2} < b$. //
+    
+    \textit{$x$ is closer to $a$, $\Epsilon=\frac{x-a}2$}\\
+    If $x$ is closer to $a$, then the interval $(x-\Epsilon,x+\Epsilon)\subseteq (a,b)$ because if $\Epsilon<x-a$, then
+    $$x-\frac{x-a}2 > a$$
+    \textbf{Case 2: }\textit{$x$ is closer to $b$, $\Epsilon=\frac{b-x}2$}\\
+    If $x$ is closer to $b$, then the interval $(x-\Epsilon,x+\Epsilon)\subseteq (a,b)$ because if $\Epsilon<b-x$, then
+    $$x+\frac{b-x}2 < b$$
+    Hence, the open interval $(a,b)$ is open.
+
+    //Correct idea! Some structure can be substantially simplified.//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+    \begin{proof}
+        Let $x\in (a,b)$. We want to show that $\blue{\forall x,} \exists \Epsilon > 0$ //Don't requantify after ``letting.''// such that $(x-\Epsilon,x+ \Epsilon)\subseteq (a,b)$.\\\\
+        Let $\Epsilon = \frac{\min (x-a,x-b)}2$.//Slight problem. $x-b$ is negative. You meant $b-x$ in there.//
+        
+        \blue{No matter which value $\Epsilon$ takes:} //$\Epsilon$ is a fixed (though arbitrary) value. Talking about it taking different values makes no sense, because it is only one (though arbitrary) value. It's a weird subtlety. You can launch in to the inequalities by just saying ``Then''//
+        
+        $$x-\Epsilon\ge x-\frac{x-a}2>a \text{ and } x+\Epsilon \le x+\frac{b-x}2<b.$$
+        Therefore, $(x-\Epsilon, x+\Epsilon)\subseteq (a,b)$.\\
+        Hence, the interval $(a,b)$ is open. 
+
+        //Correct outline and idea! A couple minor edits.//
+    \end{proof}
+
+    \subsubsection*{Third Attempt}
+    \begin{proof}
+        Let $x\in (a,b)$. We want to show that $\exists \Epsilon > 0$ such that $(x-\Epsilon,x+ \Epsilon)\subseteq (a,b)$.\\\\
+        Let $\Epsilon = \frac{\min (x-a,b-x)}2.$ 
+        Then,     
+        $$x-\Epsilon\ge x-\frac{x-a}2>a \text{ and } x+\Epsilon \le x+\frac{b-x}2<b.$$
+        Therefore, $(x-\Epsilon, x+\Epsilon)\subseteq (a,b)$.\\
+        Hence, the interval $(a,b)$ is open. 
+    \end{proof}
+	
+\subsection*{Problem 11} \FGR\\
+\SGR\\
+\TGR\\
+\FGM\\
+In class, we saw that the intersection of two open sets is open, and that the union of any number of open sets is open. Disprove the claim that countable intersections of open sets are open by providing a counterexample. {\it (Hint: Look at HW 1. This time, prove one of those claims.)}
+	\begin{proof}
+        \text{Let } $U_n = (-\frac{1}n, \; \frac{1}n)$. \\
+        We want to show that $\bigcap_{n=1}^\infty U_n$ = $\blue{[0,0]}$ //$\{0\}$ We don't use interval notation with the same number as both bounds.// via the principle of set equality.\\
+        \blue{$\forall n\in \N$, Let $-\frac{1}n<x<\frac{1}n $ represent the interval $\bigcap_{n=1}^\infty U_n$.} //I don't know what you mean by this sentence.//\\
+        \textbf{Case 1:}\\
+        If $x<0,$ via the A.P., $\exists n $ such that:
+        $$x<-\frac{1}n<0\Leftrightarrow x\cdot n<-1<0$$
+        Because for any $x<0$, we can find a $-\frac{1}n$ greater than $x$, \blue{so, $x\ge0$.} //How can $x<0$ and $x\geq 0$ both be true at the same time?//\\
+        \textbf{Case 2:}\\
+        If $x>0,$ via the A.P., $\exists n $ such that:
+        $$x>\frac{1}n>0\Leftrightarrow x\cdot n>1>0$$
+        Because for any $x>0$, we can find a $\frac{1}n$ less than $x$, so, $x\le0$.\\\\
+        Because $0\le x\le 0, x$ exclusively equals 0.\\
+        Therefore, $\bigcap_{n=1}^\infty U_n = \{0\}=[0,0]$.
+
+        //A couple things. First, when proving that the big intersection equals $\{0\}$, structure this part according to the set-equality proof shell. You'll show, one at a time, that the two sets are subsets of each other. Each subset proof will follow the subset proof shell.
+        
+        Second, once you've done that, don't forget to prove that $\{0\}$ is not open. You can do this either by proving that it satisfies the negation of being open, or by proving that it is closed.//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+    \begin{proof}
+        \text{Let } $U_n = (-\frac{1}n, \; \frac{1}n)$ //``for each $n \in \N$''//. \\\vp
+        \underline{\textbf{Proof Part 1: Set Equality}}\\
+        We want to show that $\bigcap_{n=1}^\infty U_n \subseteq \{0\}$ and that $\bigcap_{n=1}^\infty U_n \supseteq \{0\}$ in order to prove that $\bigcap_{n=1}^\infty U_n = \{0\}$ via the principle of set equality.\vp
+        \underline{\textbf{$\bigcap_{n=1}^\infty U_n\subseteq \{0\}\;\;$}}\\
+        We want to show via contraposition that if $x\notin \{0\}, x\notin \bigcap_{n=1}^\infty U_n$. //Good idea!//\vp
+        If $x\ne 0$, then $|x|>0$.
+        \blue{We want to show that $\exists n\in \N, \frac{1}n < |x|.$} //You already have $x\notin \bigcap etc.$ in the earlier WTS for this part. No need to include another WTS here. Just get to the A.P. at this point.//\\
+        Via the A.P, we know that //``$\exists n \in \N$ such that'' and also, it's better form to use $N$ for the specific value you're finding, since you're using $n$ as an indexing variable elsewhere.//
+
+        $$|x|*n>1\;\Leftrightarrow\;|x|>\frac{1}n.$$
+        //You don't have to retread the $1/n$ trick. We proved that once and for all in class. ``$\exists n \in \N$ such that $\frac{1}{n} < |x|$.''//
+        
+        \blue{Because we can always produce an $\frac{1}n < |x|$ for $|x|>0$,} //More to the point: ``Then $x \notin (-1/N, 1/N)$, and hence $x \notin \bigcap_{n=1}^\infty U_n$.''// then if $x\ne 0$, $x\notin\bigcap_{n=1}^\infty U_n$.\\
+        Therefore, $\bigcap_{n=1}^\infty U_n\subseteq \br{0}$\\
+        \underline{\textbf{$\{0\}\subseteq \bigcap_{n=1}^\infty U_n \;\;$}}\\
+        We want to show that $\forall x\in \{0\},$//It is clear that the only element of $\{0\}$ is $0$, so you can just say WTS $0 \in \bigcap etc$. No need to point out later that $x\in \{0\} \implies x=0$.// $\exists x\in\bigcap_{n=1}^\infty U_n$.\\
+        If $x\in \{0\}, x=0$.\\
+        Therefore, $\forall n\in \N, x < |\frac{1}n|$.\\
+        Hence, $\forall x\in \{0\}, \exists x\in\bigcap_{n=1}^\infty U_n$.\\\vp
+        Hence, because $\bigcap_{n=1}^\infty U_n\subseteq \{0\}$ and $\{0\}\subseteq \bigcap_{n=1}^\infty U_n$, $\bigcap_{n=1}^\infty U_n = \{0\}$.
+        
+        //Correct outline and idea for the set equality!//\vp
+        \underline{\textbf{Proof Part 2: $\{0\}$ is //``not an''// open \blue{interval} //Better: ``set''//}}.\vp
+        We want to show via negation $\exists x\in\br{0},$//Again, $x$ is definitely $0$, and that is clear to the reader.//$ \forall \Epsilon > 0,\text{ \blue{such that} //Delete this.// } (x-\Epsilon, x+\Epsilon)\nsubseteq\{0\}$.\\
+        \blue{$\forall x, x=0$.} //Again, no need.// Therefore, $\blue{x+\Epsilon > 0}$, //You forgot to ``let'' $\Epsilon$.// and the interval $(x-\Epsilon, x+\Epsilon)\nsubseteq \{0\}$.
+        Hence, the set $\{0\}$ is a closed set. //You didn't actually prove that $\{0\}$ is closed. You proved it is not open. So phrase is that way.//\\\vp
+        Hence, because $\bigcap_{n=1}^\infty U_n = \{0\}$, and $\{0\}$ is a closed set, the countable intersection of open sets does not guarantee an open set.
+
+        //Yes it's a lot of writing notes, but the ideas are all correct! We're just cleaning it up at this point.//
+        
+
+    \end{proof}
+
+    \subsubsection*{Third Attempt}
+    \begin{proof}
+        \text{Let } $U_n = (-\frac{1}n, \; \frac{1}n)$ for each $n \in \N$. \\\vp
+        \underline{\textbf{Proof Part 1: Set Equality}}\\
+        We want to show that $\bigcap_{n=1}^\infty U_n \subseteq \{0\}$ and that $\bigcap_{n=1}^\infty U_n \supseteq \{0\}$ in order to prove that $\bigcap_{n=1}^\infty U_n = \{0\}$ via the principle of set equality.\vp
+        \underline{\textbf{$\bigcap_{n=1}^\infty U_n\subseteq \{0\}\;\;$}}\\
+        We want to show via contraposition that if $x\notin \{0\}, x\notin \bigcap_{n=1}^\infty U_n$.\vp
+        If $x\ne 0$, then $|x|>0$.
+        Via the A.P, we know that $\exists N \in \N$ such that
+        $$|x|>\frac{1}N.$$
+        Then $x \notin (-1/N, 1/N)$, and hence $x \notin \bigcap_{n=1}^\infty U_n$.\\
+        Therefore, $\bigcap_{n=1}^\infty U_n\subseteq \br{0}$\\
+        \underline{\textbf{$\{0\}\subseteq \bigcap_{n=1}^\infty U_n \;\;$}}\\
+        We want to show that $0\in\bigcap_{n=1}^\infty U_n$.\\
+        \blue{Therefore, $\forall n\in \N, x < |\frac{1}n|$.}\\
+        \blue{Hence, $\forall x\in \{0\}, \exists x\in\bigcap_{n=1}^\infty U_n$.} //When you stopped using $x$ in the setup of this part, you forgot to scrub all future mentions of the symbol $x$. These should be zeroes.//\\\vp
+        Hence, because $\bigcap_{n=1}^\infty U_n\subseteq \{0\}$ and $\{0\}\subseteq \bigcap_{n=1}^\infty U_n$, $\bigcap_{n=1}^\infty U_n = \{0\}$.\vp
+        \underline{\textbf{Proof Part 2: $\{0\}$ is not an open set}}.\vp
+        Let $\Epsilon > 0.$
+        We want to show via negation that $(x-\Epsilon, x+\Epsilon)\nsubseteq\{0\}$. //Again, use $0$ instead of the symbol $x$.//\\
+        Because ${x+\Epsilon > 0}$, the interval $(x-\Epsilon, x+\Epsilon)\nsubseteq \{0\}$.\\
+        Hence, the set $\{0\}$ is not an open set. \\\vp
+        Hence, because $\bigcap_{n=1}^\infty U_n = \{0\}$, and $\{0\}$ is not an open set, the countable intersection of open sets does not guarantee an open set.
+
+        //There's enough of a proof writing issue that I can't give this an M yet. If you want to use a token, it's due on Monday the 17th.//
+
+    \end{proof}
+
+    \subsubsection*{Token Attempt}
+    \begin{proof}
+        \text{Let } $U_n = (-\frac{1}n, \; \frac{1}n)$ for each $n \in \N$. \\\vp
+        \underline{\textbf{Proof Part 1: Set Equality}}\\
+        We want to show that $\bigcap_{n=1}^\infty U_n \subseteq \{0\}$ and that $\bigcap_{n=1}^\infty U_n \supseteq \{0\}$ in order to prove that $\bigcap_{n=1}^\infty U_n = \{0\}$ via the principle of set equality.\vp
+        \underline{\textbf{$\bigcap_{n=1}^\infty U_n\subseteq \{0\}\;\;$}}\\
+        We want to show via contraposition that if $x\notin \{0\}, x\notin \bigcap_{n=1}^\infty U_n$.\vp
+        If $x\ne 0$, then $|x|>0$.
+        Via the A.P, we know that $\exists N \in \N$ such that
+        $$|x|>\frac{1}N.$$
+        Then $x \notin (-1/N, 1/N)$, and hence $x \notin \bigcap_{n=1}^\infty U_n$.\\
+        Therefore, $\bigcap_{n=1}^\infty U_n\subseteq \br{0}$\\
+        \underline{\textbf{$\{0\}\subseteq \bigcap_{n=1}^\infty U_n \;\;$}}\\
+        We want to show that $0\in\bigcap_{n=1}^\infty U_n$.\\
+        Therefore, $\forall n\in \N, 0 < |\frac{1}n|$.\\
+        Hence, $0\in\bigcap_{n=1}^\infty U_n$. \\\vp
+        Hence, because $\bigcap_{n=1}^\infty U_n\subseteq \{0\}$ and $\{0\}\subseteq \bigcap_{n=1}^\infty U_n$, $\bigcap_{n=1}^\infty U_n = \{0\}$.\vp
+        \underline{\textbf{Proof Part 2: $\{0\}$ is not an open set}}.\vp
+        Let $\Epsilon > 0.$
+        We want to show via negation that $(0-\Epsilon, 0+\Epsilon)\nsubseteq\{0\}$.\\
+        Because ${\Epsilon > 0}$, the interval $(-\Epsilon, \Epsilon)\nsubseteq \{0\}$.\\
+        Hence, the set $\{0\}$ is not an open set. \\\vp
+        Hence, because $\bigcap_{n=1}^\infty U_n = \{0\}$, and $\{0\}$ is not an open set, the countable intersection of open sets does not guarantee an open set.
+    \end{proof}
+
+    
+
+    
+
+%% HW-7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress)
+\section*{HW7: First attempt due \textbf{Friday 2/28}}
+\subsection*{Problem 12} \FGR\\
+\FGM\\
+Find the $\inf$ and $\sup$ of the set
+	\[A = \lcu \frac{1+(-1)^n}{n} : n\in \N\rcu. \]
+Prove both claims.
+	\begin{proof}
+        \textit{Supremum.} \\
+        Let $\alpha = 1$. We want to show that:
+        \begin{enumerate}
+            \item $\alpha$ is an upper bound of $A$.
+            \item $\forall \Epsilon > 0, \exists x \in A$ such that $x > \alpha - \Epsilon$.
+        \end{enumerate}
+        \underline{\textbf{$\alpha$ is an upper bound.}}\vp
+        We want to show $\forall x \in A$, $\alpha \ge x$.\vp
+        For the set builder, $\frac{1+(-1)^n}n:n\in\N$, if $n$ is odd, the equation can be written for $n=2k+1, k\in \Z$ as:
+        $$\frac{1+(-1)^{2k+1}}{n}=\frac{1+1\cdot (-1)}n=0.$$
+        Thus, all odd intances of $n$ will produce a 0 for the set, so the first nonzero positive integer must be even. The equation for even $n$ can be written for $n=2k, k\in \Z$ as:
+        $$\frac{1+(-1)^{2k}}{n}=\frac{1+1}n=\frac{2}{n}.$$
+        Additionally, each consecutive even integer ascribed value in the set can be shown to be less than the proceeding //preceding// one:
+        $$\frac{2}n>\frac{2}{n+2}\blue{\Leftrightarrow n+1 > n}$$
+        //Cut the $\iff n+1 >n$. The fact that bigger denominators make smaller fractions need not be justified.//
+        
+        Therefore, the minimum possible even integer $n$ will contain the maximum value of the set, and $n_{\min,\text{ even}}=2$ because $n\in\N$.\\
+        Thus, $\max A = \frac{2}2=1$.
+        
+        //Hey, do you remember in class that we proved that $\max A = \sup A$ if $A$ has a max? I think you can stop your $\sup$ proof here.//\\
+        Therefore, $\forall x\in A, \alpha = \max A \ge x$.\vp
+        Hence, $\alpha$ is an upper bound of $A$.\\\vp
+        \underline{\textbf{$\forall \Epsilon > 0, \exists x \in A$ such that $x > \alpha - \Epsilon$}}\vp
+        We want to show that $\forall \Epsilon > 0, \exists x\in A$ such that $x > \Epsilon - \alpha$.\\
+        Let $x=1$. $1\in A$. Therefore:
+        $$x>\alpha - \Epsilon\Leftrightarrow \Epsilon>0$$
+        Hence, with $\alpha =1$, $\sup A = 1$.
+
+        
+	\end{proof}
+    \begin{proof} \textit{Infimum.}
+        Let $\beta = 0$. We want to show that:
+        \begin{enumerate}
+            \item $\beta$ is a lower bound of $A$.
+            \item $\forall \Epsilon > 0, \exists x \in A$ such that $x < \beta + \Epsilon$.
+        \end{enumerate}
+        \underline{\textbf{$\beta$ is a lower bound.}}\vp
+        As established in the \textit{Supremum} part of this proof, all even $n\in \N$ will result in a set entry of value:
+        $$\frac{2}n>0$$
+        And all odd numbers will result in a value of 0.\vp
+        Thus, $\min A = \beta$. And because if $A$ has a minimum, $\min A=\inf A$,
+        hence, $\inf A = \beta = 0$.
+        
+    \end{proof}
+    \begin{proof} \textit{Infimum.}\\
+        Let $\beta = 0$. We want to show that:
+        \begin{enumerate}
+            \item $\beta$ is a lower bound of $A$.
+            \item $\forall \Epsilon > 0, \exists x \in A$ such that $x < \beta + \Epsilon$.
+        \end{enumerate}
+        \underline{\textbf{$\beta$ is a lower bound.}}\vp
+        As established in the \textit{Supremum} part of this proof, all even $n\in \N$ will result in a set entry of value:
+        $$\frac{2}n>0$$
+        And all odd numbers will result in a value of 0. //Again, if $A$ has a min, $\inf A = \min A$.// \\
+        Therefore, because $n$ can either be even or odd, $\forall x\in A, x\ge 0$.\\
+        Thus $\min A = 0$, and $\forall x\in A, \beta = \min A \le x$.\\
+        Hence, $\beta$ is a lower bound.\\\vp
+        \underline{\textbf{Epsilon-Crietrion}}\vp
+        We want show that $\forall \Epsilon > 0, \exists x \in A$ such that $x < \beta + \Epsilon$.\\
+        Let $x=\frac{2}{2k},k\in\N$. Via the A.P., we know that there exists a $k$ such that:
+        $$1<k\cdot \Epsilon\Leftrightarrow\frac{2}{2k} < \Epsilon\Leftrightarrow x < \Epsilon$$
+        Hence, $\sup A = \beta = 0$.
+        
+    \end{proof}
+    //You can dramatically shorten this by using something we proven in class. Your work is all correct, it is however instructive to see how to proofs can be made more efficient, so please do so!//
+
+
+    \subsubsection*{Second Attempt}
+    \begin{proof}
+        \textit{Supremum.} \\
+        Let $\alpha = 1$. We want to show that:
+        \begin{enumerate}
+            \item $\alpha$ is an upper bound of $A$.
+            \item $\forall \Epsilon > 0, \exists x \in A$ such that $x > \alpha - \Epsilon$.
+        \end{enumerate}
+        \underline{\textbf{$\alpha$ is an upper bound.}}\vp
+        We want to show $\forall x \in A$, $\alpha \ge x$.\vp
+        For the set builder, $\frac{1+(-1)^n}n:n\in\N$, if $n$ is odd, the equation can be written for $n=2k+1, k\in \Z$ as:
+        $$\frac{1+(-1)^{2k+1}}{n}=\frac{1+1\cdot (-1)}n=0.$$
+        Thus, all odd intances of $n$ will produce a 0 for the set, so the first nonzero positive integer must be even. The equation for even $n$ can be written for $n=2k, k\in \Z$ as:
+        $$\frac{1+(-1)^{2k}}{n}=\frac{1+1}n=\frac{2}{n}.$$
+        Additionally, each consecutive even integer ascribed value in the set can be shown to be less than the preceding one:
+        $$\frac{2}n>\frac{2}{n+2}$$
+        Therefore, the minimum possible even integer $n$ will contain the maximum value of the set, and $n_{\min,\text{ even}}=2$ because $n\in\N$.\vp
+        Thus, $\max A = \frac{2}2=1$.\\
+        And, because if a set has a $\max$, the $\sup A = \max A$, so $\max A = \alpha = 1$\\  
+	\end{proof}
+
+    \begin{proof} \textit{Infimum.}
+        Let $\beta = 0$. We want to show that:
+        \begin{enumerate}
+            \item $\beta$ is a lower bound of $A$.
+            \item $\forall \Epsilon > 0, \exists x \in A$ such that $x < \beta + \Epsilon$.
+        \end{enumerate}
+        \underline{\textbf{$\beta$ is a lower bound.}}\vp
+        As established in the \textit{Supremum} part of this proof, all even $n\in \N$ will result in a set entry of value:
+        $$\frac{2}n>0$$
+        And all odd numbers will result in a value of 0.\vp
+        Thus, $\min A = \beta$. And because if $A$ has a minimum, $\min A=\inf A$,
+        hence, $\inf A = \beta = 0$.
+        
+    \end{proof}
+    
+
+		
+		
+\subsection*{Problem 13} \FGR\\
+\SGR\\
+\TGR\\
+\FGM\\
+Suppose $A$ and $B$ are subsets of $\R$ with $\sup A=\inf B$. Prove that $\forall  \Epsilon>0$, $\exists a\in A, b\in B$ such that. $b-a<\Epsilon$.\\
+({\it Hint 1: You'll need the $\Epsilon$-criterion for both $\sup$s and $\inf$s.\\
+Hint 2: Maybe make $a$ and $b$ each be within $\dfrac{\Epsilon}{2}$ of the target.})
+	\begin{proof} 
+        We want to show that $\blue{\forall \Epsilon > 0}, \exists a\in A, b\in B $ //Don't ``$\forall$'' $\Epsilon$, ``let'' it.//
+        
+        such that $b-a<\Epsilon$. \vp
+        \underline{\textbf{Epsilon-Criterion}}\\
+        Because $\sup A = \inf B$, we know that $\forall \Epsilon > 0,$ //Don't requantify.//
+        $$ \exists a\in A, \text{ such that } a > \sup A - \Epsilon,$$
+        and that 
+        $$\exists b\in B \text{ such that }b < \inf B + \Epsilon.$$
+        Let $\Epsilon = |b-a|$. Therefore, we know that:
+        \begin{align*}
+            a+\Epsilon &> \sup A\\
+            b-\Epsilon&< \inf B
+        \end{align*}
+        And because $\sup A = \inf B$, we can reorganize our equation as follows:
+        \begin{align*}
+            a+\Epsilon &> \sup A > b-\Epsilon\\
+            a+\Epsilon &> b-\Epsilon\\
+            2\cdot \Epsilon &> b-a
+        \end{align*}
+        \blue{Because this remains true for all $\Epsilon$, Thus,}\\
+        $$\blue{2*|b-a| > b-a}$$
+        //You lost me right here. Are you suddenly picking a specific $\Epsilon$? That's not valid.//
+        Hence, $\forall \Epsilon > 0, \exists a\in A, b\in B$ such that $b-a < \Epsilon$. 
+
+        //You're so close. You didn't use Hint 2.//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+    \begin{proof} Let $\Epsilon > 0$.\vp
+        We want to show that $\exists a\in A, b\in B $ such that $b-a<\Epsilon$. \vp
+        \underline{\textbf{Epsilon-Criterion}}\\
+        Because $\sup A = \inf B$, we know that
+        $$ \exists a\in A, \text{ such that } a > \sup A - \Epsilon,$$
+        and that 
+        $$\exists b\in B \text{ such that }b < \inf B + \Epsilon.$$
+        Let $\Epsilon = |b-a|$. //Not valid. $a$ and $b$ were defined in terms of $\Epsilon$. You can't suddenly declare that $\Epsilon$ also depend on $a$ and $b$. That's circular.//
+        
+        Therefore, we know that:
+        \begin{align*}
+            a+\Epsilon &> \sup A\\
+            b-\Epsilon&< \inf B
+        \end{align*}
+        And because $\sup A = \inf B$, we can reorganize our equation as follows:
+        \begin{align*}
+            a+\Epsilon &> \sup A > b-\Epsilon\\
+            a+\Epsilon &> b-\Epsilon\\
+            2\cdot \Epsilon &> b-a
+        \end{align*}
+        //Right here, look at what you have. $b-a < 2\Epsilon$. If you had just used $\Epsilon/2$ when calling $a$ and $b$ into existence using the $\Epsilon$-criteria, you'd be done with the proof right here.//
+
+        
+        Now, let $a=\sup A - \frac{\Epsilon}2,$ and $b=\sup A + \frac{\Epsilon}2$. //This is now double-circular. $\Epsilon$ determined $a$ and $b$, which then redetermined $\Epsilon$, which is now redetermining $a$ and $b$.// Therefore,
+        $$2\cdot\Epsilon > \sup A + \frac{\Epsilon}2 - \sup A + \frac{\Epsilon}2 = \Epsilon$$
+        Hence, $\exists a\in A, b\in B$ such that $b-a < \Epsilon$.
+
+        //Seriously, combine Hints 1 and 2.//
+	\end{proof}
+
+    \subsubsection*{Third Attempt}
+    \begin{proof} Let $\Epsilon > 0$.\vp
+        We want to show that $\exists a\in A, b\in B $ such that $b-a<\Epsilon$. \vp
+        \underline{\textbf{Epsilon-Criterion}}\\
+        Because $\sup A = \inf B$, we know that
+        $$ \exists a\in A, \text{ such that } a > \sup A - \Epsilon,$$
+        and that 
+        $$\exists b\in B \text{ such that }b < \inf B + \Epsilon.$$
+//You needed to use $\Epsilon/2$ right away in the preceding lines.//
+        
+        Therefore, we know that:
+        \begin{align*}
+            a+\frac{\Epsilon}2 &> \sup A\\
+            b-\frac{\Epsilon}2&< \inf B
+        \end{align*}
+        And because $\sup A = \inf B$, we can reorganize our equation as follows:
+        \begin{align*}
+            a+\frac{\Epsilon}2 &> \sup A > b-\frac{\Epsilon}2\\
+            a+\frac{\Epsilon}2 &> b-\frac{\Epsilon}{2}\\
+            \Epsilon &> b-a
+        \end{align*}
+
+        //There's a substantial enough proof-grammar issue that I can't give this an M yet. If you want to use a token, it's due Friday the 21st.//
+
+	\end{proof}
+
+    \subsubsection*{Token Attempt}
+    \begin{proof} Let $\Epsilon > 0$.\vp
+        We want to show that $\exists a\in A, b\in B $ such that $b-a<\Epsilon$. \vp
+        \underline{\textbf{Epsilon-Criterion}}\\
+        Because $\sup A = \inf B$, we know that
+        $$ \exists a\in A, \text{ such that } a > \sup A - \frac{\Epsilon}2,$$
+        and that 
+        $$\exists b\in B \text{ such that }b < \inf B + \frac{\Epsilon}2.$$        
+        Therefore, we know that:
+        \begin{align*}
+            a+\frac{\Epsilon}2 &> \sup A\\
+            b-\frac{\Epsilon}2&< \inf B
+        \end{align*}
+        And because $\sup A = \inf B$, we can reorganize our equation as follows:
+        \begin{align*}
+            a+\frac{\Epsilon}2 &> \sup A > b-\frac{\Epsilon}2\\
+            a+\frac{\Epsilon}2 &> b-\frac{\Epsilon}{2}\\
+            \Epsilon &> b-a
+        \end{align*}
+	\end{proof}
+
+
+    
+
+%% HW-8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress)
+\section*{HW8: First attempt due \textbf{Monday 3/03}}
+\subsection*{Problem 14} \FGR\\
+\SGR\\
+\FGM\\
+Prove by definition that $\displaystyle \lim_{n\to \infty} \frac{1}{n^{1/3}} = 0$.
+	\begin{proof}
+	Let $L=0$. //No need to introduce a new variable name. Just use $0$ in place of $L$ in the definition.// \vp
+    We want to show that $\forall \Epsilon > 0$, //Better would be to ``let'' $\Epsilon$ before this sentence, and to not requantify in the WTS.//
+    
+    $\exists N\in \N$ such that $\forall n> N$, $\left | \frac{1}{n^{1/3}}-L\right |<\Epsilon$. //$L$ should be $0$.//\vp
+    Via the A.P, we can produce an $N$ such that:
+    $$N\cdot \Epsilon^3 > 1 \; \Longleftrightarrow \; N > \frac{1}{\Epsilon^3}$$
+    //Again, you don't need to redo the fraction trick every time. We proved it with maximum generality in class.//
+    
+    Therefore, because $n>N$, //You haven't actually ``let $n > N$'' yet.// we can write:
+    $$n >N>  \frac{1}{\Epsilon^3} \;\Longleftrightarrow \; \Epsilon > \frac{1}{n^{1/3}}$$
+    //This algebra does not need to be pointed out separately. It's on the Axioms of $\R$ handout, so you can just use it later.//
+    
+    Additionally, because $L=0$ //This is why you should just use $0$ from the start. You're just going to replace it in the end anyway.//
+    
+    and $\frac{1}{n^{1/3}}$ will always be positive due to $N\in\N$, 
+    $$\frac{1}{n^{1/3}} - 0  < \Epsilon \;\Longleftrightarrow \; \left | \frac{1}{n^{1/3}} - L \right | < \Epsilon.$$
+    //This $\iff$ formulation is not the preferred way to write this.
+
+    Given that above, I said to cut all the separate algebra, the way to do this at the end is to do all the algebra in one continuous string.
+
+    \[\left|\frac{1}{n^{1/3}} - 0\right| = \frac{1}{n^{1/3}} < with N < with \Epsilon fraction = \Epsilon. \]
+    Hence, $\lim_{n\rightarrow\infty} \frac{1}{n^{1/3}} = L=0$.
+
+    //Correct idea! Let's structure the main body of the proof differently.//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+        \begin{proof}
+        
+        Let $\Epsilon > 0$.\\ 
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $\left | \frac{1}{n^{1/3}}-0\right |<\Epsilon$.\vp
+        Via the A.P, we can produce an $N$ such that:
+        $$\frac{1}{N^{1/3}} < \Epsilon$$
+        Let $n>N$. Because $\frac{1}{n^{1/3}}$ will always be positive because N>0 //math-mode//, 
+        $$\blue{\frac{1}{n^{1/3}}= \left|\frac{1}{n^{1/3}}-0 \right|} < \frac{1}{N^{1/3}}<\Epsilon.$$
+        //Those first two terms are backwards.//
+        Hence, $\lim_{n\rightarrow\infty} \frac{1}{n^{1/3}} = \blue{L}=0$. //There's really no need for the symbol $L$ here.//
+
+        //Correct structure! Just a couple more notes left.//
+        \end{proof}
+
+    \subsubsection*{Third Attempt}
+    \begin{proof}
+        
+        Let $\Epsilon > 0$.\\ 
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $\left | \frac{1}{n^{1/3}}-0\right |<\Epsilon$.\vp
+        Via the A.P, we can produce an $N$ such that:
+        $$\frac{1}{N^{1/3}} < \Epsilon$$
+        Let $n>N$. Because $\frac{1}{n^{1/3}}$ will always be positive because $N>0$,
+        $${\left|\frac{1}{n^{1/3}}-0 \right|=\frac{1}{n^{1/3}}} < \frac{1}{N^{1/3}}<\Epsilon.$$
+        Hence, $\lim_{n\rightarrow\infty} \frac{1}{n^{1/3}} =0$. 
+
+    \end{proof}
+		
+		
+\subsection*{Problem 15} \FGR\\
+\SGR\\
+\FGM\\
+Prove be definition that $\displaystyle \lim_{n\to \infty} \frac{1}{n} \sin n = 0$.
+	\begin{proof}
+	Let $L = 0$. //Again.//\\
+    We want to show that $\forall \Epsilon > 0$, //Again.// $\exists N\in \N$ such that $\forall n> N$, $\left | \frac{1}n\sin (n)-L\right |<\Epsilon$.\vp
+    //Produce the correct $N$ right here at the start. Then spend the rest of the proof showing the reader that you picked the right $N$.//
+    
+    Because $\max\sin(n)=1$ and $\min \sin(n)=-1$,
+    $$\frac{1}n \ge \frac{1}n\sin(n). $$
+    //Good idea! I would express this in the form $\left|\frac{1}n\sin(n)\right| \leq \left| \frac{1}n\right|$.//
+    
+    Therefore,
+    $$\blue{\left | \frac{1}n\sin (n)-L\right |\le \left | \frac{1}n-L\right | < \Epsilon}$$
+    //Two things. First, the first inequality is not in general true, except that here $L=0$. With $L=0$ it's true, but not necessarily in any other case. So here your introduction of the symbol $L$ might actually make a reader think they uncovered an error in your logic.
+
+    Second, don't state the $<\Epsilon$ inequality at all until it is proven. It's bad form to state the desired result (outside of a WTS) until it is completely proven.//
+
+    //Honestly, after pointing out the $\sin \leq 1$ thing, we're ready to launch into the algebra. ``Let $n > N$. Then
+        \[\left|\frac{1}{n} \sin n \right| \leq \left|\frac{1}{n}\right| \leq \frac{1}{n} < etc = \Epsilon.'' \]
+    
+    Via. the A.P. we know that $\exists N\in \N$ such that:
+    $$N\cdot \Epsilon > 0 \; \Longleftrightarrow \; N > \frac{1}\Epsilon.$$
+    Thus, because $L=0$ and $\frac{1}n$ is always positive, for $n>N$, 
+    $$\Epsilon > \frac{1}n = \left | \frac{1}n - L\right |$$
+    Hence, $\lim_{n\rightarrow\infty}\frac{1}n\sin(n)=0$.
+
+    //Correct idea! Your proof is currently in what I like to call scratchwork-order. Proof-order in general follows this pattern.
+
+    1. Set up the proof with all assumptions and a WTS.\\
+    2. Produce the correct answer seemingly out of the clear blue sky. You of course found the answer by doing scratchwork, but you don't recreate that process in the proof.\\
+    3. Demonstrate to the reader that your answer is correct.//
+
+	\end{proof}
+
+    \subsection*{Second Attempt}
+    \begin{proof}
+        Let $\Epsilon > 0$.\\
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $\left | \frac{1}n\sin (n)-0\right |<\Epsilon$.\vp
+        Via the A.P. we can produce an $N$ such that $\frac{1}N < \Epsilon$. Let $n>N$. \\
+        \blue{Because $\max\sin(n)=1$ and $\min \sin(n)=-1$,} //This is slightly inaccurate, because for natural number inputs, $\sin$ never literally equals $1$ or $-1$. You can just say that  $\left|\frac{1}{n}\sin(n)\right| \leq \left|\frac{1}{n}\right|$.//
+
+        
+        $$\left|\frac{1}n\sin(n)\right| \leq \left| \frac{1}n\right|.$$
+        Therefore,
+        $$\left | \frac{1}n\sin (n)-0\right |\le \left | \frac{1}n-0\right | = \frac{1}n < \frac{1}N <\Epsilon//period//$$
+
+        //Why do you have the exact same math line a second time after this? The work is complete here.//
+        
+        Because $n$ is always positive, $\left|\frac{1}n-0\right| = \left|\frac{1}n\right|=\frac{1}n$. Thus,
+        $$\left | \frac{1}n\sin (n)-0\right |\le \left | \frac{1}n-0\right | = \frac{1}n < \frac{1}N <\Epsilon.$$
+        Hence, $\lim_{n\rightarrow\infty}\frac{1}n\sin(n)=0$.
+
+        //You're almost done!//
+    \end{proof}
+
+    \subsection*{Third Attempt}
+    \begin{proof} Let $\Epsilon > 0.$\\
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $\left | \frac{1}n\sin (n)-0\right |<\Epsilon$.\vp
+        Via the A.P. we can produce an $N$ such that $\frac{1}N < \Epsilon$. Let $n>N$. \\        
+        $$\left|\frac{1}n\sin(n)\right| \leq \left| \frac{1}n\right|.$$
+        Therefore,
+        $$\left | \frac{1}n\sin (n)-0\right |\le \left | \frac{1}n-0\right | = \frac{1}n < \frac{1}N <\Epsilon.$$
+        Hence, $\lim_{n\rightarrow\infty}\frac{1}n\sin(n)=0$.
+    \end{proof}
+
+%% HW-9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress)
+\pagebreak
+\section*{HW9: First attempt due \textbf{Wednesday 3/05}}
+    \subsection*{Problem 16} \FGR\\
+    \SGR\\
+    \FGM\\
+    Prove that sequence limits are unique. That is, suppose that $\lim_{n\to \infty} a_n = L_1$ and $\lim_{n\to \infty} a_n = L_2$. Prove that $L_1 = L_2$.\\ 
+    ({\it Hint: Use the result you proved in Problem 8(b), along with the definition of sequence convergence.})
+    	\begin{proof}
+    	Let $a_n$ be a sequence. \vp
+        Suppose that $\lim_{n\to\infty} a_n=L_1$ and $\lim_{n\to\infty} a_n=L_2$.\vp
+        We want to show that $L_1=L_2$. //Make this more specific. We're going to prove that $|L_1 - L_2| < \Epsilon$.//\vpp
+        Let $\Epsilon> 0$. //Move this before the previous sentence.//\\
+        Via the definition of limit, $\exists N_1,N_2\in \N$ such that $\forall n_1>N_1, n_2>N_2$,
+        \begin{align*}
+            |a_{n_1}-L_1|&<\Epsilon\text{ and}\\
+            |a_{n_2}-L_2|&<\Epsilon.
+        \end{align*} 
+        //Better form to make those $\Epsilon/2$s.//
+        
+        Let $m=\max(n_1,n_2)$. //Don't forget to ``let'' $n$.// Thus,
+        \begin{align*}
+            |a_{m}-L_1|&<\Epsilon\text{ and}\\
+            |a_{m}-L_2|&<\Epsilon.
+        \end{align*} 
+        Then, we know via the triangle inequality, that;
+        $$|L_1-L_2|=|L_1+a_m-L_2-a_m|\le|a_m-L_2|+|-a_m+L_1|.$$
+        And because $|a_m - L_1|$ and $|a_m - L_2|$ are both less than $\Epsilon$, we know that:
+        $$|L_1-L_2|\le\Epsilon+\Epsilon.$$
+        Because $\Epsilon$ (and $2\cdot\Epsilon$) can be any number greater than $0$, via the proof in problem 8(b),
+        $$L_1=L_2$$.
+
+        //Correct idea! Several writing notes.//
+    	\end{proof}
+
+        \subsubsection*{Second Attempt}
+        \begin{proof}
+            Let $a_n$ be a sequence. \vp
+            Suppose that $\lim_{n\to\infty} a_n=L_1$ and $\lim_{n\to\infty} a_n=L_2$.\vp
+            Let $\Epsilon> 0$.\\
+            We want to show that $|L_1 - L_2| < \Epsilon$. \vpp
+            Via the definition of limit, $\exists N_1,N_2\in \N$ such that $\forall n_1>N_1, n_2>N_2$,
+            \begin{align*}
+                |a_{n_1}-L_1|&<\frac{\Epsilon}2\text{ and}\\
+                |a_{n_2}-L_2|&<\frac{\Epsilon}2,
+            \end{align*} 
+            \blue{and let $n_1>N_1, n_2>N_2$}. //Cut that. You correctly used $\forall$ to temporarily instantiate $n_1$ and $n_2$. They don't need to be ``let'' after the fact.//\\
+            Let $m=\max(n_1,n_2)$. //Easier: Let $m > \max(N_1, N_2)$.// Thus,
+            \begin{align*}
+                |a_{m}-L_1|&<\frac{\Epsilon}2\text{ and}\\
+                |a_{m}-L_2|&<\frac{\Epsilon}2.
+            \end{align*} 
+            //There's no need to point out the $\Epsilon/2$ inequalities for $m$ specifically. $m$ is bigger than $N_1$ and $N_2$, and the reader knows what that gives us because you said the relevant $\forall$s above.//
+            
+            Then, we know via the triangle inequality, that;
+            $$|L_1-L_2|=|L_1+a_m-L_2-a_m|\le|a_m-L_2|+|-a_m+L_1|.$$
+            \blue{And because $|a_m - L_1|$ and $|a_m - L_2|$ are both less than $\Epsilon$, we know that:}
+            $$\blue{|L_1-L_2|\le\frac{\Epsilon}2+\frac{\Epsilon}2.}$$
+            //More concise: Just tack on the $<\Epsilon/2 +\Epsilon/2 = \Epsilon$ to the end of the previous long math line.//
+            
+            Hence,  \blue{via the proof in} //Just say ``by''. You're not citing the proof of 8(b), you're citing the result of 8(b).// problem 8(b),
+            $$L_1=L_2$$. //Move that period into the math line so it's not floating on its own.//
+
+            //A few more writing notes and it's done!//
+        \end{proof}
+
+        \subsubsection*{Third Attempt}
+        \begin{proof}
+            Let $a_n$ be a sequence. \vp
+            Suppose that $\lim_{n\to\infty} a_n=L_1$ and $\lim_{n\to\infty} a_n=L_2$.\vp
+            Let $\Epsilon> 0$.\\
+            We want to show that $|L_1 - L_2| < \Epsilon$. \vpp
+            Via the definition of limit, let $N_1,N_2\in \N$ such that $\forall n_1>N_1, n_2>N_2$,
+            \begin{align*}
+                |a_{n_1}-L_1|&<\frac{\Epsilon}2\text{ and}\\
+                |a_{n_2}-L_2|&<\frac{\Epsilon}2.
+            \end{align*} 
+            Let $m>\max(N_1,N_2)$.
+            Then, we know via the triangle inequality, that:
+            $$|L_1-L_2|=|L_1+a_m-L_2-a_m|\le|a_m-L_2|+|-a_m+L_1|<\frac{\Epsilon}2+\frac{\Epsilon}2=\Epsilon.$$
+            Hence, by problem 8(b),
+            $$L_1=L_2.$$
+        \end{proof}
+    		
+    			
+    	
+    \subsection*{Problem 17} \FGR\\
+    \FGM\\
+    Prove by definition that $\displaystyle\lim_{n\to \infty} (2n^5-7n^3-12)=+\infty$.
+    	\begin{proof}
+    	Let $M>0$.\\
+        We want to show that $\exists N\in\N$ such that $\forall n> N$, we have $2n^5-7n^2-12 > M$.\vp
+        We know that:
+        \begin{align*}
+            2n^5-7n^3-12=n^3(2n^2-7)-12
+        \end{align*}
+        Assuming that $N\ge2$, which always makes $\sqrt[3]{2N^2-7}\ge1$, we know that:
+        $$N\cdot\sqrt[3]{2N^2-7} \ge N.$$
+        Thus, via. tha A.P. we can produce an $N$ such that:
+        $$\blue{N\cdot\sqrt[3]{2N^2-7}\ge N>\sqrt[3]{M+12}}$$
+        //That line is phrased confusingly. Your A.P. $N$ is specifically giving you the $N> \sqrt[3]{M+12}$ part. So only say that here, then put the two inequalities together after the $n>N$.
+        
+        Also technicality. It would be best to make $N = \max\{2, your A.P. N\}.$//
+        
+        Therefore, $\forall n>N$, 
+        $$n^3(2n^2-7)-12>M.$$
+        Hence, $\displaystyle\lim_{n\to \infty} (2n^5-7n^3-12)=+\infty$.
+
+        //Correct outline and idea!//
+    	\end{proof}
+
+        \subsubsection*{Second Attempt}
+        \begin{proof}
+            Let $M>0$.\\
+            We want to show that $\exists N\in\N$ such that $\forall n> N$, we have $2n^5-7n^2-12 > M$.\vp
+            We know that:
+            \begin{align*}
+                2n^5-7n^3-12=n^3(2n^2-7)-12
+            \end{align*}
+            Assuming that $N\ge2$, which always makes $\sqrt[3]{2N^2-7}\ge1$, we know that:
+            $$N\cdot\sqrt[3]{2N^2-7} \ge N.$$
+            Thus, via. tha A.P. we can produce an $N$ such that:
+            $$N>\max(\sqrt[3]{M+12},\;2)$$
+            And therefore we have, 
+            $$N\cdot\sqrt[3]{2N^2-7}\ge N>\sqrt[3]{M+12}$$
+            Therefore, $\forall n>N$, 
+            $$n^3(2n^2-7)-12>M.$$
+            Hence, $\displaystyle\lim_{n\to \infty} (2n^5-7n^3-12)=+\infty$.
+
+        \end{proof}
+
+\pagebreak
+%% HW-10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress) 
+\section*{HW10: First attempt due \textbf{Friday 3/07}}
+\subsection*{Problem 18} \FGR\\
+\FGM\\
+Suppose that $a_n \to L_a \in \R$ and $b_n \to L_b \in \R$, and assume that $(L_a)^2 +2\neq 0$. Prove, citing all the relevant limit laws by number from the textbook, that $\dfrac{3a_n - 2b_n}{(a_n)^2 +2} \to \frac{3L_a -2L_b}{(L_a)^2 +2}$.
+	\begin{proof}
+	We want to show that $\displaystyle\lim_{n\to\infty}\dfrac{3a_n - 2b_n}{(a_n)^2 +2} = \frac{3L_a -2L_b}{(L_a)^2 +2}$.\vp
+    Via \textbf{Theorem 9.6 (Division)}, we have:
+    $$\lim\frac{3a_n - 2b_n}{(a_n)^2 +2} = \frac{\lim (3a_n-2b_n)}{\lim((a_n)^2 +2)}$$
+    Via \textbf{Theorem 9.3 (Addition)}, we have:
+    $$\frac{\lim 3a_n - \lim 2b_n}{\lim (a_n^2)+ \lim 2}.$$
+    Then, via \textbf{Theorem 9.2 (Multiplication)}, //Theorem 9.2 does multiplication by constants. You need 9.4 for $(a_n)^2$.// we have:
+    $$\frac{3\lim a_n - 2\lim b_n}{\lim (a_n)\lim(a_n)+ \lim 2}.$$
+    By evaluating each limit, we are left with
+    $$\ \frac{3L_a-2L_b}{L_a^2+2}.$$
+    Hence, $\displaystyle\lim_{n\to\infty}\dfrac{3a_n - 2b_n}{(a_n)^2 +2} = \frac{3L_a -2L_b}{(L_a)^2 +2}$.
+
+    //Almost done! You missed one.//
+	\end{proof}
+    
+\subsubsection*{Second Attempt}
+    \begin{proof}
+        We want to show that $\displaystyle\lim_{n\to\infty}\dfrac{3a_n - 2b_n}{(a_n)^2 +2} = \frac{3L_a -2L_b}{(L_a)^2 +2}$.\vp
+        Via \textbf{Theorem 9.6 (Division)}, we have:
+        $$\lim\frac{3a_n - 2b_n}{(a_n)^2 +2} = \frac{\lim (3a_n-2b_n)}{\lim((a_n)^2 +2)}$$
+        Via \textbf{Theorem 9.3 (Addition)}, we have:
+        $$\frac{\lim 3a_n - \lim 2b_n}{\lim (a_n^2)+ \lim 2}.$$
+        Then, via \textbf{Theorem 9.2 (Const. Mult)} and \textbf{Theorem 9.4 (Seq. Mult)},we have:
+        $$\frac{3\lim a_n - 2\lim b_n}{\lim (a_n)\lim(a_n)+ \lim 2}.$$
+        By evaluating each limit, we are left with
+        $$\ \frac{3L_a-2L_b}{L_a^2+2}.$$
+        Hence, $\displaystyle\lim_{n\to\infty}\dfrac{3a_n - 2b_n}{(a_n)^2 +2} = \frac{3L_a -2L_b}{(L_a)^2 +2}$.
+	\end{proof}
+		
+			
+	
+\subsection*{Problem 19} \FGR\\
+\FGM\\
+Consider the sequence $a_n = \dfrac{n-\cos(n)}{n}$. Use the Squeeze Theorem to prove that $a_n$ converges and find the limit.
+	\begin{proof}
+	Let $b_n,c_n$ be sequences such that $b_n=\frac{n-1}{n}$, and $c_n=\frac{n+1}n$. //Good choices!//\vp
+    We want to show via the \textbf{Squeeze Theorem} that $\displaystyle\lim_{n\to\infty}\frac{n-\cos(n)}n=1$.\vp
+    Via limit theorems, we know that $$\lim b_n=\lim\frac{n}n + \lim\frac{1}{n}=\lim 1 + 0 = 1.$$
+    We also know that $$\lim b_n=\lim\frac{n}n - \lim\frac{1}{n}=\lim 1 - 0 = 1.$$
+    Because \blue{$\max \cos(n)=1$, and $\min \cos(n)=-1$,} //With integer inputs, this is not true. But $-1\leq \cos(n) \leq 1$ is true.// $b_n\le a_n\le c_n$.\vp
+    Hence, via the Squeeze Theorem, $\displaystyle\lim_{n\to\infty}\frac{n-\cos(n)}n=1$.
+
+    //Correct outline and idea! One statement needs editing.//
+	\end{proof}
+
+\subsubsection*{Second Attempt}
+    \begin{proof}
+        Let $b_n,c_n$ be sequences such that $b_n=\frac{n-1}{n}$, and $c_n=\frac{n+1}n$.\vp
+        We want to show via the \textbf{Squeeze Theorem} that $\displaystyle\lim_{n\to\infty}\frac{n-\cos(n)}n=1$.\vp
+        Via limit theorems, we know that $$\lim b_n=\lim\frac{n}n + \lim\frac{1}{n}=\lim 1 + 0 = 1.$$
+        We also know that $$\lim b_n=\lim\frac{n}n - \lim\frac{1}{n}=\lim 1 - 0 = 1.$$
+        Because $-1\le\cos(n)\le1$, $b_n\le a_n\le c_n$.\vp
+        Hence, via the Squeeze Theorem, $\displaystyle\lim_{n\to\infty}\frac{n-\cos(n)}n=1$.
+	\end{proof}
+
+\pagebreak
+%% HW-11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress) 
+\section*{HW11: First attempt due \textbf{Monday 3/10}}
+    \subsection*{Problem 20} \FGM\\
+    Let $a_n$ and $b_n$ be sequences, and suppose $\exists N_0 \in \N$ such that $a_n \leq b_n $ $\forall n > N_0$.
+    \begin{enumerate}
+    \item Prove that if $\displaystyle \lim_{n\to \infty} a_n = \infty$, then $\displaystyle \lim_{n\to \infty} b_n = \infty$.
+    	\begin{proof}
+    	Let $M>0$.\vp
+        We want to show that $\exists N\in\N$ such that $\forall n> N,$ we have $b_n>M$.\vp
+        Because $\lim_{n\to\infty}a_n=\infty,$ $\exists N_a\in\N$ such that $\forall n_a>N_a$, we have
+        $$a_{n_a}>M.$$
+        Let $N=\max (N_a, N_0)$. Thus, $\forall n>N$, we have:
+        $$b_n\ge a_n > M. $$
+    	\end{proof}
+    \item Prove that if $\displaystyle \lim_{n\to \infty} b_n = -\infty$, then $\displaystyle \lim_{n\to \infty} a_n = -\infty$.
+    	\begin{proof}
+    	Let $m<0$.\vp
+        We want to show that $\exists N\in\N$ such that $\forall n> N$, $a_n<m$.\vp
+        Because $\lim_{n\to\infty}b_n=-\infty,$ $\exists N_b\in\N$ such that $\forall n_b>N_b$, we have
+        $$b_{n_b}<m.$$
+        Let $N=\max(N_b, N_0)$. Thus, $\forall n>N$, we have
+        $$a_n\le b_n < m.$$
+    	\end{proof}
+    \end{enumerate}
+    			
+    	
+    \subsection*{Problem 21} \FGR\\
+    \SGR\\
+    \FGM\\
+    Prove that $\displaystyle \lim_{n\to\infty} a_n = \infty$ if and only if $\displaystyle \lim_{n\to \infty} -a_n = -\infty$.
+    	\begin{proof}
+    	Let $m<0$.\vp
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $-a_n < m$.\vp
+        Because $\lim_{n\to\infty}b_n=-\infty$, $\exists N\in\N$ such that $\forall n > N$, we have
+        $$a_n>-m.$$
+        Hence //``$\forall n > N$''//, we have
+        $$-a_n < m.$$
+
+        //Correct outline and idea for the forwards direction! Now you need the reverse direction!//
+    	\end{proof}
+
+    \subsubsection*{Second Attempt}
+    \begin{proof}
+    We will prove this statement both ways.\vpp
+        \underline{$\displaystyle \lim_{n\to\infty} -a_n = -\infty$ if $\displaystyle \lim_{n\to \infty} a_n = \infty$}\vpp
+        Let $m<0$.\vp
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $-a_n < m$.\vp
+        Because $\lim_{n\to\infty}a_n=-\infty$, //You meant $\infty$ here, not $-\infty$. Probably a copy/paste error.// $\exists N\in\N$ such that $\forall n > N$, we have
+        $$a_n>-m.$$
+        Hence, $\forall n > N$ we have
+        $$-a_n < m.$$\\
+        \underline{$\displaystyle \lim_{n\to\infty} a_n = \infty$ if $\displaystyle \lim_{n\to \infty} -a_n = -\infty$}\vpp
+        //Don't forget to let $M>0$.//
+        We want to show that $\exists N\in \N$ such that $\forall n> N$, $a_n > M$.\vp
+        Because $\lim_{n\to\infty}a_n=-\infty$, $\exists N\in\N$ such that $\forall n > N$, we have
+        $$-a_n<-M.$$
+        Hence, $\forall n > N$ we have
+        $$a_n > M.$$\\
+        Hence, $\displaystyle \lim_{n\to\infty} a_n = \infty$ if and only if $\displaystyle \lim_{n\to \infty} -a_n = -\infty$.
+
+        //Good! A typo and a missed variable and it's done!//
+    \end{proof}
+
+    \subsubsection*{Third Attempt}
+        \begin{proof}
+            We will prove this statement both ways.\vpp
+            \underline{$\displaystyle \lim_{n\to\infty} -a_n = -\infty$ if $\displaystyle \lim_{n\to \infty} a_n = \infty$}\vpp
+            Let $m<0$.\vp
+            We want to show that $\exists N\in \N$ such that $\forall n> N$, $-a_n < m$.\vp
+            Because $\lim_{n\to\infty}a_n=\infty$, $\exists N\in\N$ such that $\forall n > N$, we have
+            $$a_n>-m.$$
+            Hence, $\forall n > N$ we have
+            $$-a_n < m.$$\\
+            \underline{$\displaystyle \lim_{n\to\infty} a_n = \infty$ if $\displaystyle \lim_{n\to \infty} -a_n = -\infty$}\vpp
+            Let $M>0$.\\
+            We want to show that $\exists N\in \N$ such that $\forall n> N$, $a_n > M$.\vp
+            Because $\lim_{n\to\infty}a_n=-\infty$, $\exists N\in\N$ such that $\forall n > N$, we have
+            $$-a_n<-M.$$
+            Hence, $\forall n > N$ we have
+            $$a_n > M.$$\\
+            Hence, $\displaystyle \lim_{n\to\infty} a_n = \infty$ if and only if $\displaystyle \lim_{n\to \infty} -a_n = -\infty$.
+    \end{proof}
+
+%% HW-12 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (In-Progress) 
+\section*{HW12: First attempt due \textbf{Wednesday 3/12}}
+\subsection*{Problem 22} \FGR\\
+\SGR\\
+\FGM\\
+Consider the sequence defined by $a_1 = \frac{1}{2}$, $a_2 = \frac{1\cdot 3}{2\cdot 4}$, and
+	\[a_n = \frac{1\cdot 3\cdot \cdots \cdot (2n-1)}{2\cdot 4\cdot \cdots (2n)}\,\, \forall n\geq 3. \]
+Prove that $a_n$ converges. ({\it Hint: Prove that the sequence is monotone and bounded from the relevant side.})
+	\begin{proof}
+        We want to show that $a_n$ is monotone and bounded.\vp
+        For $n\ge 3$, we write:
+        $$\frac{3\cdot(2n-1)}{8\cdot 2n} = \frac{3}{8}\cdot\frac{2n-1}{2n}$$
+        //I think you've misunderstood the general shape of $a_n$. The numerator of $a_n$ is the product of \textbf{all} odd numbers from $1$ to $2n-1$, and the denominator is the product of \textbf{all} even numbers from $2$ to $2n$.//
+        
+        Because $n$ is positive, and $(2n-1)/(2n)$ will always be \blue{less than 1} //We really don't need the less that $1$ fact. Bounded below is good enough.//
+        
+        and greater than 0, we write:
+        $$0 <  \frac{3}{8}\cdot\frac{2n-1}{2n} < 1$$
+        Hence, $a_n$ is bounded. \vp
+        We can also show that $a_n$ is monotone, such that $a_n > a_{n+1}$:
+        \begin{align*}
+            \frac{3}8\cdot\frac{2n-1}{2n} &> \frac{3}8\cdot\frac{2(n+1)-1}{2(n+1)}\\
+            4n^2+4n-2 &> 4n^2 + 2n\\
+            n&>1
+        \end{align*}
+        Thus, because $n\ge 3$, $a_n$ is monotone.\vp
+        Hence, because $a_n$ is bounded and monotone, $a_n$ converges.
+
+        //Correct idea! You have $a_n$ wrong.//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+    \begin{proof}
+        We want to show that $a_n$ is monotone and bounded.\vp
+        For $n\ge 3$, we write:
+        $$\frac{3\cdot(2n-1)}{8\cdot 2n} = \frac{3}{8}\cdot\cdot\cdot\frac{2n-1}{2n}$$
+        //Okay, it took me nearly five minutes to realize that you simplified $1\cdot 3$ and $2\cdot 4$. It's really best not to do that here, since doing so hides the pattern in the numbers. (I was several minutes into explaining this sequence in detail before I realized that's what you had done.)
+
+        If I gave you the sequence $1,3,15,105,945,10395,135135,\ldots$, it's really hard to spot the pattern, right? But if I write the same sequence as $1, 1\cdot 3, 1\cdot 3 \cdot 5, 1\cdot 3\cdot 5\cdot 7,\ldots$, the pattern is so much more clear.
+
+        All that is to say, throughout this whole proof, don't simplify the $1\cdot 3$ and the $2\cdot 4$ that appear.//
+        
+        Because $n$ is positive, $\frac{3}{8}\cdot\cdot\cdot\frac{2n-1}{2n}$ will always be greater than 0.
+        Hence, $a_n$ is \blue{bounded}. //``bounded below''// \vp
+        We can also show that $a_n$ is \blue{monotone,} //More importantly, decreasing.// such that $a_n \ge a_{n+1}$:
+        \begin{align*}
+            \frac{3}8\cdot\cdot\cdot\frac{2n-1}{2n} &\ge \frac{3}8\cdot\cdot\cdot\frac{2n-1}{2n}\cdot\frac{2(n+1)-1}{2(n+1)}\\
+            1 &\ge \frac{2(n+1)-1}{2(n+1)}\\
+            2n+2&\ge2n+1
+        \end{align*}
+        //Look up Rule 12 in the Rules for Writing Proofs handout. The preceding logic is a prime example of writing the proof backwards.
+
+        Instead, you can determine that $a_{n+1} = a_n\cdot \frac{2n+1}{2n+2}$. Since $\frac{2n+1}{2n+2} <1$, it follows that $a_{n+1} < a_n$.//
+
+        
+        Thus, $a_n$ is monotone.\vp
+        Hence, because $a_n$ is \blue{bounded and monotone,} //``bounded below and decreasing''// $a_n$ converges.
+
+        //Several things left to fix. I would recommend stopping by student hours before the third attempt is due to confirm you got everything right.//
+	\end{proof}
+
+    \subsubsection*{Third Attempt}
+    \begin{proof}
+        We want to show that $a_n$ is bounded below and decreasing.\vp
+        Note that for $n\ge 3,$
+        $$a_n = \frac{1}{2}\cdot\frac{3}{4}\cdot\cdot\cdot\frac{2n-1}{2n}.$$
+        Because $\frac{2n-1}{2n}>0$, $\forall n\in\N,\;a_n>0$. Thus, $a_n$ is bounded below.\\\vp
+        We will also show that $a_n$ is decreasing such that $a_n \ge a_{n+1}$:\vp
+        Note that 
+        \begin{align*}
+            a_{n+1}=a_n\;\cdot\; &\frac{2n+1}{2n+2}, \text{ and that} \\
+            &\frac{2n+1}{2n+2} < 1.
+        \end{align*}
+        Then we have that 
+        \begin{align*}
+            a_{n+1}=a_n\cdot \frac{2n+1}{2n+2}<a_n.\;\;\;\;\;\;
+        \end{align*}\vp
+        Thus, $a_n$ is decreasing.\vp
+        Hence, because $a_n$ is bounded below and decreasing, $a_n$ converges.
+	\end{proof}
+			
+
+\subsection*{Problem 23} \FGR\\
+\SGR\\
+\FGM\\
+Prove that the sequence $(1+(-1)^n)n^2$ diverges. ({\it Hint: Split this into the odd and even cases.})
+	\begin{proof}
+    	We want to show that $\lim\sup a_n \ne \lim\inf a_n$.
+            \begin{enumerate}
+            \item Let $M>0$.\vp 
+            We want to show that $\exists n\in\N$ such that $a_n>M$.
+            Let $n$ be even. Thus, $a_n = 2n^2$. \\
+            Consider $2n^2>n$. Via. the A.P. we can produce an $n$ such that:
+            \begin{align*}
+                n&>M\\
+                \text{Thus, we h}&\text{ave: } 2n^2>M
+            \end{align*}
+            Hence, $a_n$ is not bounded above, so $\lim\sup a_n = +\infty$. 
+            \item For even $n$, $a_n$ is positive. \blue{Consider} //``Suppose'' is a better word here.// that $n$ is odd. \vp
+            \blue{Therefore, for odd $n$,} //``Then''// $a_n = 0$. \\
+            \blue{Hence, because $a_n$ cannot be negative, $\lim\inf a_n = 0$.} //I can't quite articulate why this wording sounds off to me. I would reword it as ``Since $a_n$ also cannot be negative, $\liminf a_n =0$.// 
+    \end{enumerate}
+    Because $\lim\sup a_n \ne \lim\inf a_n$, $a_n$ diverges.
+
+    //Correct outline and idea!//
+	\end{proof}
+
+    \subsubsection*{Second Attempt}
+        \begin{proof}
+        We want to show that $\lim\sup a_n \ne \lim\inf a_n$.
+        \begin{enumerate}
+            \item Let $M>0$.\vp 
+            We want to show that $\exists n\in\N$ such that $a_n>M$.
+            Let $n$ be even. Thus, $a_n = 2n^2$. \\
+            \blue{Consider} //``Note that'' is better wording here.// $2n^2>n$. Via. the A.P. we can produce an $n$ such that:
+            \begin{align*}
+                n&>M\\
+                \text{Thus, we h}&\text{ave: } 2n^2>M
+            \end{align*}
+            Hence, $a_n$ is not bounded above, so $\lim\sup a_n = +\infty$. 
+            \item For even $n$, $a_n$ is positive. Suppose that $n$ is odd. \vp
+            Then, $a_n = 0$. \\
+            Since $a_n$ also cannot be negative, $\liminf a_n =0$.
+        \end{enumerate}
+        Because $\lim\sup a_n \ne \lim\inf a_n$, $a_n$ diverges.
+
+        //One wording change left!//
+        \end{proof}
+
+        \subsubsection*{Third Attempt}
+        \begin{proof}
+        We want to show that $\lim\sup a_n \ne \lim\inf a_n$.
+        \begin{enumerate}
+            \item Let $M>0$.\vp 
+            We want to show that $\exists n\in\N$ such that $a_n>M$.
+            Let $n$ be even. Thus, $a_n = 2n^2$. \\
+            Note that $2n^2>n$. Via. the A.P. we can produce an $n$ such that:
+            \begin{align*}
+                n&>M\\
+                \text{Thus, we h}&\text{ave: } 2n^2>M
+            \end{align*}
+            Hence, $a_n$ is not bounded above, so $\lim\sup a_n = +\infty$. 
+            \item For even $n$, $a_n$ is positive. Suppose that $n$ is odd. \vp
+            Then, $a_n = 0$. \\
+            Since $a_n$ also cannot be negative, $\liminf a_n =0$.
+        \end{enumerate}
+        Because $\lim\sup a_n \ne \lim\inf a_n$, $a_n$ diverges.
+        \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 13  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{HW13: First attempt due \textbf{Monday 3/17}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 24 %%%%%%%%%%
+\subsection*{Problem 24} \FGR\\
+\FGM\\
+Suppose that $(a_n)$ and $(b_n)$ are Cauchy sequences. Prove by definition that the sequence $(a_n +b_n)$ is Cauchy.
+
+\begin{proof} Let $\Epsilon > 0$.\vpp
+        We want to show that $\exists N\in \N$ for $n,m > N$ such that $|(a_n+b_n) - (a_m + b_m)| < \Epsilon$\\
+        Because $a_n$ and $b_n$ are Cauchy, let //``let'' is not appropriate here. Rather, $\exists N_a, N_b \in \N$ such that $\forall$ etc.// $N_a, N_b\in \N$,  $n_a, m_a > N_a$ and $n_b, m_b > N_b$ such that\vpp
+        \begin{align*}
+            |a_{n_a} - a_{m_a}| < \frac{\Epsilon}2 \text{ and }
+            |b_{n_b} - b_{m_b}| < \frac{\Epsilon}2.
+        \end{align*}
+        //It might actually read better if you made the statements for $a_n$ and $b_n$ in their own sentences. That way you can use $n$ and $m$ in each sentence rather than having to subscript all four of them.//
+        
+        Let $N=\max (N_a,N_b)$ and $n,m> N$. Thus, we have:
+        \begin{align*}
+            \blue{|a_{n}-a_{m}| + |b_{n} - b_{m}| < \Epsilon.}
+        \end{align*}
+        //Honestly, you can cut that sentence. You're using that fact in the next line, and it is reasonable to expect to reader to put $\Epsilon/2$ and $\Epsilon/2$ together to get $\Epsilon$.//
+        
+        Via the Triangle Inequality we have:
+        \begin{align*}
+            |(a_n+b_n) - (a_m + b_m)| \le |a_{n}-a_{m}| + |b_{n} - b_{m}| < \Epsilon
+        \end{align*}
+        Hence, $a_n + b_n$ is Cauchy if both $a_n$ and $b_n$ are Cauchy.
+
+        //Correct outline and idea!//
+\end{proof}
+
+\subsubsection*{Second Attempt}
+    \begin{proof} Let $\Epsilon > 0$.\vpp
+        We want to show that $\exists N\in \N$ for $n,m > N$ such that $|(a_n+b_n) - (a_m + b_m)| < \varepsilon$.\vp
+        Because $a_n$ and $b_n$ are Cauchy, $\exists N_a, N_b \in \N$ such that $\forall n, m > N_a$ we have:
+        \begin{align*}
+            |a_{n} - a_{m}| < \frac{\varepsilon}2,
+        \end{align*}
+        and $\forall n,m > N_b$, we have:
+        \begin{align*}
+            |b_{n} - b_{m}| < \frac{\varepsilon}2.
+        \end{align*}
+        Let $N=\max (N_a,N_b)$ and $n,m> N$. Via the Triangle Inequality we have:
+        \begin{align*}
+            |(a_n+b_n) - (a_m + b_m)| \le |a_{n}-a_{m}| + |b_{n} - b_{m}| < \varepsilon.
+        \end{align*}
+        Hence, $a_n + b_n$ is Cauchy if both $a_n$ and $b_n$ are Cauchy.
+    \end{proof}
+
+			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 25 %%%%%%%%%%
+\subsection*{Problem 25} \FGR\\
+\FGM\\
+Prove that $\lpa 1+ \frac{1}{2!} + \frac{1}{3!} + \cdots + \frac{1}{n!}\rpa$ is convergent by proving that it is Cauchy. {\it\\
+Hint 1: $\forall n \in \N$ with $n\geq 4$, $n! > 2^n$.\\
+Hint 2: $\forall n\in \N$, $ \sum_{i=1}^n \frac{1}{2^i} \leq 2$.}
+\begin{proof} Let $s_n = \lpa 1+ \frac{1}{2!} + \frac{1}{3!} + \cdots + \frac{1}{n!}\rpa$ and let $\Epsilon > 0$.\vp
+    We want to show that $\exists N\in\N$ //``such that''// for $n,m > N$, we have
+    \begin{align*}
+        |s_n - s_m| < \Epsilon.
+    \end{align*}
+    Consider $\frac{1}{N!} < \frac{1}{2^N}$ for $N\ge 4$. Thus we have
+    \begin{align*}
+        \sum \frac{1}{N!}<\sum \frac{1}{2^N} \le 2
+    \end{align*}
+    //Definitely specify starting and ending indices for sums.//
+    
+    Via the A.P., \blue{let} //``$\exists$''// $N\in\N$ such that $\frac{1}{2^N} < \frac{\Epsilon}2$.\vp
+    Consider  $\forall k\in \N$, $\sum_{i=1}^k \frac{1}{2^i}. \leq 2$\\
+    \textit{Without loss of generality}, for $n,m > N$, $n>m$,
+    \begin{align*}
+        \blue{\left |\sum \frac{1}{n!}-\sum\frac{1}{m!}\right | <\left |\sum \frac{1}{2^n}-\sum\frac{1}{2^m}\right |}=\blue{\sum_{i=m+1}^n\frac{1}{2^{m+1}}\le \frac{1}{2^{m+1}}(2)}\le\Epsilon
+    \end{align*}
+    //That first inequality is only obvious if you simplify the subtraction first. This is where specifying indices helps out a ton.//
+    //That second inequality is exactly the right idea! It's a little hard to parse why it's true without an intermediate step, like $\frac{1}{2^{m+1}}\sum_{i=0}^{n-m-1} \frac{1}{2^i}$ or however the indices work out.//
+    
+    Hence, $s_n$ is Cauchy. 
+
+    //Correct setup and idea!//
+\end{proof}
+
+\subsubsection*{Second Attempt}
+\begin{proof} Let $s_n = \lpa 1+ \frac{1}{2!} + \frac{1}{3!} + \cdots + \frac{1}{n!}\rpa$ and let $\Epsilon > 0$.\vp
+    We want to show that $\exists N\in\N$ such that for $n,m > N$, we have
+    \begin{align*}
+        |s_n - s_m| < \Epsilon.
+    \end{align*}
+    Via the A.P., $\exists N_1\in\N$ such that $\frac{1}{2^{N_1}} < \frac{\Epsilon}2$. Let $N=\max(N_1,4).$ Let $n,m>N$.\vp
+    \textit{Without loss of generality}, for $n>m$, note that
+    \begin{align}
+        \left |\sum_{k\;=\,1}^n \frac{1}{k!}-\sum_{k=1}^m\frac{1}{k!}\right |&=\left|\sum_{k\;=\; m+1}^n\frac{1}{k!}\right|\;\;\;
+    \end{align}
+    Therefore, because $\forall k\in \N$, $\frac{1}{k!}<\frac{1}{2^k}$, and because $\sum \frac{1}{2^n}\le 2$, we have:
+    \begin{align*}
+        \left |\sum_{k\;=\,1}^n \frac{1}{k!}-\sum_{k=1}^m\frac{1}{k!}\right |&=\left|\sum_{k\;=\; m+1}^n\frac{1}{k!}\right|<\left|\sum_{k\;=\; m+1}^n\frac{1}{2^k}\right| = \frac{1}{2^{m}}\sum_{k\,=\,1}^{n-m}2^k\le\frac{1}{2^{m}}(2)\le \Epsilon.
+    \end{align*}
+    Hence, $s_n$ is Cauchy. 
+\end{proof}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 14  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{HW14: First attempt due \textbf{Wednesday 3/26}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 26 %%%%%%%%%%
+\subsection*{Problem 26} \FGR\\
+\SGR\\
+Let $f(x) = x^2 +x -2$. Prove by definition that $\lim_{x\to 1} f(x) = 0$. ({\it Hint: Factor that quadratic, then use an idea similar to the $x^2$ limit from the worksheet.})
+	\begin{proof} Let $\varepsilon>0.$ \blue{Let $\delta = \min{\left(\frac{\varepsilon}{4},1\right)}$.} //The WTS can (and should) include establishing the existence of $\delta$. So don't choose $\delta$ until after the WTS.//\vp
+            We want to show that for $0<|x-1|<\delta, $ we have
+            \begin{align*}
+                \left|f(x)\right| < \varepsilon
+            \end{align*}
+            For $0<|x-1|<\delta, $ \blue{with $\delta = 1$,} //Better to say ``since $\delta \leq 1$'' here. You're not temporarily deciding that $\delta$ is $1$, you're using the fact that $\delta$ is at most $1$.// we have
+            \begin{align*}
+                |x+2|<4
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                |f(x)|&=|(x+2)(x-1)|\\
+                &=|x+2||x-1| < 4\cdot \frac{\varepsilon}4=\varepsilon
+            \end{align*}
+    //A Hence sentence would be nice here.//
+
+    //Correct idea!//
+	\end{proof}
+
+\subsubsection*{Second Attempt}
+    \begin{proof} Let $\varepsilon>0.$\vp
+            We want to show that \blue{for $ \delta = \min \left(1,\frac{\varepsilon}4\right ),$} //Sorry, I realize my wording was unclear. I meant, the WTS should say ``WTS $\exists \delta>0$ such that etc.'' So the WTS tells the reader that finding $\delta$ is the goal. We then find the $\delta$ in the next line.//
+            
+            $ \;0<|x-1|<\delta,$ implies that
+            \begin{align*}
+                \left|f(x)\right| < \varepsilon.
+            \end{align*}
+            Let $\delta = \min{\left(\frac{\varepsilon}{4},1\right)}$. //Don't forget to let $x$ !// 
+            
+            Since $\delta \le 1$, we have
+            \begin{align*}
+                |x+2|<4.
+            \end{align*}
+            Therefore,
+            \begin{align*}
+                |f(x)|&=|(x+2)(x-1)|\\
+                &=|x+2||x-1| < 4\cdot \frac{\varepsilon}4=\varepsilon
+            \end{align*}
+            Hence, $\displaystyle\lim_{x\to 1}f(x)=0.$
+        //Closer!//
+\end{proof}
+
+			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 27 %%%%%%%%%%
+\subsection*{Problem 27} \FGR\\
+\SGR\\
+Prove by definition that function limits are unique. That is, let $D\subset \R$, let $f:D\to \R$ be a function, and let $a\in \R$ be an accumulation point of $D$. Suppose that $\lim_{x\to a}f(x) = L_1$ and that $\lim_{x\to a}f(x) = L_2$ for some $L_1,L_2\in \R$. Prove that $L_1 = L_2$.\\
+({\it Hint: This is similar to HW9.})
+\begin{proof} Let $\varepsilon>0$. //Add a WTS.//\vp
+    Via the definition of limit, we have
+    \begin{align*}
+        |f(x)-L_1|&<\frac{\varepsilon}2\\
+        |f(x)-L_2|&<\frac{\varepsilon}2.
+    \end{align*}
+//Are those inequalities true for every $x\in D$, or are they subject to some kind of condition?//
+    
+    Therefore, we have, via the \textbf{Triangle Inequality}, that
+    \begin{align*}
+        |L_2-L_1|=|f(x)-L_1-f(x)+L_2|&\le|f(x)-L_1|+|-f(x)+L_2|\\
+        &=|f(x)-L_1|+|f(x)-L_2|<\varepsilon.
+    \end{align*}
+    Hence, via problem 8(b), because $|L_2-L_1|<\varepsilon,\;L_1=L_2$.
+
+    //The right idea is there, though you're missing some crucial details.//
+\end{proof}
+
+\subsubsection*{Second Attempt}
+
+\begin{proof} Let $\varepsilon>0$.\vp
+    We want to show that if $\lim_{x\to a}f(x)=L_1$ and $\lim_{x\to a}f(x)=L_2$, $L_1=L_2$.\vp
+    Via the definition of limit, $\exists \delta_1, \delta_2$ such that for $0<|x_1-a|<\delta_1$ and $0<|x_2-a|<\delta_2$ we have
+    \begin{align*}
+        |f(x_1)-L_1|&<\frac{\varepsilon}2\\
+        |f(x_2)-L_2|&<\frac{\varepsilon}2.
+    \end{align*}
+    Let $\delta = \min\left(\delta_1, \delta_2\right)$. Therefore, both above inequalities also hold for $0<|x-a|<\delta$.\\
+    //Don't forget to let $x$ !// Thus, we have via the \textbf{Triangle Inequality} that
+    \begin{align*}
+        |L_2-L_1|=|f(x)-L_1-f(x)+L_2|&\le|f(x)-L_1|+|-f(x)+L_2|\\
+        &=|f(x)-L_1|+|f(x)-L_2|<\varepsilon.
+    \end{align*}
+    Hence, via problem 8(b), because $|L_2-L_1|<\varepsilon,\;L_1=L_2$.
+
+    //One detail missing!//
+\end{proof}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 15  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{HW15: First attempt due \textbf{Friday 3/28}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 28 %%%%%%%%%%
+\subsection*{Problem 28} \FGR (part a)\\
+\FGM\\
+\begin{enumerate}[label=(\alph*)]
+%%a
+\item Prove that $\lim_{x\to 0} \sin\lpa \frac{1}{x}\rpa$ does not exist. ({\it Hint: Find two sequences $x_n$ and $y_n$ that both approach $0$, such that the sequences $\sin(1/x_n)$ and $\sin(1/y_n)$ have different limits. Maybe look at the graph of $\sin(1/x)$ for ideas.})
+\begin{proof} 
+    Let $x_n = \frac{1}{\pi(2 n + 1)}$, $y_n=\frac{1}{2n\pi }$.\vp
+    We want to show that $\displaystyle\lim_{n\to\infty}x_y =0\text{ and }\displaystyle\lim_{n\to\infty}y_n=0$, and then that $\displaystyle\lim_{n\to\infty}f(x_n)\ne\lim_{n\to\infty}f(y_n).$\vp
+    \blue{Because $n$ is in the denominator for $x_n \text{ and } y_n$, $\forall \Epsilon > 0$, $\exists N_x,N_y\in \N$ such that $\forall n_x,n_y>N$ we have:} //You're overjustifying this. You get to use the limit laws to establish every limit in this proof.//
+    \begin{align*}
+        |x_{n_x}|&<\Epsilon, \text{ and } \\
+        |y_{n_y}|&<\Epsilon.
+    \end{align*}
+    Thus, $\displaystyle\lim_{n\to\infty}x_n = 0$ and $\displaystyle\lim_{n\to\infty}y_n = 0$. \vp
+    Let $f(x)=\sin(1/x)$. 
+    Therefore, we have that
+    \begin{align*}
+        f(x_n)&=\sin\left(2\pi n+\pi\right)=\blue{\sin(\pi)=1,} \text{ and }\\
+        f(y_n)&=\sin\left(2\pi n\right)=\sin(2\pi)=0.
+    \end{align*}
+    //Problem. $\sin(\pi) \neq 1$, it's $0$. You'll need to change your $x_n$ sequence.//
+    
+    Therefore, $\displaystyle\lim_{n\to\infty}f(x_n)=1$ and $\displaystyle\lim_{n\to\infty}f(y_n)=0$. Thus, $f(x_n)\ne f(y_n)$.\vp
+    Via the \textbf{Sequential Characterization of Limits}, $f(x)$ does not converge.
+
+    //The idea is correct, though one of your sequences is not doing its job.//
+\end{proof}
+	%%b
+\item Prove that $\lim_{x\to 0} x\sin\lpa \frac{1}{x}\rpa = 0$.
+    \begin{proof}
+        Let $g(x) = -|x|$. Let $h(x) = |x|$.\\
+        We want to show via the \textbf{Squeeze Theorem} that $f(x)$ converges to $0$.\vpp
+        Note that $g(x)=-|x|,$ so $\textstyle\lim_{x\to 0}g(x)=0$,\\ 
+        And that  $f(x)=|x|,$ so $\textstyle\lim_{x\to 0}f(x)=0.$\vpp
+        Consider that $\forall x\in\R\backslash\{0\}$,
+        \begin{align*}
+            -1\le\,\,&\sin\left(\frac{1}x\right)\le1. \text{ Thus, we have:}\\
+            g(x)\le\; &f(x)\le h(x).
+        \end{align*}
+        Hence, via the \textbf{Squeeze Theorem}, $\displaystyle\lim_{x\to 0}f(x)=0$.
+
+        //Correct!//
+    \end{proof}
+\end{enumerate}
+
+\subsubsection*{Second Attempt (Part a)}
+\begin{proof} 
+    Let $x_n = \frac{1}{\pi(2 n + \frac{1}2)}$, $y_n=\frac{1}{2n\pi }$.\vp
+    We want to show that $\displaystyle\lim_{n\to\infty}x_n =\displaystyle\lim_{n\to\infty}y_n$, and then that $\displaystyle\lim_{n\to\infty}f(x_n)\ne\lim_{n\to\infty}f(y_n).$\vp
+    Via limit laws, we have that$\displaystyle\lim_{n\to\infty}x_n = 0$, and $\displaystyle\lim_{n\to\infty}y_n=0$. \vp
+    Let $f(x)=\sin(1/x)$. 
+    Therefore, we have that
+    \begin{align*}
+        f(x_n)&=\sin\left(2\pi n+\frac{\pi}2\right)=\sin \left(\frac{\pi}2\right)=1, \text{ and }\\
+        f(y_n)&=\sin\left(2\pi n\right)=\sin(2\pi)=0.
+    \end{align*}    
+    Then, we have that, $\displaystyle\lim_{n\to\infty}f(x_n)=1$ and $\displaystyle\lim_{n\to\infty}f(y_n)=0$. \\
+    Thus, $f(x_n)\ne f(y_n)$.\vp
+    Via the \textbf{Sequential Characterization of Limits}, $f(x)$ does not converge.
+
+    //Awesome!//
+\end{proof}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 29 %%%%%%%%%%	
+\subsection*{Problem 29} \FGM\\
+Consider the following claim.
+	
+``Suppose that $f(x) < g(x)$ on some deleted neighborhood of $x_0$. Then $\lim_{x\to x_0} f(x) < \lim_{x\to x_0} g(x)$.''
+	
+If it is true, prove it. If it is not true, provide a counterexample.
+	
+Note: $\dot{Q}$ is a deleted neighborhood of $x_0$ if $\dot{Q} = Q\setminus\{x_0\}$ for some neighborhood $Q$ of $x_0$.
+	\begin{proof}\textit{Providing Counterexample.}\vp
+    	Let $f:\R\to\R$ by $f(x) = |0.5x|$\\
+            Let $g:\R\to\R$ by $g(x)=|x|. \text{ Therefore,} \;f(x) < g(x)$ for $\R\backslash\{0\}$.\\
+            Let $x_0 = 0$.\vpp
+            We want to show that $\displaystyle\lim_{x\to x_0}f(x)=\lim_{x\to x_0}g(x).$\\
+            Note that:
+            \begin{align*}
+                \lim_{x\to x_0}f(x)&=0\text{, and}\\
+                \lim_{x\to x_0}g(x)&=0.
+            \end{align*}
+            Hence, $\lim_{x\to x_0} f(x)=\lim_{x\to x_0} g(x)$, contradicting $\lim_{x\to x_0} f(x) < \lim_{x\to x_0} g(x)$.
+	\end{proof}
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 16  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{HW16: First attempt due \textbf{Monday 4/07}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 30 %%%%%%%%%%
+\subsection*{Problem 30} \FGR\\
+Let $f$ be a function defined on a deleted neighborhood of $a \in \R$, and let $L\in \R$. Prove that $\lim_{x\to a} f(x) = L$ if and only if $\lim_{x\to a^-} f(x) = \lim_{x\to a^+}f(x) = L$.
+\begin{proof} \textit{Direct}\vp
+    Let $P = (\textstyle\lim_{x\to a}f(x)=L)$.\\
+    Let $Q = (\textstyle\lim_{x\to a^-}f(x)=L$ and $\textstyle\lim_{x\to a^+}f(x)=L)$\\
+    We want to prove that $P\Longleftrightarrow Q$.\vspace{0.1cm}
+
+    \begin{adjustwidth}{0.5cm}{0cm}
+        \underline{$P \implies Q$}\vp
+        Let $\ep > 0$.\\
+        We want to show \blue{via the definition of sided limit} //Actually spell out those details in the WTS. It really helps the reader see that the required conditions come together later.//
+        
+        that $\dlimx{a^\pm}f(x)=L$.\\
+        Because $\dlimx{a}f(x)=L$, we know that $\exists \delta > 0$ such that for $|x-a|<\delta$, we have:
+        \setcounter{equation}{0}
+        \begin{align}
+            |f(x)-L|<\ep.
+        \end{align}
+        \blue{We also know that,} 
+        \begin{align*}
+            \text{for } x > a,& \;\;0< x-a < \delta, \text{ and }\\
+            \text{for } x < a,& \;\;0< a-x < \delta,
+        \end{align*}
+        \blue{inequality $(1)$ still holds.}\vp
+        //(The blue is rendering weird, I mean the entirety of the four preceding lines.) If would be much better form here to actually establish the one-sided $\Epsilon$-conditions, each in its own little paragraph. Something like ``Let $x$ be such that $0<a-x<\delta$. This implies that $0<|x-a|<\delta$, and so $|f(x) - L| < \Epsilon$. Hence $\lim_{x\to a^-} f(x) = L$.'' Then the other one.// 
+        Hence, via the definition of sided limit, $\dlimx{a^+}f(x)=L$ and $\dlimx{a^-}f(x)=L$.
+    \end{adjustwidth} \vspace{0.1cm}
+    \begin{adjustwidth}{0.5cm}{0cm}
+        \underline{$Q \implies P$}\vp
+        Let $\ep > 0$.\\
+        //WTS?//
+        Because $\dlimx{a^-}f(x)=L$, $\dlimx{a^+}f(x)=L$, we know that:\\
+        $\exists \delta_1, \delta_2 > 0$ such that for $0<x_1 - a<\delta_1$, $0<a - x_2<\delta_2$ we have:
+        \setcounter{equation}{0}
+        \begin{align}
+            |f(x_1)-L|<\ep,\\
+            |f(x_2)-L|<\ep.
+        \end{align}
+        Let $\delta = \min (\delta_1, \delta_2)$. \blue{The above inequalities still hold for our new $\delta$.} //Instead of this wording, actually let $x$ satisfy the new $\delta$-condition. We then know that $x$ must satisfy exactly one of the old $\delta$-conditions, so the $\Epsilon$-condition kicks in. So everything after this change needs either deleting or rewriting.// \vp
+        We also know that, 
+        \begin{align*}
+            0<x_1-a &< \delta \\
+            0<a-x_2 &< \delta.
+        \end{align*}
+        Therefore, if $x$ is greater than $a$, equation $(1)$ holds. Else, equation $(2)$ holds.\\ Thus, for $0<|x-a|<\delta$, we have:
+        \begin{align*}
+            |f(x)-L|<\ep. 
+        \end{align*}
+        Hence, $Q\implies P$.
+    \end{adjustwidth}\vspace{0.2cm}
+    Hence, $P\Longleftrightarrow Q$. 
+
+    //The structure and idea are correct!//
+\end{proof}
+
+\subsubsection*{Second Attempt}
+\begin{proof} \textit{Direct}\vp
+    Let $P = (\textstyle\lim_{x\to a}f(x)=L)$.\\
+    Let $Q = (\textstyle\lim_{x\to a^-}f(x)=L$ and $\textstyle\lim_{x\to a^+}f(x)=L)$\\
+    We want to prove that $P\Longleftrightarrow Q$.\vspace{0.1cm}
+
+    \begin{adjustwidth}{0.5cm}{0cm}
+        \underline{$P \implies Q$}\vp
+        Let $\ep > 0$.\\
+        We want to show that:
+        \begin{enumerate}
+            \item For all $x$ satisfying $0<x-a<\delta$, $|f(x)-f(a)|<\Ep$, and
+            \item For all $x$ satisfying $0<a-x<\delta$, $|f(x)-f(a)|<\Ep$.\\
+        \end{enumerate}
+        Because $\dlimx{a}f(x)=L$, we know that $\exists \delta > 0$ such that for $|x-a|<\delta$, we have:
+        \setcounter{equation}{0}
+        \begin{align}
+            |f(x)-L|<\ep.
+        \end{align}
+        Let $x$ be such that $0<a-x<\delta.$\\
+        This implies that $0<|x-a|<\delta$, and so $|f(x) - L| < \Epsilon$. \\
+        Thus, $\dlimx{a^-}f(x)=L.$\vp
+        Additionally, let $x$ be such that $0<x-a<\delta.$ \\
+        This implies that $0<|x-a|<\delta$, and so $|f(x) - L| < \Epsilon$. \\
+        Thus, $\dlimx{a^+}f(x)=L.$\vp
+        Hence, via the definition of sided limit, $\dlimx{a^+}f(x)=L$ and $\dlimx{a^-}f(x)=L$.
+    \end{adjustwidth} \vspace{0.1cm}
+    \begin{adjustwidth}{0.5cm}{0cm}
+        \underline{$Q \implies P$}\vp
+        Let $\Ep > 0$.\\
+        We want to show that $\exists \delta> 0$ such that for all $x$ satisfying $|x-a|<\delta$, $|f(x)-f(a)|<\Ep$.\vp
+        Because $\dlimx{a^-}f(x)=L$, $\dlimx{a^+}f(x)=L$, we know that:\\
+        $\exists \delta_1, \delta_2 > 0$ such that for $0<x_1 - a<\delta_1$, $0<a - x_2<\delta_2$ we have:
+        \setcounter{equation}{0}
+        \begin{align*}
+            |f(x_1)-L|<\Ep,\\
+            |f(x_2)-L|<\Ep.
+        \end{align*}
+        Let $\delta = \min (\delta_1, \delta_2)$. \\
+        Let $x$ satisfy $|x-a|<\delta$. \\
+        Therefore, $x$ satisfies either one of the original $\delta$-conditions, and thus, for $0<|x-a|<\delta$, we have:
+        \begin{align*}
+            |f(x)-L|<\Ep
+        \end{align*}
+        Hence, $Q\implies P$.
+    \end{adjustwidth}\vspace{0.2cm}
+    Hence, $P\Longleftrightarrow Q$. 
+\end{proof}
+			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 31 %%%%%%%%%%	
+\subsection*{Problem 31} \FGR (part a)\\
+Let $f$ and $g$ be functions defined on a deleted neighborhood of $a\in \R$. Prove or disprove each of the following statements. If disproving, a single counterexample will suffice.
+	\begin{enumerate}[label=(\alph*)]
+	\item If $\lim_{x\to a} f(x) = L$ for some $L\in \R$, and $\lim_{x\to a} g(x)$ does not exist, then $\lim_{x\to a} (f(x)+g(x))$ does not exist.
+    \begin{proof}
+        \textit{Direct}.\vp
+        We want to show that $\dlimx{a}(f(x)+g(x))$ does not exist.\\
+        Let $\dlimx{a^+}=L_{n}$, and $\dlimx{a^-}=L_{m}$. \blue{Because $g$ is not continuous at $a$, the limit at $a$ does not exist, and thus via problem 30, $L_n\ne L_m$.} //There's a subtle problem with this setup. It is possible that either of those sided limits just plain doesn't exist. (for example, $\sin(1/x)$ approaching $0$ from the right.) So you can't assume that the sided limits exist for $g$.// \vp
+        Via the \textbf{Sequential Characterization of Limits}
+        \begin{align*}
+            \dlimx{a^+}(f(x)+g(x))=L+L_n,\\
+            \dlimx{a^-}(f(x)+g(x))=L+L_m.
+        \end{align*}
+        Because $L_n\ne L_m$, we have that $L+L_n\ne L+L_n$, and therefore the limits from the left and right of $f(x)+g(x)$ do not equal one another.\vp
+        Hence, $\dlimx{a}(f(x)+g(x))$ does not exist.
+
+        //Alternative suggestion. Try a proof by contradiction.//
+    \end{proof}
+		
+	\item If $\lim_{x\to a} f(x)$ and $\lim_{x\to a}g(x)$ both do not exist, then $\lim_{x\to a} (f(x) +g(x))$ does not exist.
+		\begin{proof}
+                \textit{Provide Counterexample.}\vp
+                We want to show that there exists functions $f$ and $g$ that do not have a defined limit at $a$, but their sum, $f+g$, does.\vp
+                Let $a=0$.\\
+                Let 
+                \[f:\R\to\R= \begin{cases} 1 &\text{ if } x >0\\
+    				 0 &\text{ if } x \le 0, \end{cases}\]
+                \[g:\R\to\R = \begin{cases} 0 &\text{ if } x >0\\
+                 1 &\text{ if } x \le 0. \end{cases}\]
+                Therefore, $\dlimx{a}f(x)$ and $\dlimx{a}g(x)$ do not exist.\vp
+                However, $f+g=1$, and therefore, $\dlimx{a}(f(x)+g(x))=1.$\vp
+                Hence, if $\dlimx{a}f(x)$ and $\dlimx{a}g(x)$ do not exist, that does \textit{not} imply that $\dlimx{a}(f(x)+g(x))$ does not exist.
+		\end{proof}
+        //Correct!//
+        
+	\end{enumerate}
+
+\subsubsection*{Second Attempt (Part a)}
+\begin{proof}
+    \textit{Contradiction}.\vp
+    Suppose for the sake of contradiction that $\dlimx{a}(f(x)+g(x))=L_0$.\\
+    Then we have, via sequential characterization of limits, that,
+    \begin{align*}
+        \dlimx{a}f(x)+\dlimx a g(x) = L_0.
+    \end{align*}
+    However, this contradicts that $\dlimx ag(x)$ does not exist.\vp
+    Hence, $\dlimx{a}f(x)+g(x)$ does not exist. 
+\end{proof}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 17  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{HW17: First attempt due \textbf{Wednesday 4/09}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 32 %%%%%%%%%%
+\subsection*{Problem 32} \FGR\\
+\noindent \textbf{Lemma}: Let $g:D \to \R$ be a function continuous at $x_0 \in D$, where $x_0$ is an accumulation point of $D$. If $g(x_0) \neq 0$, then there exists a neighborhood $Q$ of $x_0$ such that $\exists \alpha >0$ such that $\forall x \in Q\cap D$, $|g(x)| > \alpha$. (In other words, there is a neighborhood around $x_0$ where $g$ is nonzero.)\\
+	
+Prove this lemma. ({\it Hint 1: It might be conceptually slightly easier to handle the cases of $g(x_0) >0$ and $g(x_0) <0$ separately, though this proof is possible without cases. Hint 2: Apply the definition of continuity to a well-chosen $\Epsilon$, maybe one that depends in some way on $g(x_0)$.})
+
+\begin{proof}
+    We want to show that $\exists \alpha>0$ such that $\forall x\in Q\cap D,\;|g(x)|>\alpha$.\vp
+    Because $g$ is continuous at $x_0$, we know that $\exists \delta > 0$ such that for $|x-x_0|<\delta$,
+    \begin{align*}
+        |g(x_0)-g(x)|<\left|\frac{g(x_0)}2\right|.
+    \end{align*}
+    //Probably best to actually let $x$ here so you can use it in the rest of the proof.// Therefore, we have that
+    \begin{align*}
+        \left|\frac{g(x_0)}{2}\right|<|g(x)|<\left|\frac{3g(x_0)}2\right|. 
+    \end{align*} 
+    Let $\alpha = \left|\frac{\blue{g(x)}}2\right|$. //I think you mean $g(x_0)$.// Because $g(x_0)\ne 0$, $|\blue{g(x)}|>0$, and $|g(x)|>\left|\frac{\blue{g(x)}}2\right|$.\vp
+    Hence, this lemma is true.
+
+    //Correct outline and idea!//
+\end{proof}
+
+\subsubsection*{Second Attempt}
+\begin{proof}
+    We want to show that $\exists \alpha>0$ such that $\forall x\in Q\cap D,\;|g(x)|>\alpha$.\vp
+    Because $g$ is continuous at $x_0$, we know that $\exists \delta > 0$ such that for $|x-x_0|<\delta$,
+    \begin{align*}
+        |g(x_0)-g(x)|<\left|\frac{g(x_0)}2\right|.
+    \end{align*}
+   Let $x\in D$ satisfy $|x-x_0|<\delta$. Therefore, we have that
+    \begin{align*}
+        \left|\frac{g(x_0)}{2}\right|<|g(x)|<\left|\frac{3g(x_0)}2\right|. 
+    \end{align*} 
+    Let $\alpha = \left|\frac{g(x_0)}2\right|$. Because $g(x_0)\ne 0$, $|g(x_0)|>0$, and $|g(x)|>\left|\frac{g(x_0)}2\right|>0$.\vp
+    Hence, this lemma is true.
+
+\end{proof}
+
+    
+			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 33 %%%%%%%%%%
+\subsection*{Problem 33} \FGR (part b)\\
+Define $f:\R \to \R$ as follows.
+			\[f(x) = \begin{cases} x^2 &\text{ if } x \text{ is rational}\\
+				 0 &\text{ if } x \text{ is irrational} \end{cases}.\]
+\begin{enumerate}[label=(\alph*)]
+    \item Suppose $x_0 \neq 0$. Do you think $f$ is continuous at $x_0$? Why or why not? No proof is necessary, just explain your thinking as well as you can.\vp
+    No, I don't believe that this is true. This is because between any two rational numbers, we can produce an irrational number, and we \textit{can} produce an irrational $x$ where $|x-x_0|<\delta$. \vp
+    So, for example, for $f(2)=4$, in any neighborhood around $2$, we can find an irrational $x$, and therefore $|f(2)-f(x)|=4$, which does not hold true for all $\varepsilon > 0$. //Correct!//
+    
+    \item Prove by definition that $f$ \textbf{is} continuous at $x_0=0$.
+    \begin{proof}
+        Let $\varepsilon > 0$. \vp
+        We want to show that $\exists\delta > 0$ such that for $|x-0|<\delta$, $|f(0)-f(x)|<\varepsilon$. \vp
+        Let $\delta = \sqrt{\varepsilon}$. \blue{Therefore, $|x|<\sqrt{\varepsilon}$.} //You need to actually let $x$.// \vp
+        Thus, because $f(x)$ is either 0 or $x^2$, we have
+        \begin{align*}
+            |f(0)-f(x)|=|f(x)|\le |x^2|<\varepsilon.
+        \end{align*}
+        Hence, $f$ is continuous at $x_0$. 
+
+        //Correct outline and idea!//
+    \end{proof}
+    
+\end{enumerate}
+
+\subsubsection*{Second Attempt (Part B)}
+\begin{proof}
+    Let $\varepsilon > 0$. \vp
+    We want to show that $\exists\delta > 0$ such that for $|x-0|<\delta$, $|f(0)-f(x)|<\varepsilon$. \vp
+    Let $\delta = \sqrt{\varepsilon}$, and let $x\in \R$ satisfy $|x|<\delta$. \vp
+    Therefore, $|x|<\sqrt{\varepsilon}$.\vp
+    Thus, because $f(x)$ is either 0 or $x^2$, we have
+    \begin{align*}
+        |f(0)-f(x)|=|f(x)|\le |x^2|<\varepsilon.
+    \end{align*}
+    Hence, $f$ is continuous at $x_0$. 
+
+    //Correct outline and idea!//
+\end{proof}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 18  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{HW18: First attempt due \textbf{Friday 4/11}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 34 %%%%%%%%%%
+\subsection*{Problem 34} 
+Define $f:\R \to \R$ as follows.
+	\[f(x) = \begin{cases} 2x &\text{ if } x \text{ is rational}\\
+		 x^2 +1 &\text{ if } x \text{ is irrational} \end{cases}.\]
+Determine for what values of $a$ $\lim_{x\to a} f(x)$ exists and is finite. Prove the existence(s) of said limit(s) by definition. ({\it To clarify, you need not prove that the limit does not exist elsewhere.}) 
+\begin{proof}\textit{Direct @ $x = 1$}\vp
+    We want to show that $\exists\delta > 0$ such that for all $x$ satisfying $|x-1|<\delta$, we have:
+    \begin{align*}
+        |f(x)-2|<\Epsilon
+    \end{align*}
+    Let $\delta = \text{min}\left(\frac{\Ep}2, \sqrt \Ep,\left|\sqrt \Ep -1\right|\right)$.\vp
+    If $x$ is rational, 
+    \begin{align*}
+        |f(x)-2|=2|x-1|<2\left|\frac{\Ep}2\right| < \Ep
+    \end{align*}
+    If $x$ is irrational:
+    \begin{align*}
+        |f(x)-2|&=|x^2+1-2|\\
+        &=|x^2-1|\\
+        &=|(x+1)(x-1)|<\left|(x+1)\sqrt \Ep\right|
+    \end{align*}
+    Because:
+    \begin{align*}
+        |x-1|&<\delta,\\
+        |(x+1)-1|&<\delta\\
+        |x|<\left|\sqrt \Ep  - 1\right|.
+    \end{align*}
+    So, we have that:
+    \begin{align*}
+        |f(x)-2|&<\left|(x+1)\sqrt \Ep\right|\\
+        &=\left|(\sqrt \Ep  - 1+1)\sqrt \Ep\right|\\
+        &=|\Epsilon|
+    \end{align*}
+    Hence, because the $\Ep$-criterion is fulfilled regardless of whether $x$ is rational or irrational,\\
+    $\dlimx 1 f(x) = 2$. 
+\end{proof}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 35 %%%%%%%%%%
+\subsection*{Problem 35}
+Recall from HW5 the definition of a strictly increasing function. Now let $a,b\in \R$ such that $a<b$, and let $f:[a,b]\to \R$ be a strictly increasing function. Define the set $E = \{f(x) \,:\, x \in (a,b)\}$. Prove that $\lim_{x\to b} f(x) = \sup E$. ({\it Hint: Prove first that $E$ is bounded above.})	
+\begin{proof}\textit{Direct.}\vp
+    First, we want to show that $E$ is bounded above by showing that $\exists n$ such that $\forall e \in E$, $n > e$.\\
+    \begin{adjustwidth}{0.5cm}{0cm}
+        Because $f$ is a strictly increasing function, $\forall x\in (a,b)$, $f(x)< f(b)$ because $x< b$. \\
+        Thus, because $\forall e \in E$, $f(b) > e$, $E$ is bounded above.\\
+    \end{adjustwidth}
+    Next, because $f(b)$ is an upper bound, we want to show that $\sup E = f(b)$ by showing that $f(b)$ is the least upper bound.\vp
+    \begin{adjustwidth}{0.5cm}{0cm}
+        Let $f(m)$ be an upper bound such that $f(m)<f(b)$. Therefore, $m<b$.\\
+        However, because $f$ is strictly increasing along a closed interval, 
+        $$\exists n\in[a,b]\text{ such that }m<n<b,$$
+        and thus we have $f(m)<f(n)$. \\
+        Therefore, any $f(m) < f(b)$ is not an upper bound of $E$, and thus, $f(b)$ is the least upper bound of $E$. \\
+    \end{adjustwidth}
+    Let $\Ep >0$. \vp
+    Finally, we want to show that $\dlimx b f(x) = f(b)$ by showing that $\exists \delta>0 $ such that for $x$ satisfying $|b-x|<\delta$, $|f(x)-f(b)|<\Ep$.\\
+    \begin{adjustwidth}{0.5cm}{0cm}
+        Let $x_0<b$ such that $f(x_0) < f(b)-\frac{\Ep}2$. \\
+        Therefore,
+        \begin{align*}
+            |f(x_0)-f(b)|<\left|f(b)-f(b)-\frac{\Ep}2\right|<\Ep.
+        \end{align*}
+        Let $\delta = b-x_0$. \\
+        Therefore, for $0<b-x < b-x_0$, 
+        \begin{align*}
+            |f(x)-f(b)|<|f(x_0)-f(b)|<\Ep
+        \end{align*}
+        Hence, because $\sup E = f(b)$, $\dlimx b f(x) = \sup E$. 
+    \end{adjustwidth}
+
+\end{proof}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 19  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{HW19: First attempt due \textbf{Monday 4/14}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 36 %%%%%%%%%%
+\subsection*{Problem 36} 
+Consider the polynomial $f(x) = x^5 -x +1$. Prove that $f(x)$ has a real root. ({\it Hint: Use the IVT. Your proof will be shockingly short.})
+
+\begin{proof}
+    We want to show that $f$ evaluates to 0 at some $x$.\vp
+    Consider that $f(-2) = -29$ and that $f(0) = 1$.\vp
+    Via the IVT, because $f$ is continuous, $\exists x$ satisfying $-2\le x\le 0$ such that $f(x) = 0$.\vp
+    Hence, $f(x)$ has a real root. 
+\end{proof}
+			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 37 %%%%%%%%%%
+\subsection*{Problem 37}
+Consider $f(x) = x^5 -x +1$ again. Fun fact about that root you proved existed in the previous problem. It's \emph{not solvable by radicals}. This means that there is no way to calculate the root using the operations $+, -, \cdot, \div,$ $n$th roots of any kind, and the coefficients of $f$ in finitely-many steps. However, we can use the IVT to approximate the value of the root by a process called the \emph{bisection method}. Here's how it works.
+\begin{enumerate}[label=(\alph*)]
+    \item You proved the existence of the root in (a) by finding $a<b$ such that $f(a)$ and $f(b)$ have opposite signs. Calculate $f$ at the exact midpoint between $a$ and $b$ (which is $(a+b)/2$). ({\it This idea should look familiar.})\\
+    $f(-1)=1$\\
+    \item What sign does $f((a+b)/2)$ have? If it's the same as $f(b)$, you know by the IVT that the root must be between $a$ and $(a+b)/2$. If it's the same as $f(a)$, the root is between $(a+b)/2$ and $b$. Pick the interval that the root is in, and evaluate $f$ at the midpoint of this new interval.\\
+    $f(-1.5)=-5.09375$\\
+    \item Check the sign of your $f$-value. Repeat this process until two consecutive $x$-values agree for two digits after the decimal point. That's your final approximation of the root.\\
+    \begin{align*}
+        f(-1.25) &= -0.801758\\
+        f(-1.125) &= 0.322968\\
+        f(-1.1875) &= -0.173892\\
+        f(-1.15625) &= 0.089639\\
+        f(-1.17188) &= -0.0381971\\
+        f(-1.16406) &= 0.0266837\\
+        f(-1.16797) &= -0.00551359\\
+        f(-1.16602) &= 0.0106455\\
+        f(-1.16699) &= 0.00258113\\
+        f(-1.16748) &= -0.00146243\\
+        f(-1.16724) &= 0.000560299\\
+        f(-1.16736) &= -0.00045083\\
+    \end{align*}
+			
+\end{enumerate}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%   HW 20  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{HW20: First attempt due \textbf{Friday 4/18}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 38 %%%%%%%%%%
+\subsection*{Problem 38}
+Define $f: \R\setminus\{0\} \to \R$ by $f(x) = \frac{1}{x}$, and let $a>0$. Prove by definition that $f$ is uniformly continuous on $[a,\infty)$.
+
+\begin{proof}Let $\Ep > 0$.\vp
+    We want to show that $\exists\delta > 0$ such that for $x,y\in [a,\infty)$ satisfying $|x-y|<\delta$, we have:
+    \begin{align*}
+        \left|\frac{1}x - \frac{1}y\right|<\Ep.
+    \end{align*}
+    Let $\delta = a^2\cdot\Ep$. Thus, we have:
+    \begin{align*}
+        \left|\frac{1}x-\frac{1}y\right|&=\left|\frac{x-y}{xy}\right|\\
+        &<\left|\frac{a^2\cdot \Ep}{xy}\right|.
+    \end{align*}
+    At the worst case scenario, we have that $x$ and $y$ in the denominator are $a$, therefore, we have:
+    \begin{align*}
+        \left|\frac{1}x-\frac{1}y\right|<\left|\frac{a^2\cdot\Ep}{xy}\right|\le\left|\frac{a^2\cdot\Ep}{a^2}\right|=\Ep.
+    \end{align*}
+    Hence, $f$ is uniformly continuous on $[a,\infty)$. 
+\end{proof}
+			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Problem 39 %%%%%%%%%%	
+\subsection*{Problem 39}
+Define $f:\R\setminus\{0\} \to \R$ by $f(x) = \frac{1}{x}$. Prove by definition that $f$ is not uniformly continuous on $(0,1)$.
+\begin{proof}\textit{Direct}.\vp
+    Let $\Ep=\frac{1}4$.\\
+    We want to show that $\forall \delta>0$, $\exists x,y\in (0,1)$ satisfying $|x-y|<\delta$ such that:
+    \begin{align*}
+        \left|\frac{1}x-\frac{1}y\right|\ge \Ep.
+    \end{align*}
+    Let $\delta > 0$. Therefore, we have that:
+    \begin{align*}
+        \left|\frac{1}x-\frac{1}y\right|&=\left|\frac{x-y}{xy}\right|
+    \end{align*}
+    Then, let $x = y+\frac{\delta}2$. Let $y=\min\left(\frac{\delta}2, \frac{1}2\right)$.\\
+    Thus, we have:
+    \begin{align*}
+        \left|\frac{x-y}{xy}\right|&= \left|\frac{\frac{\delta}2}{y(y+\frac{\delta}2)}\right|\\
+        &\ge\left|\frac{\frac{\delta}2}{\frac{1}2\cdot(\frac{\delta}2+\frac{\delta}2)}\right|=\frac{1}4
+    \end{align*}
+    Thus, we have that $\left|\frac{1}x-\frac{1}y\right|\ge\Ep$.\vp
+    Hence, $f$ is not uniformly continuous on $(0,1)$. 
+\end{proof}
+
+
+
+\end{document}

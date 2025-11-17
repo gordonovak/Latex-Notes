@@ -1,0 +1,11 @@
+*.synctex.gz
+*.log
+*.out
+*.pdf
+*.fdb_latexmk
+*.fls
+*.synctex(busy)
+*.vrb
+*.toc
+*.snm
+*.nav

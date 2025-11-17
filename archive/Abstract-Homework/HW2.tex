@@ -1,0 +1,280 @@
+%document class
+\documentclass[10pt,twoside]{article}
+
+%packages
+\usepackage[top=1in,bottom=0.6in,left=1in,right=1in]{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{xcolor, mdframed}
+\pgfplotsset{
+	humanaxes/.style={axis lines=center, every axis plot/.append style={very thick, mark size=3}, x axis line style=-, y axis line style=-},
+	humanaxeslabels/.style={every axis x label/.style={at={(current axis.right of origin)},anchor=west},every axis y label/.style={at={(current axis.above origin)},anchor=south}},
+	human/.style={humanaxes, humanaxeslabels}
+}
+\pgfplotsset{compat=1.16} %added beacuse of some updated tex error
+
+
+%if you want to remove page numbers
+%\pagestyle{empty}
+
+
+%theorems
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Question}[Theorem]{Question}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Assumption}[Theorem]{Assumption}
+\newtheorem{Algorithm}[Theorem]{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Property}[Theorem]{Property}
+\newtheorem{Notation}[Theorem]{Notation}
+\newtheorem{Condition}[Theorem]{Condition}
+\newtheorem{Example}[Theorem]{Example}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\newtheorem{Introduction}[Theorem]{Introduction}
+\theoremstyle{remark}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+%bold topics
+\newcommand\topic[1]{\noindent{\bf #1}}
+
+%definition in a box with color
+\newcommand{\defn}[1]{
+\begin{mdframed}[backgroundcolor=blue!05] #1
+\end{mdframed}
+}
+
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+
+% here is highlighted/colored text
+\newcommand{\hl}[1]{\textcolor{red}{#1}} %note that \hl{} highlights text like a highlighter
+\newcommand{\hlred}[1]{\textcolor{red}{#1}}
+\newcommand{\hlblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\mathhl}[1]{\colorbox{yellow}{$#1$}}
+
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%These are two other examples of matrices.
+%$G = \bigg\{ \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+%$G = \bigg\{ \begin{bmatrix} a & b \\ 0 & a \end{bmatrix} \bigg| a,b \in \mathbb{R}, a\neq 0 \bigg\}$ 
+
+
+% Commands for abstract algebra
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\Ima}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\br}[1]{\{ #1 \}}
+\newcommand{\brs}[2]{\{ #1 \;|\; #2 \}}
+
+%if you want to change some counters you can use the command below
+%\setcounter{section}{1}
+
+\pagestyle{fancy}
+\lhead{MATH 252}
+\chead{\large{\textbf{Homework 01} }}
+\rhead{Book section: 0.1}
+\lfoot{}
+\cfoot{}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{14pt} %added in bc warning
+
+
+\begin{document}
+
+
+
+\subsection*{Instructions}
+\section*{Homework 02}
+\subsection*{From the textbook, Section 0.2}
+
+\begin{enumerate}
+%\setcounter{enumi}{3}
+ \item Do Exercise 1 and Exercise 2(a),(b),(c),(d) as written.
+ \begin{enumerate}
+  \item \begin{enumerate}
+      \item A = $\{x \;|\; n\in\naturals, x=5n\}$
+      \item A = $\{x\in\integers\;| -\frac{1}2<x<\frac{9}2\}$
+    \end{enumerate}
+  \item \begin{enumerate}
+    \item $\{1,3,5,...\}$ (Add odd positive integers)
+    \item $\{1,2,3,4,5,6,7\}$ (All naturals less than 8)
+    \item $\{-3,-1,1\}$
+    \item $\{1,\frac{1}4,\frac{1}{16},\frac{1}{27},...\}$
+  \end{enumerate}
+  
+
+ \end{enumerate}
+ 
+\item Do Exercise 3 as written.
+ \begin{enumerate}
+  \item $A=\{n\in\integers\;|\;n^2\le4\}\ne\{x\in\reals\;|\;x^2-3x+2\}$
+  \begin{itemize}
+    \item These are not equal because the first contains negative integers while the second does not.
+  \end{itemize}
+  \item $A=\{n\in\integers\;|\;n=\frac{1}n\}=\{x\in\reals\ \;|\;x^2=1\}$
+  \begin{itemize}
+    \item These sets are equal because they contain only $\{1\}$
+  \end{itemize}
+  \item The set of letters in "alloy" = The set of letters in "loyal"
+  \begin{itemize}
+    \item These are equal because loyal and alloy contain the same letters
+  \end{itemize}
+  \item $A=\{2,\{3\},4\}\ne\{2,\{3,4\}\}$
+  \begin{itemize}
+    \item These are \textit{not} because $\{3,4\}$ is its own set distinct from $\{\{3\},4\}$.
+  \end{itemize}
+  \item $A=\{1\}\ne\{\{1\}\}$
+  \begin{itemize}
+    \item These are \textit{not} equal. The set containing 1 is not equal to 1 itself.
+  \end{itemize}
+  \item $A=\{x\in\reals\;|\;x^2=-1\}=\{x\in\rationals\;|\;x^2=2\}$
+  \begin{itemize}
+    \item These sets are equal because they are both the empty set ($\emptyset$)
+  \end{itemize}
+  \item $A=\{x\in\integers\;|\;x^2\le1\}=\{x\in\reals\;|\; x^3=x\}$
+  \begin{itemize}
+    \item Both sets are equal to $\{1,0,-1\}$
+  \end{itemize}
+ \end{enumerate}
+\item Do Exercise 10 as written.  
+  \topic{Hints for Exercise 10}: (a) To show that two sets are equal, use the Principle of Set Equality. (b) Look back at the worksheet from Day 01 for the structure of a biconditional proof and the structure of a proof with an ``or" statement.).
+  \begin{enumerate}
+    \item \textit{Proof:} Suppose $A\times B= B\times A$. Let $a\in A$ and $b\in B$. $A\ne\emptyset, B\ne\emptyset$.\\
+    We want to show that for sets $A$ and $B$, $A\subseteq B$, and $B\subseteq A$.\\
+    $$\text{Case 1: }A\subseteq B$$
+    Because $A\times B= B\times A$, if $\{a,b\}\in A\times B$, then $\{a,b\}\in B\times A$.\\
+    Therefore, $\forall a\in A,a\in B$. Hence, $A\subseteq B$.
+    $$\text{Case 2: }B\subseteq A$$
+    Because $B\times A= A\times B$, if $\{b,a\}\in B\times A$, then $\{b,a\}\in A\times B$.\\
+    Therefore, $\forall b\in B,b\in A$. Hence, $B\subseteq A$.\\ \\
+    Hence, because $A\subseteq B$, and $B\subseteq A$, $A=B$.  $\square$'
+
+    \item \textit{Proof:} Suppose that for sets $A$ and $B$, $A=B$ or $A=\emptyset$.\\
+    We want to show that for either case,  $A\times B= B\times A$.
+    $$\text{Case 1: }A = B$$
+    Let $x\in A$ and $y\in B$.\\
+    Therefore, $\{x, y\} \in A\times B$\\
+    If $A=B$, then $x\in B$, and $y\in A.$ \\
+    Therefore $\{x, y\}\in B\times A$.
+    Because $\forall x, \forall y, \{x,y\}\in A\times B \text{ and }B\times A,$\\
+    $A\times B = B\times A$.
+    $$\text{Case 2: }A = \emptyset$$
+    If $A=\emptyset$\\
+    $A\times B = \emptyset.$\\
+    $B\times A = \emptyset.$\\
+    Therefore, $A\times B = B\times A.\;\;\square$ 
+
+    \item \begin{proof}
+      Let $A$ and $B$ be sets.\\
+      We want to show that:
+      \begin{enumerate}
+        \item $A\times B\subseteq \{x\;|\; (x,x)\in A\times B\}$\\
+        and:
+        \item $A\times B\supseteq \{x\;|\; (x,x)\in A\times B\}$\vspace{0.1cm}
+      \end{enumerate}
+      \underline{$A\cap B\subseteq \{x\;|\; (x,x)\in A\times B\}$}\vp
+      We want to show that $\forall x\in A\cap B, x\in\brs{x}{(x,x)\in A\times B}$.\\
+      $x\in A\cap B$ if $x\in A$ and $x\in B$. \\
+      Therefore, $(x,x)\in A\times B$, and thus $x$ is in $\brs{x}{(x,x)\in A\times B}$.
+      Hence, $A\cap B\subseteq \{x\;|\; (x,x)\in A\times B\}$\vp
+      \underline{$A\cap B\supseteq \{x\;|\; (x,x)\in A\times B\}$}\vp
+      We want to show that $\forall x\in\brs{x}{(x,x)\in A\times B}, x\in A\cap B, $.\\
+      If $x\in \brs{x}{(x,x)\in A\times B}$, then $(x,x)\in A\times B$.\\
+      Thus, $x\in A$ and $x\in B$. Therefore, $x\in A\cap B$. \\
+      Hence, $A\cap B\supseteq \{x\;|\; (x,x)\in A\times B\}$.\vpp
+      Hence $A\cap B = \{x\;|\; (x,x)\in A\times B\}$.
+
+      
+    \end{proof}
+
+    
+  \end{enumerate}
+  
+\end{enumerate}
+
+\subsection*{From the textbook, Section 0.3}
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+    
+    \item Look at the ``maps'' from Exercise 1. Find the ones that are  *not* well-defined and justify your answer.
+    \begin{enumerate}
+      \item Not well defined. Goes outside the natrual numbers
+      \item Well defined. Codomain is entirely within $\N$. 
+      \item Not well defined. Negative numbers do not work because they produce complex outputs.
+      \item Well defined. A $\R\times\R$ input always goes to a $\R$ output.
+      \item Not well defined. One input can result in multiple possible outputs. 
+      \item Not well defined, because $2$ goes to both $b$ and $c$.
+      \item Not well defined, because there's no defined behavior for $2$.
+    \end{enumerate}
+    \item Do Exercise 3 (c) and (d) as written.
+   \topic{Hints for Exercise 3}: (c) To show a map is injective, assume that two images are the same, then show that the inputs have to be the same. (d) Is is enough to take any element $b \in B$ and somehow find some element $a\in A$ such that $\alpha(a)=b$.
+   \begin{enumerate}
+    \item \textit{Proof:} Suppose $\beta\alpha$ is one-to-one, then $\beta\alpha(x_1)\ne\beta\alpha(x_2)$ if $x_1\ne x_2$, \\
+          If $\alpha$ is onto, then $\forall b\in B, \exists a\in A$ s.t. $\alpha(a)=b$\\
+          Therefore, because $\alpha(a)=b$, $\beta(b_1)\ne\beta(b_2)$ for $b_1 \ne b_2$.\\
+          Hence, $\beta$ is one-to-one. $\square$
+    \item \textit{Proof:} Suppose $\beta\alpha$ is onto, then $\forall c\in C, \exists a\in A$ s.t. $\beta\alpha(a)=c$.\\
+          Suppose $\beta$ is one-to-one. Then, $\exists c\in C, \exists b_1,b_2\in B$ such that $\beta(b_1)\ne\beta(c_2)$.\\
+          Therefore, because each $\beta$ input ($b$) is linked directly to one $\beta$ output ($c$),\\
+          If $\beta\alpha(a)=c$, $\exists\text{ unique } b\in B$ s.t. $\beta(b)=c$. \\
+          Therefore, $\forall b\in B, \exists a\in A$ such that $\alpha(a)=b$ because $\beta$ is one-to-one.\\  
+          Hence, $\alpha$ is onto. $\;\square$.
+
+  \end{enumerate}
+
+  \end{enumerate}
+
+
+
+\end{document}

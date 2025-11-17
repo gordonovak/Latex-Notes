@@ -1,0 +1,212 @@
+%document class
+\documentclass[10pt,oneisde]{book}
+%%%% Page Info + Commands %%%%%{
+
+%packages
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor, mdframed}
+\usepackage{thmbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{changepage}
+
+
+
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{-5mm}
+
+% a good babble textwidth is 5.75in
+\newcommand{\babblewidth}{\setlength\textwidth{5.75in}}
+
+
+% This will stretch out the page
+\newcommand{\bigpage}{  \setlength \oddsidemargin{-.25in}
+            \setlength \textwidth{6.75in}
+            \setlength \topmargin{-1in}
+            \setlength \textheight{9.75in}}
+
+
+%This will shrink the page
+\newcommand{\smallpage}{  \setlength \oddsidemargin{.5in}
+            \setlength \textwidth{5in}
+            \setlength \topmargin{0in}
+            \setlength \textheight{9in}}
+
+\newcommand{\separator}{\vglue .1in\hrule\vglue .1in}
+
+\newcommand{\pause}{\vglue .1in\hrulefill {\tiny Pause here}\hrulefill \vglue .1in}
+
+%%general stuff
+\newcommand{\caret}{\textasciicircum}
+
+%This will put a circle around something.
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+% Commands for abstract
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\normal}{\triangleleft}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\aut}[1]{{\rm Aut}(#1)}
+\newcommand{\Ker}{{\rm Ker}\,}
+\newcommand{\im}{{\rm Im}\,}
+\newcommand{\cyclic}[1]{\langle #1 \rangle}
+\newcommand{\isom}{\cong}
+\newcommand{\autc}[1]{{\rm Aut_c}(#1)}
+\newcommand{\autsub}[2]{{\rm Aut}_{#1}(#2)}
+
+\newcommand{\vp}{\vspace{0.15cm}\\}
+\newcommand{\vpp}{\vspace{0.25cm}\\}
+\newcommand{\vpn}{\vspace{0.05cm}\\}
+\newcommand{\rmv}[1]{\,\backslash\{#1\}}
+\newcommand{\rmvs}[1]{\,\backslash{#1}}
+\newcommand{\md}[1]{\,\text{mod } #1}
+
+\newcommand{\gimage}[3]{
+\begin{figure}[h]   
+    \centering          
+    \includegraphics[width=#2\textwidth]{#1}  
+    \caption{#3}
+    \label{fig:#1}
+\end{figure}\\
+}
+
+%%%%%%%% command for graphics %%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%}
+
+%%%% Page 1 Setup %%%%%%%{
+\smallpage
+\sloppy
+\pagestyle{fancy}
+\lhead{\large{\textbf{HW7 - Gordon Novak}}}
+%\rfoot{\thepage/\pageref{LastPage} }
+\setlength{\headheight}{10pt} %added in bc warning
+%\setcounter{section}{1}
+%hint command
+\newcommand{\hint}[1]{\noindent{\footnotesize {\it #1}}}
+\newcommand{\bs}{\;\;\;}
+\newtheorem[S, bodystyle=\normalfont\noindent]{defiS}{Definition}[section]
+%}
+
+\begin{document}
+
+\begin{enumerate}
+    \item Express the integral $\displaystyle\iiint_W f(x,y,z)dV$ in six different ways, where $W$ is the solid bounded by $y=x^2$, $z = 0$, and $y + 2z = 4$.
+\end{enumerate}
+So, essentially, we want to organize our integral into every possible ordering of $dx, dy, dz$, so that's how I will organize our integrals.
+{\begin{center}\underline{$dx\,dy\,dz$}\end{center}}
+So first, we want to establish the bounds with our $x$. We know that:
+$$y=x^2\implies x = \pm \sqrt {y}$$
+So I guess that's just the $x$ done.\vp
+Now we have the $y$. We already got $y$ with respect to $x$ covered in the $x$ bounds, so now all we need to do it cover the fact that:
+$$y+2z=4\implies y=4-2z.$$
+We know $y\ge 0$ from $y = x^2$, thus our first integral is:
+$$\boxed{\int_0^2\int_0^{4-2z}\int_{\sqrt{y}}^{\sqrt{y}}f(x,y,z)dx\,dy\,dz}$$
+{\begin{center}\underline{$dx\,dz\,dy$}\end{center}}
+This one follows the same pattern, but we need to put $z$ in terms of $y$. We get:
+$$z=2-\frac{1}2y$$
+We also know $y$ will extend up to 4, because that's where $2-\frac{1}2y=z=0$. Our second integral is:
+$$\boxed{\int_0^4\int_0^{2-\frac{1}2y}\int_{\sqrt{y}}^{\sqrt{y}}f(x,y,z)dx\,dz\,dy}$$
+{\begin{center}\underline{$dy\,dx\,dz$}\end{center}}
+Now this one is tricky. Because there is no depencency between $x$ and $z$, we need to encode all the information that relates $z$ to $y$ and $x$ to $y$ in through the formula $y=x^2$. We know that:
+$$y=x^2, y=4-2z$$
+Here, we can treat $x^2$ as our lower bound, and $4$ as our upper bound. We know that $x$ can only go up to the intersection at the $z$-axis with $4-2z$, which occurs at $y=4$, so thus $x$ must have the range $\pm \sqrt{4-2z}$. $z$ will remain going from $0$ to 2:
+$$\boxed{\int_0^2\int_{-\sqrt{4-2z}}^{\sqrt{4-2z}}\int_{x^2}^{4-2z}f(x,y,z)dy\,dx\,dz}$$
+Note this will be a similar integral with $dx$ and $dz$ flipped:
+$$\boxed{\int_{-2}^{2}\int^{2-\frac{1}2x^2}_0\int_{x^2}^{4-2z}f(x,y,z)dy\,dz\,dx}$$
+\newpage
+{\begin{center}\underline{$dz\,dx\,dy$}\end{center}}
+Here, we write $z$ in terms of y:
+$$z = 2-\frac{1}2y$$
+And we also write $x$ in terms of y:
+$$x=\pm\sqrt y$$
+Then, we just get our integral with y from 0 to 4 with:
+$$\boxed{\int_{0}^{4}\int_{\sqrt y}^{\sqrt y}\int_{0}^{2-\frac{1}2y}f(x,y,z)dz\,dx\,dy}$$
+{\begin{center}\underline{$dz\,dy\,dz$}\end{center}}
+For this one, we just write the $y$-bounds in terms of $x$, and the $x$ becomes our $-2$ to 2 interval:
+$$\boxed{\int_{-2}^{2}\int_{x^2}^{4}\int_{0}^{2-\frac{1}2y}f(x,y,z)dz\,dx\,dy}$$
+
+\begin{enumerate}
+    \item [2.] Consider the triple integral $\displaystyle\int_{-4}^4\int_0^{\sqrt{16-x^2}}\int_0^{\sqrt{16-x^2-y^2}}\sqrt{x^2+y^2+z^2}dz\,dy\,dz$.\vp
+    Convert the integral to cylindrical coordinates!
+\end{enumerate}
+Ok so this is pretty darn straightforward. We just use our conversions:
+\begin{align*}
+    r&=x^2+y^2\\
+    x&=r\cos\theta\\
+    y&=r\sin\theta
+\end{align*}
+For our bounds, we know $y=\sqrt{16-x^2}$ so $y^2+x^2=16\implies r^2 = 16\implies r = \pm 4$. \\
+Furthermore, we know $z=\sqrt{16-x^2-y^2}$, which becomes $z = \sqrt{16-r^2}$. And that $y> 0$ (which tells us to only integrate $\theta$ to $\pi$ and not to $2\pi$). 
+And we end up with the fancy integral (with our determinent of the jacobian):
+$$\boxed{\displaystyle\int_{0}^{\pi}\int_0^{4}\int_0^{\sqrt{16-r^2}}r\sqrt{r^2+z^2}dz\,dr\,d\theta}$$
+\begin{enumerate}
+    \item [4.] Let $W$ be a solid inside the cylinder $x^2+y^2=4$ and inside the sphere $x^2+y^2+z^2=25$. Suppose $W$ has the density function $\rho(x,y,z)=x^2+y^2+z^2$. Set up an integral in cylindrical coordinates that calculates the mass of $W$.
+\end{enumerate}
+We start by using our cylindrical coordinate transformations from earlier and are left with the bounds:
+\begin{align*}
+    r^2&=4\implies r = \pm 4\\
+    r^2+z^2&=25
+\end{align*}
+So the way I will do this is let our radius just go from 0 to 4, and then get our bounds with $z$. We know that:
+\begin{align*}
+    z^2&=25-r^2\\
+    z&=\pm\sqrt{25-r^2}
+\end{align*}
+So there's our bounds and with our density function $x^2+y^2+z^2\Leftarrow r^2+z^2$, we get the integral:
+$$\boxed{\int_0^{2\pi}\int_0^4\int_{-\sqrt{25-r^2}}^{\sqrt{25-r^2}}z^2+r^2\;dz\,dr\,d\theta}$$
+\newpage
+\begin{enumerate}
+    \item Consider the solid $W$ in the first octant bounded by the parabolic cylinder $z=4-x^2$ and the plane $y=5$.
+\end{enumerate}
+a) Draw the projection of W onto the $xy$ plane and then set up a triple integral in rectangular coordinates that uses this projection to compute the volume of $W$. 
+\gimage{image.png}{0.3}{Here, the purple line is $y=5$, the green line is $x = -2$ and whe blue line is $x=2$}
+We can solve for the $x$-projection with $4-x^2 = 0$, so thus $x= \pm 2$. 
+From this, we can set up the integral:
+$$\boxed{\int_{0}^2\int_{0}^5\int_0^{4-x^2}1\;dz\,dy\,dx}$$
+Note that all our bounds start at 0 because we are in the first octant. \vpp
+b) Draw the projection of $W$ onto the $xz$-plane. Then, set up a triple integral in rectangular coordinates that uses this projection to compute the volume of $W$. 
+\gimage{image2.png}{0.3}{Here, the purple lines represent the first-octant boundary, and the green line represents the $z=4-x^2$. (Please ignore the fact the $y$ is supposed to say $z$)}
+From this, we end up with the really nice integral:
+$$\boxed{\int_{0}^5\int_{0}^2\int_0^{4-x^2}1\;dz\,dx\,dy}$$
+I'm not really sure what I was supposed to do different from the last one cause this still works. 
+\newpage
+\begin{enumerate}
+    \item [6.]Let $T:\R^2\to\R^2$ be the transformation $T(r,\theta)=(r\cos\theta+2,r\sin\theta)$. 
+\end{enumerate}
+a) Determine the Jacobian matrix and the determinent of $T$.\vpp
+Oh boy this is not going to be fun in latex. So first, we take all of our partials\newcommand{\prt}[2]{\frac{\partial #1}{\partial #2}}:
+\begin{align*}
+    \prt{T}{r}&=(\cos\theta,\sin\theta)\\
+    \prt{T}{\theta}&=(-r\sin\theta,r\cos\theta)
+\end{align*}
+Then we plop them into a matrix and calculate the determinant:
+$$\text{det}\begin{bmatrix}
+    \cos\theta & \sin\theta \\
+    -r\sin\theta & r\cos\theta
+\end{bmatrix}=r\cos^2\theta+r\sin^2\theta=r$$
+b) Use the change of variables theorem to set up an integral in terms of $r$ and $\theta$ that evaluates the integral $\displaystyle\iint_S xy^2\,dA$, where $S$ is the image of $T$. \vpp
+Well I'm a little confused cause the image of $T$ here is the entirety of the real coordinate space $\R^2$. So I'm just going to assume this is an indefinite integral.\vp
+Applying our transformation gives us that:
+$$xy^2\mapsto(r\cos\theta+2)\sin^2\theta$$
+So then adding our determinant into the integral gives:
+$$\boxed{\int_0^{2\pi}\int_{0}^\infty r(r\cos\theta+2)\sin^2\theta\;dr\,d\theta}$$
+\end{document}
